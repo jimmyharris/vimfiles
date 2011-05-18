@@ -4,6 +4,10 @@ set nocompatible " Disable vi compatibility
 
 filetype off " required for some debian distributions
 
+"disable plugins
+
+let g:pathogen_disabled = ['LaTeX-Box']
+
 call pathogen#runtime_append_all_bundles() " Load pathogen bundles.
 
 call pathogen#helptags() " Set up documenation for all the bundles
@@ -105,15 +109,16 @@ set backspace=eol,start,indent
 " LatexBox:
 
 " let g:LatexBox_latexmk_options = '-pvc'
-let g:LatexBox_viewer = 'open -a Skim'
-let g:LatexBox_cite_pattern = '\c\\\a*cite\a*\*\?\_\s*{'
-let g:tex_flavor = "latex"
+" let g:LatexBox_viewer = 'open -a Skim'
+" let g:LatexBox_cite_pattern = '\c\\\a*cite\a*\*\?\_\s*{'
+" let g:tex_flavor = "latex"
 
 " }}}
 
 " Auto Commands: 
 autocmd Bufread *.as set filetype=actionscript
-
+au Bufread vimrc set foldmethod=marker
+au Bufread .vimrc set foldmethod=marker
 
 " Tag Paths: {{{
 "
