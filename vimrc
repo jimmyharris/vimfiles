@@ -1,4 +1,4 @@
-" Initialize:
+" Initialize Pathogen: {{{
 
 set nocompatible " Disable vi compatibility
 
@@ -11,17 +11,25 @@ call pathogen#helptags() " Set up documenation for all the bundles
 syntax on " Turn on FT Plugins and syntax hilighting. 
 filetype plugin indent on
 
-" Status_Line:
+" }}}
+
+
+" Settings: {{{
+" Status_Line: {{{
 
 set laststatus=2
 set statusline=%f%m\ %{fugitive#statusline()}%<%r%w%y[%{&ff}]%=%p%%\ %L,%l,%v\ 
 
-" Mouse:
+" }}}
+
+" Mouse: {{{
 " FIXME: Integrate me with the OSX clipboard.
 
 set mouse=a
 
-" General: 
+" }}}
+
+" General Options:  {{{
 
 set nohlsearch 
 set ts=2
@@ -30,19 +38,15 @@ set sts=2
 set et
 set number
 
-" Window_Preferences:
+" }}}
+
+" Window_Preferences: {{{
 set noea " no auto equal
 set hid  " hide buffers, don't kill them
 
-" Leader:
-let mapleader=',' " Fix <Leader> which for some reason is never properly set.
-let maplocalleader='\' 
+" }}}
 
-"Auto_Format: 
-" for selections of text (super useful)
-map Q gq 
-
-" Color:
+" Color Settings: {{{
 
 let g:CSApprox_verbose_level=0 " Silence CSApprox (I know i don't have gvim support builtin)
 set bg=light
@@ -51,6 +55,20 @@ if &t_Co > 255 " We have Pretty Colors
   colorscheme ir_black
 endif
 
+" }}}
+
+" }}}
+
+" Custom Mappings: {{{
+
+" Leader: {{{
+let mapleader=',' " Fix <Leader> which for some reason is never properly set.
+let maplocalleader='\' 
+" }}}
+
+" Auto_Format:
+map Q gq
+
 " Invisible_Characters:
 
 " Use the same symbols as TextMate for tabstops and EOLs
@@ -58,6 +76,10 @@ endif
 
 " Shortcut to rapidly toggle `set list`
 nmap <leader>j :set list!<CR>
+
+" }}}
+
+" Plugins: {{{
 
 " NERDTree: Shortcuts
 " let NERDTreeHijackNetrw = 0 " Stop NerdTree from taking over Netrw
@@ -87,4 +109,27 @@ let g:LatexBox_viewer = 'open -a Skim'
 let g:LatexBox_cite_pattern = '\c\\\a*cite\a*\*\?\_\s*{'
 let g:tex_flavor = "latex"
 
+" }}}
+
+" Auto Commands: 
 autocmd Bufread *.as set filetype=actionscript
+
+
+" Tag Paths: {{{
+"
+" This Tag.
+
+set tags=./tags
+
+let s:win = has("win16") || has("win32") || has("win64")
+if s:win
+  let g:OS = "win"
+  let g:tag_path = $HOME.'\_vim\tags\'
+  let g:os_tag_path = g:tag_path.g:OS.'\'
+else
+  let g:OS = substitute(system('uname'),"\n","","")
+  let g:tag_path = $HOME.'/.vim/tags/'
+  let g:os_tag_path = g:tag_path.g:OS.'/'
+endif
+
+" }}}
