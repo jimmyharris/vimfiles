@@ -1,0 +1,90 @@
+" Initialize:
+
+set nocompatible " Disable vi compatibility
+
+filetype off " required for some debian distributions
+
+call pathogen#runtime_append_all_bundles() " Load pathogen bundles.
+
+call pathogen#helptags() " Set up documenation for all the bundles
+
+syntax on " Turn on FT Plugins and syntax hilighting. 
+filetype plugin indent on
+
+" Status_Line:
+
+set laststatus=2
+set statusline=%f%m\ %{fugitive#statusline()}%<%r%w%y[%{&ff}]%=%p%%\ %L,%l,%v\ 
+
+" Mouse:
+" FIXME: Integrate me with the OSX clipboard.
+
+set mouse=a
+
+" General: 
+
+set nohlsearch 
+set ts=2
+set sw=2
+set sts=2
+set et
+set number
+
+" Window_Preferences:
+set noea " no auto equal
+set hid  " hide buffers, don't kill them
+
+" Leader:
+let mapleader=',' " Fix <Leader> which for some reason is never properly set.
+let maplocalleader='\' 
+
+"Auto_Format: 
+" for selections of text (super useful)
+map Q gq 
+
+" Color:
+
+let g:CSApprox_verbose_level=0 " Silence CSApprox (I know i don't have gvim support builtin)
+set bg=light
+
+if &t_Co > 255 " We have Pretty Colors
+  colorscheme ir_black
+endif
+
+" Invisible_Characters:
+
+" Use the same symbols as TextMate for tabstops and EOLs
+" set listchars=tab:▸\ ,eol:¬
+
+" Shortcut to rapidly toggle `set list`
+nmap <leader>j :set list!<CR>
+
+" NERDTree: Shortcuts
+" let NERDTreeHijackNetrw = 0 " Stop NerdTree from taking over Netrw
+" map <leader>d :execute 'NERDTreeToggle ' . escape(getcwd(), "\ ")<CR><CR><CR>
+
+" NERDCommenter:
+" Make comments prettier and easier to toggle
+let NERDSpaceDelims=1
+
+" FuzzyFinder_Textmate:
+let g:fuzzy_matching_limit = 70
+let g:fuzzy_ignore = "*.Rcheck*"
+
+map <leader>t :FuzzyFinderTextMate<CR>
+map <leader>b :FuzzyFinderBuffer<CR>
+
+
+" DelimitMate: 
+let delimitMate_expand_space = 1
+let delimitMate_expand_cr = 1
+set backspace=eol,start,indent
+
+" LatexBox:
+
+" let g:LatexBox_latexmk_options = '-pvc'
+let g:LatexBox_viewer = 'open -a Skim'
+let g:LatexBox_cite_pattern = '\c\\\a*cite\a*\*\?\_\s*{'
+let g:tex_flavor = "latex"
+
+autocmd Bufread *.as set filetype=actionscript
