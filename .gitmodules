@@ -1,0 +1,55 @@
+[submodule "bundle/Color-Sampler-Pack"]
+	path = bundle/Color-Sampler-Pack
+	url = git://github.com/vim-scripts/Color-Sampler-Pack.git
+[submodule "bundle/Conque-Shell"]
+	path = bundle/Conque-Shell
+	url = git://github.com/vim-scripts/Conque-Shell.git
+[submodule "bundle/LaTeX-Box"]
+	path = bundle/LaTeX-Box
+	url = git@github.com:jimmyharris/LaTeX-Box.git
+[submodule "bundle/OmniCppComplete"]
+	path = bundle/OmniCppComplete
+	url = git://github.com/vim-scripts/OmniCppComplete.git
+[submodule "bundle/a.vim"]
+	path = bundle/a.vim
+	url = git://github.com/vim-scripts/a.vim.git
+[submodule "bundle/applescript.vim"]
+	path = bundle/applescript.vim
+	url = git://github.com/vim-scripts/applescript.vim.git
+[submodule "bundle/csapprox"]
+	path = bundle/csapprox
+	url = git://github.com/godlygeek/csapprox.git
+[submodule "bundle/delimitMate"]
+	path = bundle/delimitMate
+	url = git://github.com/Raimondi/delimitMate.git
+[submodule "bundle/fuzzyfinder_textmate"]
+	path = bundle/fuzzyfinder_textmate
+	url = git@github.com:jimmyharris/fuzzyfinder_textmate.git
+  ignore = dirty
+[submodule "bundle/snipmate"]
+	path = bundle/snipmate
+	url = git@github.com:jimmyharris/snipmate.vim.git
+[submodule "bundle/tabular"]
+	path = bundle/tabular
+	url = git://github.com/godlygeek/tabular.git
+[submodule "bundle/fugitive"]
+	path = bundle/fugitive
+	url = git://github.com/tpope/vim-fugitive.git
+[submodule "bundle/markdown"]
+	path = bundle/markdown
+	url = git://github.com/tpope/vim-markdown.git
+[submodule "bundle/repeat"]
+	path = bundle/repeat
+	url = git://github.com/tpope/vim-repeat.git
+[submodule "bundle/surround"]
+	path = bundle/surround
+	url = git://github.com/tpope/vim-surround.git
+[submodule "bundle/tslime.vim"]
+	path = bundle/tslime.vim
+	url = git@github.com:jimmyharris/tslime.vim.git
+[submodule "bundle/tmux-syntax"]
+	path = bundle/tmux-syntax
+	url = git@github.com:jimmyharris/vim-tmux.git
+[submodule "bundle/unimpaired"]
+	path = bundle/unimpaired
+	url = git://github.com/tpope/vim-unimpaired.git
