@@ -62,3 +62,6 @@
 [submodule "bundle/TeX_9"]
 	path = bundle/TeX_9
 	url = git://github.com/vim-scripts/TeX_9.git
+[submodule "bundle/nerdcommenter"]
+	path = bundle/nerdcommenter
+	url = git@github.com:jimmyharris/nerdcommenter.git
