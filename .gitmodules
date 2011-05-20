@@ -65,3 +65,9 @@
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
 	url = git@github.com:jimmyharris/nerdcommenter.git
+[submodule "bundle/genutils"]
+	path = bundle/genutils
+	url = git://github.com/vim-scripts/genutils.git
+[submodule "bundle/SelectBuf"]
+	path = bundle/SelectBuf
+	url = git://github.com/vim-scripts/SelectBuf.git
