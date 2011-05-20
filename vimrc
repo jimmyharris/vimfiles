@@ -1,4 +1,7 @@
-" Initialize Pathogen: {{{
+" Vimrc by James Harris.
+
+" Initialize Pathogen: 
+" {{{
 
 set nocompatible " Disable vi compatibility
 
@@ -17,40 +20,36 @@ filetype plugin indent on
 
 " }}}
 
+" Settings:
+" {{{
 
-" Settings: {{{
-" Status_Line: {{{
+" Status_Line: 
 
 set laststatus=2
 set statusline=%f%m\ %{fugitive#statusline()}%<%r%w%y[%{&ff}]%=%p%%\ %L,%l,%v\ 
 
-" }}}
-
-" Mouse: {{{
+" Mouse:
 " FIXME: Integrate me with the OSX clipboard.
 
 set mouse=a
 
-" }}}
 
-" General Options:  {{{
-
+" General Options:
+" {{{
 set nohlsearch 
 set ts=2
 set sw=2
 set sts=2
 set et
 set number
-
 " }}}
 
-" Window_Preferences: {{{
+" Window_Preferences:
 set noea " no auto equal
 set hid  " hide buffers, don't kill them
 
-" }}}
-
-" Color Settings: {{{
+" Color Settings: 
+" {{{
 
 let g:CSApprox_verbose_level=0 " Silence CSApprox (I know i don't have gvim support builtin)
 set bg=light
@@ -63,11 +62,13 @@ endif
 
 " }}}
 
-" Custom Mappings: {{{
+" Custom Mappings: 
+" {{{
 
-" Leader: {{{
+" Leader: 
+" {{{
 let mapleader=',' " Fix <Leader> which for some reason is never properly set.
-let maplocalleader='\' 
+let maplocalleader=';' 
 " }}}
 
 " Auto_Format:
@@ -76,18 +77,15 @@ map Q gq
 " Invisible_Characters:
 
 " Use the same symbols as TextMate for tabstops and EOLs
-" set listchars=tab:▸\ ,eol:¬
+set listchars=tab:▸\ ,eol:¬
 
 " Shortcut to rapidly toggle `set list`
 nmap <leader>j :set list!<CR>
 
 " }}}
 
-" Plugins: {{{
-
-" NERDTree: Shortcuts
-" let NERDTreeHijackNetrw = 0 " Stop NerdTree from taking over Netrw
-" map <leader>d :execute 'NERDTreeToggle ' . escape(getcwd(), "\ ")<CR><CR><CR>
+" Plugins: 
+" {{{
 
 " NERDCommenter:
 " Make comments prettier and easier to toggle
@@ -106,22 +104,23 @@ let delimitMate_expand_space = 1
 let delimitMate_expand_cr = 1
 set backspace=eol,start,indent
 
-" LatexBox:
+" TeX_9:
 
-" let g:LatexBox_latexmk_options = '-pvc'
-" let g:LatexBox_viewer = 'open -a Skim'
-" let g:LatexBox_cite_pattern = '\c\\\a*cite\a*\*\?\_\s*{'
-" let g:tex_flavor = "latex"
+let g:tex_flavor = "pdflatex"
 
 " }}}
 
-" Auto Commands: 
+" Auto Commands:
+" {{{
 autocmd Bufread *.as set filetype=actionscript
 au Bufread vimrc set foldmethod=marker
 au Bufread .vimrc set foldmethod=marker
 
-" Tag Paths: {{{
-"
+" }}}
+
+" Tag Paths:
+" {{{
+
 " This Tag.
 
 set tags=./tags
