@@ -51,12 +51,18 @@ set hid  " hide buffers, don't kill them
 " Color Settings: 
 " {{{
 
-let g:CSApprox_verbose_level=0 " Silence CSApprox (I know i don't have gvim support builtin)
-set bg=light
 
-if &t_Co > 255 " We have Pretty Colors
-  colorscheme ir_black
+if has('gui_running')
+  set background=light
+else
+  let g:CSApprox_verbose_level=0 " Silence CSApprox (I know i don't have gvim support builtin)
+  set background=dark
+  " if &t_Co > 255 " We have Pretty Colors
+    " let g:solarized_termcolors=256
+  " endif
 endif
+colorscheme solarized
+
 
 " }}}
 

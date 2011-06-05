@@ -16,9 +16,6 @@
 [submodule "bundle/applescript.vim"]
 	path = bundle/applescript.vim
 	url = git://github.com/vim-scripts/applescript.vim.git
-[submodule "bundle/csapprox"]
-	path = bundle/csapprox
-	url = git://github.com/godlygeek/csapprox.git
 [submodule "bundle/delimitMate"]
 	path = bundle/delimitMate
 	url = git://github.com/Raimondi/delimitMate.git
@@ -71,3 +68,6 @@
 [submodule "bundle/SelectBuf"]
 	path = bundle/SelectBuf
 	url = git://github.com/vim-scripts/SelectBuf.git
+[submodule "bundle/colors-solarized"]
+	path = bundle/colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
