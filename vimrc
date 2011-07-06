@@ -114,6 +114,10 @@ set backspace=eol,start,indent
 
 let g:tex_flavor = "pdflatex"
 
+if has('mac')
+  let g:tex_viewer = {'app': 'open', 'target': 'pdf'}
+endif
+
 " }}}
 
 " Auto Commands:
