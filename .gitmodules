@@ -56,9 +56,6 @@
 [submodule "bundle/addon-mw-utils"]
 	path = bundle/addon-mw-utils
 	url = git://github.com/MarcWeber/vim-addon-mw-utils.git
-[submodule "bundle/TeX_9"]
-	path = bundle/TeX_9
-	url = git://github.com/vim-scripts/TeX_9.git
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
 	url = git@github.com:jimmyharris/nerdcommenter.git
@@ -71,3 +68,6 @@
 [submodule "bundle/colors-solarized"]
 	path = bundle/colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "bundle/TeX-9"]
+	path = bundle/TeX-9
+	url = git://github.com/vim-scripts/TeX-9.git
