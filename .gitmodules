@@ -71,3 +71,6 @@
 [submodule "bundle/TeX-9"]
 	path = bundle/TeX-9
 	url = git://github.com/vim-scripts/TeX-9.git
+[submodule "bundle/armasm"]
+	path = bundle/armasm
+	url = git://github.com/vim-scripts/armasm.git
