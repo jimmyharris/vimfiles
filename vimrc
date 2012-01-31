@@ -77,6 +77,10 @@ let mapleader=',' " Fix <Leader> which for some reason is never properly set.
 let maplocalleader=';' 
 " }}}
 
+" CtagsMapping:
+
+map <F5> :!ctags -R --exclude=.svn --exclude=.git --exclude=log * <CR>
+
 " Auto_Format:
 map Q gq
 
@@ -92,6 +96,18 @@ nmap <leader>j :set list!<CR>
 
 " Plugins: 
 " {{{
+
+" Tabularize:
+
+let mapleader=','
+
+if exists(":Tabularize")
+  nmap <Leader>= :Tabularize /=<CR>
+  vmap <Leader>= :Tabularize /=<CR>
+  nmap <Leader>: :Tabularize /:\zs<CR>
+  vmap <Leader>: :Tabularize /:\zs<CR>
+endif
+
 
 " NERDCommenter:
 " Make comments prettier and easier to toggle
