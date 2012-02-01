@@ -19,9 +19,6 @@
 [submodule "bundle/delimitMate"]
 	path = bundle/delimitMate
 	url = git://github.com/Raimondi/delimitMate.git
-[submodule "bundle/snipmate"]
-	path = bundle/snipmate
-	url = git@github.com:jimmyharris/snipmate.vim.git
 [submodule "bundle/tabular"]
 	path = bundle/tabular
 	url = git://github.com/godlygeek/tabular.git
@@ -70,3 +67,9 @@
 [submodule "bundle/armasm"]
 	path = bundle/armasm
 	url = git://github.com/vim-scripts/armasm.git
+[submodule "bundle/snipmate"]
+	path = bundle/snipmate
+	url = git://github.com/garbas/vim-snipmate.git
+[submodule "bundle/snipmate_snippets"]
+	path = bundle/snipmate_snippets
+	url = git://github.com/honza/snipmate-snippets.git
