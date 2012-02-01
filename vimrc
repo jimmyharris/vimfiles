@@ -113,13 +113,6 @@ endif
 " Make comments prettier and easier to toggle
 let NERDSpaceDelims=1
 
-" FuzzyFinder_Textmate:
-let g:fuzzy_matching_limit = 70
-let g:fuzzy_ignore = "*.Rcheck*"
-
-map <leader>t :FuzzyFinderTextMate<CR>
-map <leader>b :FuzzyFinderBuffer<CR>
-
 
 " DelimitMate: 
 let delimitMate_expand_space = 1
