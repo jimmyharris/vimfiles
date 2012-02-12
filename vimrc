@@ -85,12 +85,13 @@ map <F5> :!ctags -R --exclude=.svn --exclude=.git --exclude=log * <CR>
 map Q gq
 
 " Invisible_Characters:
-
+if !(has("win16") || has("win32") || has("win64"))
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
 
 " Shortcut to rapidly toggle `set list`
 nmap <leader>j :set list!<CR>
+endif
 
 " }}}
 
