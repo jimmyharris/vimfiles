@@ -66,6 +66,11 @@ colorscheme solarized
 
 " }}}
 
+" Assembly Language Type
+
+"Assume I am using arm assemly
+let g:asmsyntax="armasm"
+
 " }}}
 
 " Custom Mappings: 
