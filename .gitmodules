@@ -88,3 +88,9 @@
 [submodule "bundle/cucumber"]
 	path = bundle/cucumber
 	url = git://github.com/tpope/vim-cucumber.git
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
+[submodule "bundle/dbext"]
+	path = bundle/dbext
+	url = git://github.com/cagatayyuksel/dbext.vim.git
