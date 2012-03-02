@@ -94,3 +94,9 @@
 [submodule "bundle/dbext"]
 	path = bundle/dbext
 	url = git://github.com/cagatayyuksel/dbext.vim.git
+[submodule "bundle/abolish"]
+	path = bundle/abolish
+	url = git://github.com/tpope/vim-abolish.git
+[submodule "bundle/ragtag"]
+	path = bundle/ragtag
+	url = git://github.com/tpope/vim-ragtag.git
