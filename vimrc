@@ -72,9 +72,8 @@ endif
 
 " }}}
 
-" Assembly Language Type
+" Assembly Language Type:
 
-"Assume I am using arm assemly
 let g:asmsyntax="armasm"
 
 " }}}
