@@ -20,6 +20,13 @@ filetype plugin indent on
 
 " }}}
 
+" Detect Windows:
+" {{{
+
+let s:win = has("win16") || has("win32") || has("win64")
+
+" }}}
+
 " Settings:
 " {{{
 
@@ -103,9 +110,9 @@ endif
 " Plugins: 
 " {{{
 
-" Tabularize:
-
 let mapleader=','
+
+" Tabularize:
 
 if exists(":Tabularize")
   nmap <Leader>= :Tabularize /=<CR>
@@ -115,9 +122,13 @@ if exists(":Tabularize")
 endif
 
 
+" NERDTree:
+
+let NERDTreeHijackNetrw = 0
+
 " NERDCommenter:
 " Make comments prettier and easier to toggle
-let NERDSpaceDelims=1
+let NERDSpaceDelims = 1
 
 
 " DelimitMate: 
@@ -150,7 +161,6 @@ au Bufread .vimrc set foldmethod=marker
 
 set tags=./tags
 
-let s:win = has("win16") || has("win32") || has("win64")
 if s:win
   let g:OS = "win"
   let g:tag_path = $HOME.'\_vim\tags\'
