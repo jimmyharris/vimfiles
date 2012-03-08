@@ -67,12 +67,6 @@
 [submodule "bundle/armasm"]
 	path = bundle/armasm
 	url = git://github.com/vim-scripts/armasm.git
-[submodule "bundle/snipmate"]
-	path = bundle/snipmate
-	url = git://github.com/garbas/vim-snipmate.git
-[submodule "bundle/snipmate_snippets"]
-	path = bundle/snipmate_snippets
-	url = git://github.com/honza/snipmate-snippets.git
 [submodule "bundle/rails"]
 	path = bundle/rails
 	url = git://github.com/tpope/vim-rails.git
