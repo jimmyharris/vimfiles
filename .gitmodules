@@ -84,7 +84,7 @@
 	url = git://github.com/tpope/vim-rvm.git
 [submodule "bundle/endwise"]
 	path = bundle/endwise
-	url = https://github.com/tpope/vim-endwise.git
+	url = git://github.com/tpope/vim-endwise.git
 [submodule "bundle/cucumber"]
 	path = bundle/cucumber
 	url = git://github.com/tpope/vim-cucumber.git
