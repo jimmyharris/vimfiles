@@ -60,17 +60,27 @@ set hid  " hide buffers, don't kill them
 
 colorscheme solarized
 
-if has('gui_running')
-  set background=light
-else
-  let g:CSApprox_verbose_level=0 " Silence CSApprox (I know i don't have gvim support builtin)
+if s:win
   set background=dark
-  if !s:win 
-    if !exists("$TERM_PROGRAM") && &t_co > 255      " We have Pretty Colors
-      let g:solarized_termcolors=256
+  if has('gui_running')
+    let g:solarized_italic=0
+    contrast="high"
+    visibility="high"
+  endif
+else
+  if has('gui_running')
+    set background=light
+  else
+    let g:CSApprox_verbose_level=0 " Silence CSApprox (I know i don't have gvim support builtin)
+    set background=dark
+    if !s:win 
+      if !exists("$TERM_PROGRAM") && &t_co > 255      " We have Pretty Colors
+        let g:solarized_termcolors=256
+      endif
     endif
   endif
 endif
+
 
 " }}}
 
@@ -97,7 +107,7 @@ map <F5> :!ctags -R --exclude=.svn --exclude=.git --exclude=log * <CR>
 map Q gq
 
 " Invisible_Characters:
-if !(has("win16") || has("win32") || has("win64"))
+if !s:win
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
 
@@ -159,11 +169,11 @@ au Bufread .vimrc set foldmethod=marker
 
 " This Tag.
 
-set tags=./tags
+set tags=tags
 
 if s:win
   let g:OS = "win"
-  let g:tag_path = $HOME.'\_vim\tags\'
+  let g:tag_path = $HOME.'\vimfiles\tags\'
   let g:os_tag_path = g:tag_path.g:OS.'\'
 else
   let g:OS = substitute(system('uname'),"\n","","")
