@@ -64,8 +64,8 @@ if s:win
   set background=dark
   if has('gui_running')
     let g:solarized_italic=0
-    contrast="high"
-    visibility="high"
+    let g:solarized_contrast="high"
+    let g:solarized_visibility="high"
   endif
 else
   if has('gui_running')
@@ -101,7 +101,11 @@ let maplocalleader=';'
 
 " CtagsMapping:
 
-map <F5> :!ctags -R --exclude=.svn --exclude=.git --exclude=log * <CR>
+map <F5> :!ctags -R --exclude=.svn --exclude=.git --exclude=log --languages="C,C++" * <CR>
+
+" Ctrlp:
+
+let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'changes' ]
 
 " Auto_Format:
 map Q gq
@@ -161,6 +165,10 @@ endif
 autocmd Bufread *.as set filetype=actionscript
 au Bufread vimrc set foldmethod=marker
 au Bufread .vimrc set foldmethod=marker
+autocmd BufWritePre *.c :%s/\s\+$//e
+autocmd BufWritePre *.h :%s/\s\+$//e
+autocmd BufWritePre *.cpp :%s/\s\+$//e
+autocmd BufWritePre *.hpp :%s/\s\+$//e
 
 " }}}
 
