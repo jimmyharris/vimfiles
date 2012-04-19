@@ -90,6 +90,15 @@ let g:asmsyntax="armasm"
 
 " }}}
 
+" Fugitive Settings And Fixes:
+" {{{
+
+set directory+=~/tmp,/tmp,$TMP
+
+autocmd BufReadPost fugitive://* set bufhidden=delete
+
+" }}}
+
 " Custom Mappings: 
 " {{{
 
@@ -165,6 +174,7 @@ endif
 autocmd Bufread *.as set filetype=actionscript
 au Bufread vimrc set foldmethod=marker
 au Bufread .vimrc set foldmethod=marker
+au Bufread _vimrc set foldmethod=marker
 autocmd BufWritePre *.c :%s/\s\+$//e
 autocmd BufWritePre *.h :%s/\s\+$//e
 autocmd BufWritePre *.cpp :%s/\s\+$//e
@@ -189,4 +199,38 @@ else
   let g:os_tag_path = g:tag_path.g:OS.'/'
 endif
 
+" }}}
+
+" Cscope:
+" {{{
+
+if has('cscope')
+  set cscopetag cscopeverbose
+
+  if has('quickfix')
+    set cscopequickfix=s-,c-,d-,i-,t-,e-
+  endif
+
+  cnoreabbrev csa cs add
+  cnoreabbrev csf cs find
+  cnoreabbrev csk cs kill
+  cnoreabbrev csr cs reset
+  cnoreabbrev css cs show
+  cnoreabbrev csh cs help
+
+  command -nargs=0 Cscope cs add ./cscope.out 
+
+function! LoadCscope()
+  let db = findfile("cscope.out", ".;")
+  if (!empty(db))
+    let path = strpart(db, 0, match(db, "/cscope.out$"))
+    set nocscopeverbose " suppress 'duplicate connection' error
+    exe "cs add " . db . " " . path
+    set cscopeverbose
+  endif
+endfunction
+
+au BufEnter /* call LoadCscope()
+
+endif
 " }}}
