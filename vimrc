@@ -63,7 +63,7 @@ colorscheme solarized
 if s:win
   set background=dark
   if has('gui_running')
-    let g:solarized_italic=0
+    let g:solarized_italic="off"
     let g:solarized_contrast="high"
     let g:solarized_visibility="high"
   endif
@@ -115,6 +115,11 @@ map <F5> :!ctags -R --exclude=.svn --exclude=.git --exclude=log --languages="C,C
 " Ctrlp:
 
 let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'changes' ]
+let g:ctrlp_custom_ignore = {
+      \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+      \ 'file': '\.exe$\|\.obj$\|\.dll\|\.bin\|\.hex\|\.map\|\.tmp\|\.axf$',
+      \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+      \ }
 
 " Auto_Format:
 map Q gq
