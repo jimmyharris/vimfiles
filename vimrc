@@ -58,28 +58,28 @@ set hid  " hide buffers, don't kill them
 " Color Settings: 
 " {{{
 
-colorscheme solarized
+
+" Italics are terrible on windows. 
 
 if s:win
-  set background=dark
-  if has('gui_running')
-    let g:solarized_italic="off"
-    let g:solarized_contrast="high"
-    let g:solarized_visibility="high"
-  endif
+  let g:solarized_italic="off"
+endif
+
+colorscheme solarized
+
+set background=dark
+
+if !s:win && has('gui_running')
+  set background=light
 else
-  if has('gui_running')
-    set background=light
-  else
-    let g:CSApprox_verbose_level=0 " Silence CSApprox (I know i don't have gvim support builtin)
-    set background=dark
-    if !s:win 
-      if !exists("$TERM_PROGRAM") && &t_co > 255      " We have Pretty Colors
-        let g:solarized_termcolors=256
-      endif
+  let g:CSApprox_verbose_level=0 " Silence CSApprox (I know i don't have gvim support builtin)
+  if !s:win                                         " Windows requires this separate
+    if !exists("$TERM_PROGRAM") && &t_co > 255      " We have Pretty Colors
+      let g:solarized_termcolors=256
     endif
   endif
 endif
+
 
 
 " }}}
