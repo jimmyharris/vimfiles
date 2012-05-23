@@ -35,6 +35,10 @@ let s:win = has("win16") || has("win32") || has("win64")
 set laststatus=2
 set statusline=%f%m\ %{fugitive#statusline()}%<%r%w%y[%{&ff}]%=%p%%\ %L,%l,%v\ 
 
+" Directory Settings:
+
+set directory^=~/tmp,/tmp,$TMP
+
 " Mouse:
 " FIXME: Integrate me with the OSX clipboard.
 
@@ -81,7 +85,6 @@ else
 endif
 
 
-
 " }}}
 
 " Assembly Language Type:
@@ -90,14 +93,6 @@ let g:asmsyntax="armasm"
 
 " }}}
 
-" Fugitive Settings And Fixes:
-" {{{
-
-set directory+=~/tmp,/tmp,$TMP
-
-autocmd BufReadPost fugitive://* set bufhidden=delete
-
-" }}}
 
 " Custom Mappings: 
 " {{{
@@ -112,14 +107,6 @@ let maplocalleader=';'
 
 map <F5> :!ctags -R --exclude=.svn --exclude=.git --exclude=log --languages="C,C++" * <CR>
 
-" Ctrlp:
-
-let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'changes' ]
-let g:ctrlp_custom_ignore = {
-      \ 'dir':  '\.git$\|\.hg$\|\.svn$',
-      \ 'file': '\.exe$\|\.obj$\|\.dll\|\.bin\|\.hex\|\.map\|\.tmp\|\.axf$',
-      \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
-      \ }
 
 " Auto_Format:
 map Q gq
@@ -171,6 +158,21 @@ let g:tex_flavor = "pdflatex"
 if has('mac')
   let g:tex_viewer = {'app': 'open', 'target': 'pdf'}
 endif
+
+" Ctrlp:
+
+let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'changes' ]
+let g:ctrlp_custom_ignore = {
+      \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+      \ 'file': '\.exe$\|\.obj$\|\.dll\|\.bin\|\.hex\|\.map\|\.tmp\|\.axf$',
+      \ }
+let g:ctrlp_max_files = 0
+
+let g:ctrlp_max_depth = 40
+
+" Fugitive Settings And Fixes:
+
+autocmd BufReadPost fugitive://* set bufhidden=delete
 
 " }}}
 
