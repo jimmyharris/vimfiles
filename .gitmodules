@@ -60,7 +60,7 @@
 	url = git://github.com/vim-scripts/SelectBuf.git
 [submodule "bundle/colors-solarized"]
 	path = bundle/colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
+	url = git@github.com:jimmyharris/vim-colors-solarized.git
 [submodule "bundle/TeX-9"]
 	path = bundle/TeX-9
 	url = git://github.com/vim-scripts/TeX-9.git
