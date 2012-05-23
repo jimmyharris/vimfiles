@@ -94,7 +94,6 @@ let g:asmsyntax="armasm"
 
 " }}}
 
-
 " Custom Mappings: 
 " {{{
 
@@ -117,9 +116,10 @@ if !s:win
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
 
+endif
+
 " Shortcut to rapidly toggle `set list`
 nmap <leader>j :set list!<CR>
-endif
 
 " }}}
 
@@ -141,6 +141,7 @@ endif
 " NERDTree:
 
 let NERDTreeHijackNetrw = 0
+nmap <Leader>d :NERDTreeToggle<CR>
 
 " NERDCommenter:
 " Make comments prettier and easier to toggle
@@ -174,6 +175,10 @@ let g:ctrlp_max_depth = 40
 " Fugitive Settings And Fixes:
 
 autocmd BufReadPost fugitive://* set bufhidden=delete
+
+" TagsList:
+
+nmap <Leader>t :TlistToggle<CR>
 
 " }}}
 
