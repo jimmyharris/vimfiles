@@ -103,3 +103,9 @@
 [submodule "bundle/confluencewiki"]
 	path = bundle/confluencewiki
 	url = git://github.com/vim-scripts/confluencewiki.vim.git
+[submodule "bundle/snipmate"]
+	path = bundle/snipmate
+	url = git://github.com/garbas/vim-snipmate.git
+[submodule "bundle/snipmate-snippets"]
+	path = bundle/snipmate-snippets
+	url = git@github.com:jimmyharris/snipmate-snippets.git
