@@ -38,6 +38,7 @@ set statusline=%f%m\ %{fugitive#statusline()}%<%r%w%y[%{&ff}]%=%p%%\ %L,%l,%v\
 " Directory Settings:
 
 set directory^=~/tmp,/tmp,$TMP
+set backupdir^=~/tmp,/tmp,$TMP
 
 " Mouse:
 " FIXME: Integrate me with the OSX clipboard.
