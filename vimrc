@@ -163,15 +163,16 @@ endif
 
 " Ctrlp:
 
-let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'changes' ]
+let g:ctrlp_extensions = ['quickfix', 'buffertag', 'rtscript'] 
 let g:ctrlp_custom_ignore = {
-      \ 'dir':  '\.git$\|\.hg$\|\.svn$',
-      \ 'file': '\.exe$\|\.obj$\|\.dll\|\.bin\|\.hex\|\.map\|\.tmp\|\.axf$',
+      \ 'dir':  '\.git$\|\.hg$\|\.svn$\|out\\waf$\|out/waf$',
+      \ 'file': '\.exe$\|\.obj$\|\.dll\|\.bin\|\.hex\|\.map\|\.tmp\|\.axf\|\.o$',
       \ }
 let g:ctrlp_max_files = 0
 
 let g:ctrlp_max_depth = 40
 
+let g:ctrlp_max_height = 20
 " Fugitive Settings And Fixes:
 
 autocmd BufReadPost fugitive://* set bufhidden=delete
