@@ -79,8 +79,10 @@ if !s:win && has('gui_running')
 else
   let g:CSApprox_verbose_level=0 " Silence CSApprox (I know i don't have gvim support builtin)
   if !s:win                                         " Windows requires this separate
-    if !exists("$TERM_PROGRAM") && &t_co > 255      " We have Pretty Colors
-      let g:solarized_termcolors=256
+    if !exists("$TERM_PROGRAM")
+      if exists("t_co") && &t_co > 255      " We have Pretty Colors
+        let g:solarized_termcolors=256
+      endif
     endif
   endif
 endif
