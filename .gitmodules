@@ -109,3 +109,9 @@
 [submodule "bundle/snipmate-snippets"]
 	path = bundle/snipmate-snippets
 	url = git@github.com:jimmyharris/snipmate-snippets.git
+[submodule "bundle/greplace"]
+	path = bundle/greplace
+	url = git://github.com/vim-scripts/greplace.vim.git
+[submodule "bundle/cscope"]
+	path = bundle/cscope
+	url = git://github.com/brookhong/cscope.vim.git
