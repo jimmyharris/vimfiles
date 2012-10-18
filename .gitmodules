@@ -115,3 +115,6 @@
 [submodule "bundle/cscope"]
 	path = bundle/cscope
 	url = git://github.com/brookhong/cscope.vim.git
+[submodule "bundle/javascript-indent"]
+	path = bundle/javascript-indent
+	url = git://github.com/vim-scripts/JavaScript-Indent.git
