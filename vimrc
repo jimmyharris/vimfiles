@@ -191,10 +191,8 @@ autocmd Bufread *.as set filetype=actionscript
 au Bufread vimrc set foldmethod=marker
 au Bufread .vimrc set foldmethod=marker
 au Bufread _vimrc set foldmethod=marker
-autocmd BufWritePre *.c :%s/\s\+$//e
-autocmd BufWritePre *.h :%s/\s\+$//e
-autocmd BufWritePre *.cpp :%s/\s\+$//e
-autocmd BufWritePre *.hpp :%s/\s\+$//e
+autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufNewFile,BufRead *.json set ft=javascript
 
 " }}}
 
