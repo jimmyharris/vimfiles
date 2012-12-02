@@ -87,7 +87,7 @@
 	url = git://github.com/scrooloose/nerdtree.git
 [submodule "bundle/dbext"]
 	path = bundle/dbext
-	url = git://github.com/cagatayyuksel/dbext.vim.git
+	url = git://github.com/vim-scripts/dbext.vim.git
 [submodule "bundle/abolish"]
 	path = bundle/abolish
 	url = git://github.com/tpope/vim-abolish.git
