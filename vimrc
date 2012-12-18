@@ -1,6 +1,6 @@
 " Vimrc by James Harris.
 
-" Initialize Pathogen: 
+" Initialize Pathogen:
 " {{{
 
 set nocompatible " Disable vi compatibility
@@ -15,7 +15,7 @@ call pathogen#runtime_append_all_bundles() " Load pathogen bundles.
 
 call pathogen#helptags() " Set up documenation for all the bundles
 
-syntax on " Turn on FT Plugins and syntax hilighting. 
+syntax on " Turn on FT Plugins and syntax hilighting.
 filetype plugin indent on
 
 " }}}
@@ -30,10 +30,10 @@ let s:win = has("win16") || has("win32") || has("win64")
 " Settings:
 " {{{
 
-" Status_Line: 
+" Status_Line:
 
 set laststatus=2
-set statusline=%f%m\ %{fugitive#statusline()}%<%r%w%y[%{&ff}]%=%p%%\ %L,%l,%v\ 
+set statusline=%f%m\ %{fugitive#statusline()}%<%r%w%y[%{&ff}]%=%p%%\ %L,%l,%v\
 
 " Directory Settings:
 
@@ -48,7 +48,7 @@ set mouse=a
 
 " General Options:
 " {{{
-set nohlsearch 
+set nohlsearch
 set ts=2
 set sw=2
 set sts=2
@@ -60,11 +60,11 @@ set number
 set noea " no auto equal
 set hid  " hide buffers, don't kill them
 
-" Color Settings: 
+" Color Settings:
 " {{{
 
 
-" Italics are terrible on windows. 
+" Italics are terrible on windows.
 
 if s:win
   let g:solarized_italic="off"
@@ -96,13 +96,13 @@ let g:asmsyntax="armasm"
 
 " }}}
 
-" Custom Mappings: 
+" Custom Mappings:
 " {{{
 
-" Leader: 
+" Leader:
 " {{{
 let mapleader=',' " Fix <Leader> which for some reason is never properly set.
-let maplocalleader=';' 
+let maplocalleader=';'
 " }}}
 
 " CtagsMapping:
@@ -125,7 +125,7 @@ nmap <leader>j :set list!<CR>
 
 " }}}
 
-" Plugins: 
+" Plugins:
 " {{{
 
 let mapleader=','
@@ -150,7 +150,7 @@ nmap <Leader>d :NERDTreeToggle<CR>
 let NERDSpaceDelims = 1
 
 
-" DelimitMate: 
+" DelimitMate:
 let delimitMate_expand_space = 1
 let delimitMate_expand_cr = 1
 set backspace=eol,start,indent
@@ -165,7 +165,7 @@ endif
 
 " Ctrlp:
 
-let g:ctrlp_extensions = ['quickfix', 'buffertag', 'rtscript'] 
+let g:ctrlp_extensions = ['quickfix', 'buffertag', 'rtscript']
 let g:ctrlp_custom_ignore = {
       \ 'dir':  '\.git$\|\.hg$\|\.svn$\|out\\waf$\|out/waf$',
       \ 'file': '\.exe$\|\.obj$\|\.dll\|\.bin\|\.hex\|\.map\|\.tmp\|\.axf\|\.o$',
@@ -229,10 +229,10 @@ if has('cscope')
   cnoreabbrev csf cs find
   cnoreabbrev csk cs kill
   cnoreabbrev csr cs reset
-  cnoreabbrev css cs show
+  " cnoreabbrev css cs show
   cnoreabbrev csh cs help
 
-  command -nargs=0 Cscope cs add ./cscope.out 
+  command -nargs=0 Cscope cs add ./cscope.out
 
 function! LoadCscope()
   let db = findfile("cscope.out", ".;")
