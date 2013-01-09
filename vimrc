@@ -7,10 +7,6 @@ set nocompatible " Disable vi compatibility
 
 filetype off " required for some debian distributions
 
-"disable plugins
-
-let g:pathogen_disabled = ['LaTeX-Box']
-
 call pathogen#runtime_append_all_bundles() " Load pathogen bundles.
 
 call pathogen#helptags() " Set up documenation for all the bundles
