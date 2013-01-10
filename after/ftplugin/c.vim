@@ -11,10 +11,4 @@ let OmniCpp_ShowPrototypeInAbbr = 1 " show function prototype (i.e.
 
 set foldmethod=syntax
 nmap <Tab> :A<CR><CR>
-" -- ctags --
-" map <ctrl>+F12 to generate ctags for current folder:
-map <F5> :!ctags -R --languages="C,C++,ASM" --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
-" add current directory's generated tags file to available tags
 
-let &tags=&tags.','.g:os_tag_path.'opengl'
-let &tags=&tags.','.g:os_tag_path.'glut'
