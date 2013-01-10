@@ -1,2 +1,4 @@
 .netrw*
 .VimballRecord
+eclim*
+eclim/
