@@ -199,7 +199,6 @@ autocmd Bufread *.as set filetype=actionscript
 au Bufread vimrc set foldmethod=marker
 au Bufread .vimrc set foldmethod=marker
 au Bufread _vimrc set foldmethod=marker
-autocmd BufNewFile,BufRead *.json set ft=javascript
 
 " Remove Trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
