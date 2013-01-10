@@ -112,3 +112,6 @@
 [submodule "bundle/json"]
 	path = bundle/json
 	url = git://github.com/jakar/vim-json.git
+[submodule "bundle/vimux"]
+	path = bundle/vimux
+	url = git://github.com/benmills/vimux.git
