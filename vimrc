@@ -7,6 +7,10 @@ set nocompatible " Disable vi compatibility
 
 filetype off " required for some debian distributions
 
+"disable plugins
+
+let g:pathogen_disabled = ['snipmate', 'snipmate-snippets']
+
 call pathogen#runtime_append_all_bundles() " Load pathogen bundles.
 
 call pathogen#helptags() " Set up documenation for all the bundles
@@ -48,7 +52,6 @@ set nohlsearch
 set ts=2
 set sw=2
 set sts=2
-set et
 set number
 " }}}
 
@@ -147,6 +150,7 @@ let NERDSpaceDelims = 1
 
 
 " DelimitMate:
+"
 let delimitMate_expand_space = 1
 let delimitMate_expand_cr = 1
 set backspace=eol,start,indent
@@ -179,16 +183,26 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 
 nmap <Leader>t :TlistToggle<CR>
 
+" UltiSnips:
+
+" Use Tab and shift+tab to navigate through tabstops
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
 " }}}
 
 " Auto Commands:
 " {{{
+" Set file types and fold methods
 autocmd Bufread *.as set filetype=actionscript
 au Bufread vimrc set foldmethod=marker
 au Bufread .vimrc set foldmethod=marker
 au Bufread _vimrc set foldmethod=marker
-autocmd BufWritePre * :%s/\s\+$//e
 autocmd BufNewFile,BufRead *.json set ft=javascript
+
+" Remove Trailing whitespace
+autocmd BufWritePre * :%s/\s\+$//e
 
 " }}}
 
@@ -198,16 +212,6 @@ autocmd BufNewFile,BufRead *.json set ft=javascript
 " This Tag.
 
 set tags=tags
-
-if s:win
-  let g:OS = "win"
-  let g:tag_path = $HOME.'\vimfiles\tags\'
-  let g:os_tag_path = g:tag_path.g:OS.'\'
-else
-  let g:OS = substitute(system('uname'),"\n","","")
-  let g:tag_path = $HOME.'/.vim/tags/'
-  let g:os_tag_path = g:tag_path.g:OS.'/'
-endif
 
 " }}}
 

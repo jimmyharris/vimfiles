@@ -109,3 +109,6 @@
 [submodule "bundle/javascript-indent"]
 	path = bundle/javascript-indent
 	url = git://github.com/vim-scripts/JavaScript-Indent.git
+[submodule "bundle/UltiSnips"]
+	path = bundle/UltiSnips
+	url = git://github.com/SirVer/ultisnips.git
