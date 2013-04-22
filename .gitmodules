@@ -115,3 +115,9 @@
 [submodule "bundle/vimux"]
 	path = bundle/vimux
 	url = git://github.com/benmills/vimux.git
+[submodule "bundle/qargs"]
+	path = bundle/qargs
+	url = git://github.com/henrik/vim-qargs.git
+[submodule "bundle/git-grep"]
+	path = bundle/git-grep
+	url = git://github.com/henrik/git-grep-vim.git
