@@ -121,3 +121,6 @@
 [submodule "bundle/git-grep"]
 	path = bundle/git-grep
 	url = git://github.com/henrik/git-grep-vim.git
+[submodule "bundle/puppet-syntax"]
+	path = bundle/puppet-syntax
+	url = git://github.com/puppetlabs/puppet-syntax-vim.git
