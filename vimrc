@@ -191,17 +191,25 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " }}}
+" Doxygen Comments:
+" {{{
+let g:load_doxygen_syntax=1
+" }}}
 
 " Auto Commands:
 " {{{
-" Set file types and fold methods
+" Set file types
 autocmd Bufread *.as set filetype=actionscript
+autocmd Bufread *.dox set filetype=doxygen
+
+" Set fold methods
 au Bufread vimrc set foldmethod=marker
 au Bufread .vimrc set foldmethod=marker
 au Bufread _vimrc set foldmethod=marker
 
 " Remove Trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
+
 
 " }}}
 
