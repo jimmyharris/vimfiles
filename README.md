@@ -108,6 +108,6 @@ Below are a list of included plugins grouped by purpose.
 
 ## Plugins with My Modifications
 
-  * jimmyharris/snipmate-snippets -- Always good to have your own snippets library.
+  * jimmyharris/vim-snippets -- Always good to have your own snippets library.
   * jimmyharris/vim-colors-solarized -- This plugin is ugly when used with tagslist. I have modified it to be cleaner on windows.
   * jimmyharris/nerdcommenter -- Ocasionally I will discover languages that this plugin does not support.  I add them here and submit them upstream.
