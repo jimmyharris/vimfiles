@@ -89,7 +89,7 @@ plugin repos for information on how to use them.
 
 Bindings are grouped by plugin in `.vimrc`.
 
-### General Editing:
+#### General Editing:
 
   * [Tabular](https://github.com/godlygeek/tabular)
   * [delimitMate](https://github.com/Raimondi/delimitMate)
@@ -100,7 +100,7 @@ Bindings are grouped by plugin in `.vimrc`.
   * [Ragtag](https://github.com/tpope/vim-ragtag)
   * [Repeat](https://github.com/tpope/vim-repeat)
 
-### Navigation:
+#### Navigation:
 
   * [NERDTree](https://github.com/scrooloose/nerdtree)
   * [ctrlp.vim](https://github.com/kien/ctrlp.vim)
@@ -109,17 +109,17 @@ Bindings are grouped by plugin in `.vimrc`.
   * [henrik/vim-qargs](https://github.com/henrik/vim-qargs)
   * [SelectBuf](https://github.com/vim-scripts/SelectBuf)
 
-### Colors:
+#### Colors:
 
   * [Color Sampler Pack](https://github.com/vim-scripts/Color-Sampler-Pack)
   * [Solarized Colorscheme](https://github.com/jimmyharris/vim-colors-solarized)
 
-### Git Integration:
+#### Git Integration:
 
   * [Fugitive](https://github.com/tpope/vim-fugitive)
   * [henrik/git-grep-vim](https://github.com/henrik/git-grep-vim)
 
-### Ruby:
+#### Ruby:
 
   * [Rails.vim](https://github.com/tpope/vim-rails)
   * [Bundler.vim](https://github.com/tpope/vim-bundler)
@@ -127,46 +127,46 @@ Bindings are grouped by plugin in `.vimrc`.
   * [Cucumber.vim](https://github.com/tpope/vim-cucumber)
   * [dbext.vim](https://github.com/vim-scripts/dbext.vim)
 
-### Javascript/JSON:
+#### Javascript/JSON:
 
   * [JSON Syntax Support](https://github.com/jakar/vim-json)
   * [JavaScript Indent](https://github.com/vim-scripts/JavaScript-Indent)
 
-### LaTeX
+#### LaTeX
 
   * [TeX-9](https://github.com/vim-scripts/TeX-9)
 
-### C/C++
+#### C/C++
 
   * [a.vim](https://github.com/vim-scripts/a.vim)
   * [cscope.vim](https://github.com/brookhong/cscope.vim)
   * [OmniCppComplete](https://github.com/vim-scripts/OmniCppComplete)
 
-### Other Languages
+#### Other Languages
 
   * [Arm Assembly Language](https://github.com/vim-scripts/armasm)
   * [Applescript](https://github.com/vim-scripts/applescript.vim)
   * [Markdown](https://github.com/tpope/vim-markdown)
   * [Puppet DSL](https://github.com/puppetlabs/puppet-syntax-vim)
 
-### Snippets
+#### Snippets
 
   * [snipMate](https://github.com/garbas/vim-snipmate)
   * [UltiSnips](https://github.com/SirVer/ultisnips)
 
 
-### Shell Integration
+#### Shell Integration
 
   * [Vimux](https://github.com/benmills/vimux)
   * [Conque Shell](https://github.com/vim-scripts/Conque-Shell)
 
-### Utilities
+#### Utilities
 
   * [tlib_vim](https://github.com/tomtom/tlib_vim)
   * [vim-addon-mw-utils](https://github.com/MarcWeber/vim-addon-mw-utils)
   * [genutils](https://github.com/vim-scripts/genutils)
 
-## Plugins with My Modifications
+### Plugins with My Modifications
 
 The following plugins  have special modifications for my tastes.  If you wish
 to use them by all means do so, but it is recomended that you remove these and
