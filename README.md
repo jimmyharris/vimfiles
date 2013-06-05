@@ -1,4 +1,4 @@
-# My $HOME/.vim in Git.
+## My $HOME/.vim in Git.
 
 This configuration is designed to be useful for working with C/C++ as well as
 dynamic languages like Ruby, Javascript, and Python.
@@ -7,27 +7,84 @@ Plugins are managed using [pathogen](tpope/vim-pathogen).
 
 It also supports some [tmux](http://tmux.sourceforge.net/) integration.
 
-## Instalation instructions
+### Requiremetns
+
+This configuration depends on Python v2.7 or greater, and a working Ruby
+instalation (if you plan on using the ruby specific plugins).
+
+If you do not intend to use ruby support remove those submodule sfrom your fork
+of this repository.
+
+It also requires vim to be compiled with python and ruby support.
+
+### Instalation instructions
 
 It is highly recomended that you fork this repository for your own use.
 
-### Mac/Linux
+#### Mac/Linux
 
 Clone your forked repository to `~/.vim`.
 
+Update and initalize the submodules.
+
 Then symlink `vimrc` and `gvimrc` to `~/.vimrc` and `~/.gvimrc` respectively.
 
-### Windows
+#### Windows
 
-This works best when using Git for Windows.
+This works best when using Git for Windows and a verison of
+[Vim](http://sourceforge.net/projects/cream/files/Vim/) with python and ruby
+scripting bindings.
+
+It also requires [ruby](http://rubyinstaller.org) and
+[python](http://www.python.org/getit/).
 
 Clone your forked repository to `~/vimfiles`.
 
-Prefered method is to use the `mlink` command to link `vimrc` and `gvimrc` into the home directory.
+Update and initalize the submodules.
+
+Prefered method is to use the `mlink` command to link `vimrc` and `gvimrc` to
+`~/_vimrc` and `~/_gvimrc` respectively.
+
+If `mlink` will not work (Windows XP and lower), simply copy the included vimrc
+and gvim rc files.  But be careful.  changes made to the `_vimrc` and `_gvimrc`
+files will not be propogated back to your repository, you will need to change
+them manually.
+
+### Updating Plugins
+
+To Update Plugins run the following command from the root of the repository
+
+1. make sure the repos is up to date with the remote repository
+
+     git pull
+
+2. make sure submodules are up to date with the remote repository
+
+     git submodule sync
+     git submodule update --init --recursive
+
+3. Pull all remote submodules to master
+     git submodule foreach 'git checkout master; git pull'
+
+4. Verify modules are working.
+
+5. commit updated submodules to the repostiroy
+
+     git add .
+     git commit
+
+6. push changes to GitHub
+
+     git push
+
+After this push updates will be available to all computers using this configuration.
 
 ## Included Plugins
 
-Below are a list of included plugins grouped by purpose.
+Below are a list of included plugins grouped by purpose. Please see individual
+plugin repos for information on how to use them.
+
+Bindings are grouped by plugin in `.vimrc`.
 
 ### General Editing:
 
@@ -108,6 +165,11 @@ Below are a list of included plugins grouped by purpose.
 
 ## Plugins with My Modifications
 
-  * jimmyharris/vim-snippets -- Always good to have your own snippets library.
-  * jimmyharris/vim-colors-solarized -- This plugin is ugly when used with tagslist. I have modified it to be cleaner on windows.
-  * jimmyharris/nerdcommenter -- Ocasionally I will discover languages that this plugin does not support.  I add them here and submit them upstream.
+The following plugins  have special modifications for my tastes.  If you wish
+to use them by all means do so, but it is recomended that you remove these and
+add direct links to the original repositories I forked them from as those
+update more frequently.
+
+  * jimmyharris/vim-snippets -- Always good to have your own snippets library. (originally via honza/vim-snippets)
+  * jimmyharris/vim-colors-solarized -- This plugin is ugly when used with tagslist. I have modified it to be cleaner on windows. (originally via altercation/vim-colors-solarized)
+  * jimmyharris/nerdcommenter -- Ocasionally I will discover languages that this plugin does not support.  I add them here and submit them upstream. (orivinally via scrooloose/nerdcommenter)
