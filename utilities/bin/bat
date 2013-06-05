@@ -1,0 +1,16 @@
+#!/bin/sh
+
+trap sigint INT
+
+interrupted=0
+
+function sigint() {
+  # Wait for the child process to exit
+  wait $!
+  interrupted_result=$?
+  interrupted=1
+}
+
+WINPWD=`echo $PWD | sed -e 's#^/\([a-zA-Z]\)#\U\1:#' -e 's#/#\\\\\\\\#g'`
+cmd //ccd //d C:\\Windows \& cd //d $WINPWD \& "$@" &
+wait $!

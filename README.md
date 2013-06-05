@@ -15,7 +15,10 @@ instalation (if you plan on using the ruby specific plugins).
 If you do not intend to use ruby support remove those submodule sfrom your fork
 of this repository.
 
-It also requires vim to be compiled with python and ruby support.
+This program also requires [ctags](http://ctags.sourceforge.net/) and
+[cscope](http://cscope.sourceforge.net/).
+
+It also requires vim to be compiled with python, ruby and cscope support.
 
 ### Instalation instructions
 
@@ -88,80 +91,80 @@ Bindings are grouped by plugin in `.vimrc`.
 
 ### General Editing:
 
-  * godlygeek/tabular
-  * Raimondi/delimitMate
-  * tpope/vim-surround
-  * tpope/vim-unimpaired
-  * tpope/vim-abolish
-  * tpope/vim-endwise
-  * tpope/vim-ragtag
-  * tpope/vim-repeat
+  * [Tabular](https://github.com/godlygeek/tabular)
+  * [delimitMate](https://github.com/Raimondi/delimitMate)
+  * [Surround](https://github.com/tpope/vim-surround)
+  * [Unimpaired](https://github.com/tpope/vim-unimpaired)
+  * [Abolish](https://github.com/tpope/vim-abolish)
+  * [Endwise](https://github.com/tpope/vim-endwise)
+  * [Ragtag](https://github.com/tpope/vim-ragtag)
+  * [Repeat](https://github.com/tpope/vim-repeat)
 
 ### Navigation:
 
-  * scrooloose/nerdtree
-  * kien/ctrlp.vim
-  * vim-scripts/taglist.vim
-  * vim-scripts/greplace.vim
-  * henrik/vim-qargs
-  * vim-scripts/SelectBuf
+  * [NERDTree](https://github.com/scrooloose/nerdtree)
+  * [ctrlp.vim](https://github.com/kien/ctrlp.vim)
+  * [taglist.vim ](https://github.com/vim-scripts/taglist.vim)
+  * [greplace.vim](https://github.com/vim-scripts/greplace.vim)
+  * [henrik/vim-qargs](https://github.com/henrik/vim-qargs)
+  * [SelectBuf](https://github.com/vim-scripts/SelectBuf)
 
 ### Colors:
 
-  * vim-scripts/Color-Sampler-Pack
-  * jimmyharris/vim-colors-solarized
+  * [Color Sampler Pack](https://github.com/vim-scripts/Color-Sampler-Pack)
+  * [Solarized Colorscheme](https://github.com/jimmyharris/vim-colors-solarized)
 
 ### Git Integration:
 
-  * tpope/vim-fugitive
-  * henrik/git-grep-vim
+  * [Fugitive](https://github.com/tpope/vim-fugitive)
+  * [henrik/git-grep-vim](https://github.com/henrik/git-grep-vim)
 
 ### Ruby:
 
-  * tpope/vim-rails
-  * tpope/vim-bundler
-  * tpope/vim-rvm
-  * tpope/vim-cucumber
-  * vim-scripts/dbext.vim
+  * [Rails.vim](https://github.com/tpope/vim-rails)
+  * [Bundler.vim](https://github.com/tpope/vim-bundler)
+  * [RVM.vim](https://github.com/tpope/vim-rvm)
+  * [Cucumber.vim](https://github.com/tpope/vim-cucumber)
+  * [dbext.vim](https://github.com/vim-scripts/dbext.vim)
 
 ### Javascript/JSON:
 
-  * jakar/vim-json
-  * vim-scripts/JavaScript-Indent
+  * [JSON Syntax Support](https://github.com/jakar/vim-json)
+  * [JavaScript Indent](https://github.com/vim-scripts/JavaScript-Indent)
 
 ### LaTeX
 
-  * vim-scripts/TeX-9
+  * [TeX-9](https://github.com/vim-scripts/TeX-9)
 
 ### C/C++
 
-  * brookhong/cscope.vim
-  * vim-scripts/OmniCppComplete
-  * vim-scripts/a.vim
+  * [a.vim](https://github.com/vim-scripts/a.vim)
+  * [cscope.vim](https://github.com/brookhong/cscope.vim)
+  * [OmniCppComplete](https://github.com/vim-scripts/OmniCppComplete)
 
 ### Other Languages
 
-  * vim-scripts/armasm
-  * vim-scripts/applescript.vim
-  * tpope/vim-markdown
-  * puppetlabs/puppet-syntax-vim
+  * [Arm Assembly Language](https://github.com/vim-scripts/armasm)
+  * [Applescript](https://github.com/vim-scripts/applescript.vim)
+  * [Markdown](https://github.com/tpope/vim-markdown)
+  * [Puppet DSL](https://github.com/puppetlabs/puppet-syntax-vim)
 
 ### Snippets
 
-  * garbas/vim-snipmate
-  * SirVer/ultisnips
+  * [snipMate](https://github.com/garbas/vim-snipmate)
+  * [UltiSnips](https://github.com/SirVer/ultisnips)
 
 
 ### Shell Integration
 
-  * benmills/vimux
-  * vim-scripts/Conque-Shell
+  * [Vimux](https://github.com/benmills/vimux)
+  * [Conque Shell](https://github.com/vim-scripts/Conque-Shell)
 
 ### Utilities
 
-  * tomtom/tlib_vim
-  * MarcWeber/vim-addon-mw-utils
-  * vim-scripts/genutils
+  * [tlib_vim](https://github.com/tomtom/tlib_vim)
+  * [vim-addon-mw-utils](https://github.com/MarcWeber/vim-addon-mw-utils)
+  * [genutils](https://github.com/vim-scripts/genutils)
 
 ## Plugins with My Modifications
 
@@ -170,6 +173,6 @@ to use them by all means do so, but it is recomended that you remove these and
 add direct links to the original repositories I forked them from as those
 update more frequently.
 
-  * jimmyharris/vim-snippets -- Always good to have your own snippets library. (originally via honza/vim-snippets)
-  * jimmyharris/vim-colors-solarized -- This plugin is ugly when used with tagslist. I have modified it to be cleaner on windows. (originally via altercation/vim-colors-solarized)
-  * jimmyharris/nerdcommenter -- Ocasionally I will discover languages that this plugin does not support.  I add them here and submit them upstream. (orivinally via scrooloose/nerdcommenter)
+  * [Vim Snippets](https://github.com/jimmyharris/vim-snippets) -- Always good to have your own snippets library. (originally via [honza](https://github.com/honza/vim-snippets))
+  * [Solarized Colorscheme](https://github.com/jimmyharris/vim-colors-solarized) -- This plugin is ugly when used with tagslist. I have modified it to be cleaner on windows. (originally via [altercation](https://github.com/altercation/vim-colors-solarized))
+  * [NERDCommenter](https://github.com/jimmyharris/nerdcommenter) -- Ocasionally I will discover languages that this plugin does not support.  I add them here and submit them upstream. (orivinally via [Scrooloose](https://github.com/scrooloose/nerdcommenter))
