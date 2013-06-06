@@ -18,4 +18,5 @@ To use these files:
 Now the `vim` and `gvim` commands execute the system wide installed version of
 Vim instead of the git-bash version of vim.
 
-After this the `bat` command will also be available for executing arbitrary `*.bat` files in the git-bash shell.
+After this the `bat` command will also be available for executing arbitrary
+`*.bat` files in the git-bash shell.
