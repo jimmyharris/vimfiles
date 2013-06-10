@@ -175,6 +175,8 @@ let g:ctrlp_max_files = 0
 let g:ctrlp_max_depth = 40
 
 let g:ctrlp_max_height = 20
+
+
 " Fugitive Settings And Fixes:
 
 autocmd BufReadPost fugitive://* set bufhidden=delete
@@ -191,6 +193,7 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " }}}
+
 " Doxygen Comments:
 " {{{
 let g:load_doxygen_syntax=1
