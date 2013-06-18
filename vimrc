@@ -9,7 +9,14 @@ filetype off " required for some debian distributions
 
 "disable plugins
 
-let g:pathogen_disabled = ['snipmate', 'snipmate-snippets']
+let g:pathogen_disabled = [
+			\ 'snipmate',
+			\ 'snipmate-snippets',
+			\ 'OmniCppComplete',
+			\ 'rails',
+			\ 'rvm',
+			\ 'dbext'
+			\ ]
 
 call pathogen#runtime_append_all_bundles() " Load pathogen bundles.
 
@@ -52,6 +59,7 @@ set nohlsearch
 set ts=2
 set sw=2
 set sts=2
+set et
 set number
 " }}}
 
