@@ -16,7 +16,7 @@ If you do not intend to use ruby support remove those submodule sfrom your fork
 of this repository.
 
 This program also requires [ctags](http://ctags.sourceforge.net/) and
-[cscope](http://cscope.sourceforge.net/).
+[cscope](http://cscope.sourceforge.net/)([win32 binaries](https://code.google.com/p/cscope-win32/)).
 
 It also requires vim to be compiled with python, ruby and cscope support.
 
@@ -41,14 +41,23 @@ scripting bindings.
 It also requires [ruby](http://rubyinstaller.org) and
 [python](http://www.python.org/getit/).
 
-Clone your forked repository to `~/vimfiles`.
+1. Download [cscope](https://code.google.com/p/cscope-win32/) and
+[ctags](http://ctags.sourceforge.net/) from their respective websites.
+  ctags.exe can be found in the latest `.zip` file linked on the front page.
 
-Update and initalize the submodules.
+2. copy `cscope.exe` `ctags.exe` and `sort.exe` (bundled with cscope) to
+`C:\Windows`.
 
-Prefered method is to use the `mlink` command to link `vimrc` and `gvimrc` to
-`~/_vimrc` and `~/_gvimrc` respectively.
+3. Clone your forked repository to `~/vimfiles`.
 
-If `mlink` will not work (Windows XP and lower), simply copy the included vimrc
+4. Update and initalize the submodules.
+
+5. For Windows 7 use mlink to create hardlinks between the `vimrc/gvimrc` files
+in this repository and the `_vimrc\_gvimrc` files in the home directory.
+    > cd %HOME%
+    > mlink /H vimfiles/vimrc _vimrc
+    > mlink /H vimfiles/gvimrc _gvimrc
+  If `mlink` will not work (Windows XP and lower), simply copy the included vimrc
 and gvim rc files.  But be careful.  changes made to the `_vimrc` and `_gvimrc`
 files will not be propogated back to your repository, you will need to change
 them manually.
