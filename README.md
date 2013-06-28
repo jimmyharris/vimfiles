@@ -54,10 +54,12 @@ It also requires [ruby](http://rubyinstaller.org) and
 
 5. For Windows 7 use mlink to create hardlinks between the `vimrc/gvimrc` files
 in this repository and the `_vimrc\_gvimrc` files in the home directory.
-    > cd %HOME%
-    > mlink /H vimfiles/vimrc _vimrc
-    > mlink /H vimfiles/gvimrc _gvimrc
-  If `mlink` will not work (Windows XP and lower), simply copy the included vimrc
+```
+> cd %HOME%
+> mlink /H vimfiles/vimrc _vimrc
+> mlink /H vimfiles/gvimrc _gvimrc
+```
+If `mlink` will not work (Windows XP and lower), simply copy the included vimrc
 and gvim rc files.  But be careful.  changes made to the `_vimrc` and `_gvimrc`
 files will not be propogated back to your repository, you will need to change
 them manually.
