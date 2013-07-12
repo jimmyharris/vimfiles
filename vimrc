@@ -10,13 +10,12 @@ filetype off " required for some debian distributions
 "disable plugins
 
 let g:pathogen_disabled = [
-			\ 'snipmate',
-			\ 'snipmate-snippets',
-			\ 'OmniCppComplete',
-			\ 'rails',
-			\ 'rvm',
-			\ 'dbext'
-			\ ]
+      \ 'snipmate',
+      \ 'OmniCppComplete',
+      \ 'rails',
+      \ 'rvm',
+      \ 'dbext'
+      \ ]
 
 call pathogen#runtime_append_all_bundles() " Load pathogen bundles.
 
@@ -134,8 +133,9 @@ map Q gq
 " characters.
 if !s:win
 " Use the same symbols as TextMate for tabstops and EOLs
-set listchars=tab:▸\ ,eol:¬
-
+  set listchars=tab:▸\ ,eol:¬,trail:☠
+else
+  set listchars=tab:»\ ,eol:¶,trail:§
 endif
 
 " Shortcut to rapidly toggle `set list` (,j) is the command in normal mode.

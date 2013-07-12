@@ -10,5 +10,7 @@ set completeopt=menu,menuone
                                     " " parameters) in popup window
 
 set foldmethod=syntax
-nmap <Tab> :A<CR><CR>
+set list
+setlocal tw=80
+nmap <S-Tab> :A<CR><CR>
 

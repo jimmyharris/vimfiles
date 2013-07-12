@@ -1,5 +1,5 @@
 set fdm=marker
-let delimitMate_matchpairs = "(:),[:],{:},<:>,`:'"
+let delimitMate_matchpairs = "(:),[:],{:},`:'"
 imap <buffer> [[ \begin{
 imap <buffer> ]] <plug>LatexCloseLastEnv
 nmap <buffer> <f5> <plug>LatexChangeEnv
