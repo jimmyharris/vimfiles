@@ -1,4 +1,4 @@
-set completeopt=menu,menuone
+" set completeopt=menu,menuone
 " -- configs --
 " let OmniCpp_MayCompleteDot = 1 " autocomplete with .
 " let OmniCpp_MayCompleteArrow = 1 " autocomplete with ->
@@ -9,8 +9,5 @@ set completeopt=menu,menuone
 " let OmniCpp_ShowPrototypeInAbbr = 1 " show function prototype (i.e.
                                     " " parameters) in popup window
 
-set foldmethod=syntax
-set list
-setlocal tw=80
-nmap <S-Tab> :A<CR><CR>
-
+setlocal foldmethod=syntax
+setlocal list

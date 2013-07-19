@@ -128,6 +128,9 @@ let maplocalleader=';'
 " Type 'QQ' to format/indent a paragraph.
 map Q gq
 
+" Alternate File View:
+map <leader>a :A<CR><CR>
+
 " Invisible_Characters:
 " On linux or in unicode environments we can use pretty symbols for invisible
 " characters.
@@ -232,6 +235,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " Add syntax highlighting for doxygen style comments.
 let g:load_doxygen_syntax=1
+let g:doxygen_javadoc_autobrief=0
 " }}}
 
 " Auto Commands:
@@ -252,7 +256,6 @@ au Bufread _vimrc set foldmethod=marker
 " Caution! this can cause whitespace conflicts on files created by other
 " people.
 autocmd BufWritePre * :%s/\s\+$//e
-
 
 " }}}
 
