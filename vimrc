@@ -10,7 +10,6 @@ filetype off " required for some debian distributions
 "disable plugins
 
 let g:pathogen_disabled = [
-      \ 'snipmate',
       \ 'OmniCppComplete',
       \ 'rails',
       \ 'rvm',
