@@ -137,6 +137,7 @@ if !s:win
 " Use the same symbols as TextMate for tabstops and EOLs
   set listchars=tab:▸\ ,eol:¬,trail:☠
 else
+  set encoding=utf-8
   set listchars=tab:»\ ,eol:¶,trail:§
 endif
 
