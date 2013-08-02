@@ -22,19 +22,19 @@ It also requires vim to be compiled with python, ruby and cscope support.
 
 ### Instalation instructions
 
-It is highly recomended that you fork this repository for your own use.
+It is highly recommended that you fork this repository for your own use.
 
 #### Mac/Linux
 
 Clone your forked repository to `~/.vim`.
 
-Update and initalize the submodules.
+Update and initialize the submodules.
 
 Then symlink `vimrc` and `gvimrc` to `~/.vimrc` and `~/.gvimrc` respectively.
 
 #### Windows
 
-This works best when using Git for Windows and a verison of
+This works best when using Git for Windows and a version of
 [Vim](http://sourceforge.net/projects/cream/files/Vim/) with python and ruby
 scripting bindings.
 
@@ -45,12 +45,12 @@ It also requires [ruby](http://rubyinstaller.org) and
 [ctags](http://ctags.sourceforge.net/) from their respective websites.
   ctags.exe can be found in the latest `.zip` file linked on the front page.
 
-2. copy `cscope.exe` `ctags.exe` and `sort.exe` (bundled with cscope) to
+2. Copy `cscope.exe` `ctags.exe` and `sort.exe` (bundled with cscope) to
 `C:\Windows`.
 
 3. Clone your forked repository to `~/vimfiles`.
 
-4. Update and initalize the submodules.
+4. Update and initialize the submodules.
 
 5. For Windows 7 use mlink to create hardlinks between the `vimrc/gvimrc` files
 in this repository and the `_vimrc\_gvimrc` files in the home directory.
@@ -60,19 +60,19 @@ in this repository and the `_vimrc\_gvimrc` files in the home directory.
 > mlink /H vimfiles/gvimrc _gvimrc
 ```
 If `mlink` will not work (Windows XP and lower), simply copy the included vimrc
-and gvim rc files.  But be careful.  changes made to the `_vimrc` and `_gvimrc`
-files will not be propogated back to your repository, you will need to change
+and gvim rc files.  But be careful!  Changes made to the `_vimrc` and `_gvimrc`
+files will not be propagated back to your repository, you will need to change
 them manually.
 
 ### Updating Plugins
 
-To Update Plugins run the following command from the root of the repository
+To update plugins run the following command from the root of the repository
 
-1. make sure the repos is up to date with the remote repository
+1. Make sure the repos is up to date with the remote repository
 
      git pull
 
-2. make sure submodules are up to date with the remote repository
+2. Make sure submodules are up to date with the remote repository
 
      git submodule sync
      git submodule update --init --recursive
@@ -82,12 +82,12 @@ To Update Plugins run the following command from the root of the repository
 
 4. Verify modules are working.
 
-5. commit updated submodules to the repostiroy
+5. Commit updated submodules to the repository
 
      git add .
      git commit
 
-6. push changes to GitHub
+6. Push changes to GitHub
 
      git push
 
@@ -124,6 +124,10 @@ Bindings are grouped by plugin in `.vimrc`.
 
   * [Color Sampler Pack](https://github.com/vim-scripts/Color-Sampler-Pack)
   * [Solarized Colorscheme](https://github.com/jimmyharris/vim-colors-solarized)
+
+#### Testing and Integration:
+
+  * [Dispatch](https://github.com/tpope/vim-dispatch)
 
 #### Git Integration:
 
@@ -184,6 +188,6 @@ to use them by all means do so, but it is recomended that you remove these and
 add direct links to the original repositories I forked them from as those
 update more frequently.
 
-  * [Vim Snippets](https://github.com/jimmyharris/vim-snippets) -- Always good to have your own snippets library. (originally via [honza](https://github.com/honza/vim-snippets))
-  * [Solarized Colorscheme](https://github.com/jimmyharris/vim-colors-solarized) -- This plugin is ugly when used with tagslist. I have modified it to be cleaner on windows. (originally via [altercation](https://github.com/altercation/vim-colors-solarized))
-  * [NERDCommenter](https://github.com/jimmyharris/nerdcommenter) -- Ocasionally I will discover languages that this plugin does not support.  I add them here and submit them upstream. (orivinally via [Scrooloose](https://github.com/scrooloose/nerdcommenter))
+  * [Vim Snippets](https://github.com/jimmyharris/vim-snippets) - Always good to have your own snippets library. (originally via [honza](https://github.com/honza/vim-snippets))
+  * [Solarized Colorscheme](https://github.com/jimmyharris/vim-colors-solarized) - This plugin is ugly when used with tagslist. I have modified it to be cleaner on windows. (originally via [altercation](https://github.com/altercation/vim-colors-solarized))
+  * [NERDCommenter](https://github.com/jimmyharris/nerdcommenter) - Occasionally I will discover languages that this plugin does not support.  I add them here and submit them upstream. (orivinally via [Scrooloose](https://github.com/scrooloose/nerdcommenter))

@@ -121,3 +121,6 @@
 [submodule "bundle/puppet-syntax"]
 	path = bundle/puppet-syntax
 	url = git://github.com/puppetlabs/puppet-syntax-vim.git
+[submodule "bundle/dispatch"]
+	path = bundle/dispatch
+	url = git://github.com/tpope/vim-dispatch.git
