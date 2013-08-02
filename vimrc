@@ -5,7 +5,7 @@
 
 set nocompatible " Disable vi compatibility
 
-filetype off " required for some debian distributions
+filetype off " required for some Debian distributions
 
 "disable plugins
 
@@ -18,9 +18,9 @@ let g:pathogen_disabled = [
 
 call pathogen#runtime_append_all_bundles() " Load pathogen bundles.
 
-call pathogen#helptags() " Set up documenation for all the bundles
+call pathogen#helptags() " Set up documentation for all the bundles
 
-syntax on " Turn on FT Plugins and syntax hilighting.
+syntax on " Turn on FT Plug-ins and syntax highlighting.
 filetype plugin indent on
 
 " }}}
@@ -55,7 +55,8 @@ set mouse=a
 
 " General Options:
 " {{{
-
+"
+set tabpagemax=30
 set nohlsearch " Don't highlight the words I am searching for
 
 "Always indent 2 spaces unless an indent file specifies otherwise.
@@ -63,6 +64,9 @@ set ts=2
 set sw=2
 set sts=2
 set et
+
+" always spell check comments should be spellchecked.
+set spell
 
 " Show line numbers in all files.
 
@@ -84,7 +88,7 @@ if s:win
   let g:solarized_italic="off"
 endif
 
-" My prefered color scheme is solarized. This can be set to anything in the
+" My preferred color scheme is solarized. This can be set to anything in the
 " Colors directory.
 
 colorscheme solarized
@@ -142,7 +146,7 @@ else
 endif
 
 " Shortcut to rapidly toggle `set list` (,j) is the command in normal mode.
-nmap <leader>j :set list!<CR>
+nmap <leader>j :setlocal list!<CR>
 
 " }}}
 
@@ -233,9 +237,9 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " Doxygen Comments:
 " {{{
 
-" Add syntax highlighting for doxygen style comments.
-let g:load_doxygen_syntax=1
-let g:doxygen_javadoc_autobrief=0
+" Fix Doxygen auto brief highlighting so that it stops on more punctuation
+" than simply a '.'
+let g:doxygen_end_punctuation='[.?!]'
 " }}}
 
 " Auto Commands:
