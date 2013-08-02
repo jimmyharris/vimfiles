@@ -272,36 +272,3 @@ set tags=tags
 
 " }}}
 
-" Cscope:
-" {{{
-" bindings and abbreviations for cscope searches.
-
-if has('cscope')
-  set cscopetag cscopeverbose
-
-  if has('quickfix')
-    set cscopequickfix=s-,c-,d-,i-,t-,e-
-  endif
-
-  cnoreabbrev csa cs add
-  cnoreabbrev csf cs find
-  cnoreabbrev csk cs kill
-  cnoreabbrev csr cs reset
-  cnoreabbrev csh cs help
-
-  command -nargs=0 Cscope cs add ./cscope.out
-
-function! LoadCscope()
-  let db = findfile("cscope.out", ".;")
-  if (!empty(db))
-    let path = strpart(db, 0, match(db, "/cscope.out$"))
-    set nocscopeverbose " suppress 'duplicate connection' error
-    exe "cs add " . db . " " . path
-    set cscopeverbose
-  endif
-endfunction
-
-" au BufEnter /* call LoadCscope()
-
-endif
-" }}}
