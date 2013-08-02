@@ -301,7 +301,7 @@ function! LoadCscope()
   endif
 endfunction
 
-au BufEnter /* call LoadCscope()
+" au BufEnter /* call LoadCscope()
 
 endif
 " }}}
