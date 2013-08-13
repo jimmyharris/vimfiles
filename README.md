@@ -34,8 +34,25 @@ Then symlink `vimrc` and `gvimrc` to `~/.vimrc` and `~/.gvimrc` respectively.
 
 #### Windows
 
-This works best when using Git for Windows and a version of
-[Vim](http://sourceforge.net/projects/cream/files/Vim/) with python and ruby
+First thing to do is get the pre-requisites
+
+##### Pre-reqs using Chocolatey.
+
+Get [Chocolatey](https://chocolatey.org/) then install the following packages:
+
+  * `cinst git`
+  * `cinst python`
+  * `cinst vim`
+  * `cinst ruby`
+    After installing ruby make sure you add `RubyInstallPath\bin` to your path.
+  * `cinst ruby.devkit`
+  * `cinst ctags`
+
+
+##### Pre-reqs Manually
+
+This works best when using [Git for Windows](http://git-scm.com/) and a version
+of [Vim](http://sourceforge.net/projects/cream/files/Vim/) with python and ruby
 scripting bindings.
 
 It also requires [ruby](http://rubyinstaller.org) and
@@ -45,14 +62,22 @@ It also requires [ruby](http://rubyinstaller.org) and
 [ctags](http://ctags.sourceforge.net/) from their respective websites.
   ctags.exe can be found in the latest `.zip` file linked on the front page.
 
-2. Copy `cscope.exe` `ctags.exe` and `sort.exe` (bundled with cscope) to
-`C:\Windows`.
+2. Copy `ctags.exe` to `C:\Windows`.
 
-3. Clone your forked repository to `~/vimfiles`.
+##### Cscope (optional)
 
-4. Update and initialize the submodules.
+Cscope does not yet have a package on [Chocolatey](http://chocolatey.org/).
 
-5. For Windows 7 use mlink to create hardlinks between the `vimrc/gvimrc` files
+1. Download [cscope](https://code.google.com/p/cscope-win32/)
+2. Copy `cscope.exe` and `sort.exe` (bundled with cscope) into `C:\Windows`.
+
+##### Getting the Repo.
+
+1. Clone your forked repository to `~/vimfiles`.
+
+2. Update and initialize the submodules.
+
+3. For Windows 7 use mlink to create hardlinks between the `vimrc/gvimrc` files
 in this repository and the `_vimrc\_gvimrc` files in the home directory.
 ```
 > cd %HOME%
