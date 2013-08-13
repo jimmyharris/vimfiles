@@ -30,7 +30,7 @@ if has('cscope')
   cnoreabbrev csr cs reset
   cnoreabbrev csh cs help
 
-  command -nargs=0 Cscope cs add ./cscope.out
+  command! -nargs=0 Cscope cs add ./cscope.out
 
 endif
 " }}}
