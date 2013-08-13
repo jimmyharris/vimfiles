@@ -91,9 +91,6 @@
 [submodule "bundle/taglist"]
 	path = bundle/taglist
 	url = git://github.com/vim-scripts/taglist.vim.git
-[submodule "bundle/vim-snippets"]
-	path = bundle/vim-snippets
-	url = git://github.com/jimmyharris/vim-snippets.git
 [submodule "bundle/greplace"]
 	path = bundle/greplace
 	url = git://github.com/vim-scripts/greplace.vim.git

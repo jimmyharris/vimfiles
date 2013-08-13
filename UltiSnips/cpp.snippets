@@ -1,0 +1,246 @@
+extends c
+
+##################
+#  C++ Snippets  #
+##################
+
+global !p
+
+import re
+def get_args(arglist):
+    args = [arg.split(' ')[-1] for arg in arglist.split(',') if arg]
+    pattern = re.compile('\W+', re.L)
+    args = [ pattern.sub('', arg) for arg in args ]
+
+    return args
+
+def format_arg(arg):
+    return "@param [in] %s TODO: description" % arg
+
+def format_args(args):
+    retval = [format_arg(arg) for arg in args if arg != '']
+    return retval
+
+endglobal
+
+snippet ns "namespace .. (namespace)" !
+namespace${1/.+/ /m}${1:`!p snip.rv = snip.basename or "name"`} { $2
+	${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
+}
+endsnippet
+
+snippet ns "outer namespace .. (namespace)" b
+namespace${1/.+/ /m}${1:`!p snip.rv = snip.basename or "name"`} {
+	${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
+}${1/.+/ \/\/ /m}end of namespace: $1
+endsnippet
+
+snippet cld "class .. (class with doxygen comments)" !b
+/** ${3:TODO: Brief Description.}
+
+  ${4:TODO: Long Description}
+
+  @ingroup ${2:`!p snip.rv = ( snip.basename or "name")`}
+  */
+class ${1:`!p snip.rv = snip.basename or "name"`}
+{
+public:
+	${1/(\w+).*/$1/} (${5:arguments});
+	virtual ~${1/(\w+).*/$1/} ();
+
+private:
+	${0:/* data */}
+};
+endsnippet
+
+snippet mfun "Member Function definition" !b
+/** ${5:TODO: Brief Description.}
+
+  ${7:TODO: Long Description}
+  `!p
+if t[3] != "/*arguments*/":
+    args = get_args(t[3])
+    args = format_args(args)
+    for arg in args:
+        snip += "  " + arg
+else:
+    snip.rv = ""
+if (t[4] not in ["void", ""]):
+    snip += "  @return TODO"`
+  */
+${4:void} ${2:`!p snip.rv = ( snip.basename or "name")`}::$1(${3:/*arguments*/})
+{
+	${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
+} // end of member function: $2::$1
+
+endsnippet
+
+snippet fun "Function definition" !b
+/** ${4:TODO: Brief Description.}
+
+  ${7:TODO: Long Description}
+  `!p
+if t[2] != "/*arguments*/":
+    args = get_args(t[2])
+    args = format_args(args)
+    for arg in args:
+        snip += arg
+else:
+    snip.rv = ""
+if (t[3] not in ["void", ""]):
+    snip += "@return TODO:"`
+  @ingroup ${6:`!p snip.rv = ( snip.basename or "name")`}
+  */
+${3:void} $1(${2:/*arguments*/})
+{
+	${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
+} // end of function: $1
+
+endsnippet
+
+snippet main "main() (main)" !b
+/** The main entry point for ${1:`!p snip.rv = ( snip.basename or "program-name")`.}
+
+  ${2:TODO: Long Description}
+
+  @ingroup ${3:`!p snip.rv = ( snip.basename or "name")`}
+  */
+
+int main(int argc, char **argv)
+{
+	${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
+	return 0;
+} // end of function: main
+endsnippet
+
+snippet fore "for each (iterator loop)" !
+for(${5:list<${6:string}>::iterator} ${3:it} = $1$2begin();
+		$3 != ${1:listName}${2:->}end();
+		${4:++$3}
+		)
+{
+	${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
+}
+endsnippet
+
+snippet for "for int loop (fori)" !b
+for(${4:size_t} ${2:i} = 0; $2 < ${1:count}; ${3:++$2})
+{
+	${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
+}
+endsnippet
+
+snippet if "if .. (if)" !b
+if(${1:/* condition */})
+{
+	${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
+}
+endsnippet
+
+snippet el "else .. (else)" !b
+else
+{
+	${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
+}
+endsnippet
+
+snippet ife "if .. else (ife)" !b
+if(${1:/* condition */})
+{
+	${2:/* code */}
+}
+else
+{
+  ${3:/* else */}
+}
+endsnippet
+
+snippet tst "gTest TEST" !b
+/** ${3:TODO: Brief description.}
+
+  ${4:TODO: Longer Description.}
+
+  @ingroup ${5:`!p snip.rv = ( snip.basename or "name")`}
+ */
+TEST ( ${1:TestGroupName}, ${2:TestName} )
+{
+	${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
+}
+endsnippet
+
+snippet fxtr "gtest fixture template" !b
+/** ${3:TODO: Brief Description.}
+
+  ${4:TODO: Long Description.}
+
+  @ingroup ${5:`!p snip.rv = ( snip.basename or "name")`}
+  */
+class ${1:`!p snip.rv = snip.basename or "name"`} : ${2:public ::testing::Test}
+{
+public:
+	${1/(\w+).*/$1/} (${5:arguments});
+protected:
+
+	/* Fixture Variables */
+	$6
+
+	/** Set Up this test Fixture.
+
+	  ${7:TODO: Describe this funciton.}
+	  */
+	void SetUp()
+	{
+		${8:/* code */}
+	}
+
+	/** Tear Down this test Fixture.
+
+	  ${9:TODO: Describe this funciton.}
+	  */
+	void TearDown()
+	{
+		${0:/* code */}
+	}
+};
+endsnippet
+snippet tstf "gtest TEST_F" !b
+/** ${3:TODO: Brief description.}
+
+  ${4:TODO: Longer description.}
+
+  @ingroup ${5:`!p snip.rv = ( snip.basename or "name")`}
+ */
+TEST_F ( ${1:FixtureName}, ${2:TestName} )
+{
+	${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
+}
+endsnippet
+
+snippet noex "expect no exception" !b
+EXPECT_NO_THROW
+	(
+	${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
+	);
+endsnippet
+
+snippet noex! "assert no exception" !b
+ASSERT_NO_THROW
+	(
+	${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
+	);
+endsnippet
+
+snippet aex "expect an exception" !b
+EXPECT_ANY_THROW
+	(
+	${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
+	);
+endsnippet
+
+snippet aex! "assert an exception" !b
+ASSERT_ANY_THROW
+	(
+	${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
+	);
+endsnippet
+# vim:ft=snippets:
