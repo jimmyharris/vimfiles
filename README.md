@@ -1,42 +1,47 @@
-## My $HOME/.vim in Git.
+# My $HOME/.vim in Git.
 
 This configuration is designed to be useful for working with C/C++ as well as
 dynamic languages like Ruby, Javascript, and Python.
 
 Plugins are managed using [pathogen](tpope/vim-pathogen).
 
-It also supports some [tmux](http://tmux.sourceforge.net/) integration.
+## Instalation instructions
+
+This repository is meant to be persionalized. It is by no means generic and 
+should not be directly cloned from my repository.  Please 
+[fork](https://github.com/jimmyharris/vimfiles/fork) this repository before
+installing it.
 
 ### Requiremetns
 
-This configuration depends on Python v2.7 or greater, and a working Ruby
-instalation (if you plan on using the ruby specific plugins).
+My configuration assumes the following conditions:
 
-If you do not intend to use ruby support remove those submodule sfrom your fork
-of this repository.
+1. Python 2.7 or greater is installed
+2. Ruby is installed (for ruby based development)
+3. [Ctags](http://ctags.sourceforge.net/) is installed.
+4. [cscope](http://cscope.sourceforge.net/)
+([win32 binaries](https://code.google.com/p/cscope-win32/) is installed.
+5. Vim is compiled with builtin support for the following features:
+   * Python interpreter
+   * Ruby interpreter
+   * Cscope support (if you intend to use cscope features)
 
-This program also requires [ctags](http://ctags.sourceforge.net/) and
-[cscope](http://cscope.sourceforge.net/)([win32 binaries](https://code.google.com/p/cscope-win32/)).
 
-It also requires vim to be compiled with python, ruby and cscope support.
+### Mac/Linux
 
-### Instalation instructions
+ 1. Clone your forked repository to `~/.vim`.
 
-It is highly recommended that you fork this repository for your own use.
+ 2. Update and initialize the submodules.
 
-#### Mac/Linux
+ 3. Then symlink `vimrc` and `gvimrc` to `~/.vimrc` and `~/.gvimrc` respectively.
 
-Clone your forked repository to `~/.vim`.
+### Windows
 
-Update and initialize the submodules.
+First thing to do is get the prerequisites.  This can be done using either 
+chocolatey or individual installer packages. Chocolatey is recommended for 
+personal use environments.
 
-Then symlink `vimrc` and `gvimrc` to `~/.vimrc` and `~/.gvimrc` respectively.
-
-#### Windows
-
-First thing to do is get the pre-requisites
-
-##### Pre-reqs using Chocolatey.
+##### Install Prerequisites Using Chocolatey
 
 Get [Chocolatey](https://chocolatey.org/) then install the following packages:
 
@@ -48,25 +53,22 @@ Get [Chocolatey](https://chocolatey.org/) then install the following packages:
   * `cinst ruby.devkit`
   * `cinst ctags`
 
+Cscope does not yet have a package on [Chocolatey](http://chocolatey.org/) so it 
+will need to be installed manually.
 
 ##### Pre-reqs Manually
 
-This works best when using [Git for Windows](http://git-scm.com/) and a version
-of [Vim](http://sourceforge.net/projects/cream/files/Vim/) with python and ruby
-scripting bindings.
-
-It also requires [ruby](http://rubyinstaller.org) and
+My configuration is designed for use with [Git for Windows](http://git-scm.com/) 
+and a the latest version of Vim from the 
+[Cream](http://sourceforge.net/projects/cream/files/Vim/) project. It also 
+requires ruby (downloadable at [rubyinstaller.org](http://rubyinstaller.org)) and 
 [python](http://www.python.org/getit/).
 
-1. Download [cscope](https://code.google.com/p/cscope-win32/) and
-[ctags](http://ctags.sourceforge.net/) from their respective websites.
-  ctags.exe can be found in the latest `.zip` file linked on the front page.
-
-2. Copy `ctags.exe` to `C:\Windows`.
+After installing the above packages ctags can be found for download at 
+the [ctags sourceforge](http://ctags.sourceforge.net/) page. Simply download it 
+and copy `ctags.exe` to `C:\Windows`.
 
 ##### Cscope (optional)
-
-Cscope does not yet have a package on [Chocolatey](http://chocolatey.org/).
 
 1. Download [cscope](https://code.google.com/p/cscope-win32/)
 2. Copy `cscope.exe` and `sort.exe` (bundled with cscope) into `C:\Windows`.
@@ -94,36 +96,52 @@ them manually.
 To update plugins run the following command from the root of the repository
 
 1. Make sure the repos is up to date with the remote repository
-
-     git pull
+```
+git pull
+```
 
 2. Make sure submodules are up to date with the remote repository
-
-     git submodule sync
-     git submodule update --init --recursive
+```
+git submodule sync
+git submodule update --init --recursive
+```
 
 3. Pull all remote submodules to master
-     git submodule foreach 'git checkout master; git pull'
+```
+git submodule foreach 'git checkout master; git pull'
+```
 
 4. Verify modules are working.
 
 5. Commit updated submodules to the repository
-
-     git add .
-     git commit
+```
+git add .
+git commit
+```
 
 6. Push changes to GitHub
+```
+git push
+```
 
-     git push
-
-After this push updates will be available to all computers using this configuration.
+After this push updates will be available to all computers using this 
+configuration through:
+```
+git pull
+```
 
 ## Included Plugins
 
 Below are a list of included plugins grouped by purpose. Please see individual
-plugin repos for information on how to use them.
+plugin repositories for documentation on how to use them.  These plugins are 
+separated into two groups:
+
+  * Plugins used pristinely from the upstream repository.
+  * Plugins I have modified to suit my needs.
 
 Bindings are grouped by plugin in `.vimrc`.
+
+### Unmodified Plugins
 
 #### General Editing:
 
@@ -213,6 +231,11 @@ to use them by all means do so, but it is recomended that you remove these and
 add direct links to the original repositories I forked them from as those
 update more frequently.
 
-  * [Vim Snippets](https://github.com/jimmyharris/vim-snippets) - Always good to have your own snippets library. (originally via [honza](https://github.com/honza/vim-snippets))
-  * [Solarized Colorscheme](https://github.com/jimmyharris/vim-colors-solarized) - This plugin is ugly when used with tagslist. I have modified it to be cleaner on windows. (originally via [altercation](https://github.com/altercation/vim-colors-solarized))
-  * [NERDCommenter](https://github.com/jimmyharris/nerdcommenter) - Occasionally I will discover languages that this plugin does not support.  I add them here and submit them upstream. (orivinally via [Scrooloose](https://github.com/scrooloose/nerdcommenter))
+  * [Solarized Colorscheme](https://github.com/jimmyharris/vim-colors-solarized)
+    (originally via [altercation](https://github.com/altercation/vim-colors-solarized)) - 
+    This plugin is ugly when used with tagslist. I have modified it to be 
+    cleaner on windows. 
+  * [NERDCommenter](https://github.com/jimmyharris/nerdcommenter)
+    (originally via [Scrooloose](https://github.com/scrooloose/nerdcommenter)) - 
+    Occasionally I will discover languages that this plugin does not support.
+    I add them here and submit them upstream.
