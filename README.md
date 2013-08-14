@@ -7,12 +7,12 @@ Plugins are managed using [pathogen](tpope/vim-pathogen).
 
 ## Instalation instructions
 
-This repository is meant to be persionalized. It is by no means generic and 
-should not be directly cloned from my repository.  Please 
+This repository is meant to be persionalized. It is by no means generic and
+should not be directly cloned from my repository.  Please
 [fork](https://github.com/jimmyharris/vimfiles/fork) this repository before
 installing it.
 
-### Requiremetns
+### Requirements
 
 My configuration assumes the following conditions:
 
@@ -21,24 +21,22 @@ My configuration assumes the following conditions:
 3. [Ctags](http://ctags.sourceforge.net/) is installed.
 4. [cscope](http://cscope.sourceforge.net/)
 ([win32 binaries](https://code.google.com/p/cscope-win32/) is installed.
-5. Vim is compiled with builtin support for the following features:
+5. Vim is compiled with support for the following features:
    * Python interpreter
    * Ruby interpreter
-   * Cscope support (if you intend to use cscope features)
+   * Cscope support (if you intend to use Cscope features)
 
 
 ### Mac/Linux
 
- 1. Clone your forked repository to `~/.vim`.
-
- 2. Update and initialize the submodules.
-
- 3. Then symlink `vimrc` and `gvimrc` to `~/.vimrc` and `~/.gvimrc` respectively.
+1. Clone your forked repository to `~/.vim`.
+2. Update and initialize the submodules.
+3. Then symlink `vimrc` and `gvimrc` to `~/.vimrc` and `~/.gvimrc` respectively.
 
 ### Windows
 
-First thing to do is get the prerequisites.  This can be done using either 
-chocolatey or individual installer packages. Chocolatey is recommended for 
+First thing to do is get the prerequisites.  This can be done using either
+chocolatey or individual installer packages. Chocolatey is recommended for
 personal use environments.
 
 ##### Install Prerequisites Using Chocolatey
@@ -53,19 +51,19 @@ Get [Chocolatey](https://chocolatey.org/) then install the following packages:
   * `cinst ruby.devkit`
   * `cinst ctags`
 
-Cscope does not yet have a package on [Chocolatey](http://chocolatey.org/) so it 
+Cscope does not yet have a package on [Chocolatey](http://chocolatey.org/) so it
 will need to be installed manually.
 
 ##### Pre-reqs Manually
 
-My configuration is designed for use with [Git for Windows](http://git-scm.com/) 
-and a the latest version of Vim from the 
-[Cream](http://sourceforge.net/projects/cream/files/Vim/) project. It also 
-requires ruby (downloadable at [rubyinstaller.org](http://rubyinstaller.org)) and 
+My configuration is designed for use with [Git for Windows](http://git-scm.com/)
+and the latest version of Vim from the
+[Cream](http://sourceforge.net/projects/cream/files/Vim/) project. It also
+requires ruby (downloadable at [rubyinstaller.org](http://rubyinstaller.org)) and
 [python](http://www.python.org/getit/).
 
-After installing the above packages ctags can be found for download at 
-the [ctags sourceforge](http://ctags.sourceforge.net/) page. Simply download it 
+After installing the above packages ctags can be found for download at
+the [ctags sourceforge](http://ctags.sourceforge.net/) page. Simply download it
 and copy `ctags.exe` to `C:\Windows`.
 
 ##### Cscope (optional)
@@ -124,7 +122,7 @@ git commit
 git push
 ```
 
-After this push updates will be available to all computers using this 
+After this push updates will be available to all computers using this
 configuration through:
 ```
 git pull
@@ -133,7 +131,7 @@ git pull
 ## Included Plugins
 
 Below are a list of included plugins grouped by purpose. Please see individual
-plugin repositories for documentation on how to use them.  These plugins are 
+plugin repositories for documentation on how to use them.  These plugins are
 separated into two groups:
 
   * Plugins used pristinely from the upstream repository.
@@ -227,15 +225,15 @@ Bindings are grouped by plugin in `.vimrc`.
 ### Plugins with My Modifications
 
 The following plugins  have special modifications for my tastes.  If you wish
-to use them by all means do so, but it is recomended that you remove these and
+to use them by all means do so, but it is recommended that you remove these and
 add direct links to the original repositories I forked them from as those
 update more frequently.
 
   * [Solarized Colorscheme](https://github.com/jimmyharris/vim-colors-solarized)
-    (originally via [altercation](https://github.com/altercation/vim-colors-solarized)) - 
-    This plugin is ugly when used with tagslist. I have modified it to be 
-    cleaner on windows. 
+    (via [altercation](https://github.com/altercation/vim-colors-solarized)) -
+    This plugin is ugly when used with tagslist. I have modified it to be
+    cleaner on windows.
   * [NERDCommenter](https://github.com/jimmyharris/nerdcommenter)
-    (originally via [Scrooloose](https://github.com/scrooloose/nerdcommenter)) - 
+    (via [Scrooloose](https://github.com/scrooloose/nerdcommenter)) -
     Occasionally I will discover languages that this plugin does not support.
     I add them here and submit them upstream.
