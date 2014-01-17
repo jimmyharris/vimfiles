@@ -48,8 +48,6 @@ set directory^=~/tmp,/tmp,$TMP
 set backupdir^=~/tmp,/tmp,$TMP
 
 " Mouse:
-" FIXME: Integrate me with the OSX clipboard.
-
 set mouse=a
 
 
@@ -65,7 +63,7 @@ set sw=2
 set sts=2
 set et
 
-" always spell check comments should be spellchecked.
+" comments should be spell-checked.
 set spell
 
 " Show line numbers in all files.
