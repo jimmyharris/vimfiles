@@ -47,10 +47,6 @@ set statusline=%f%m\ %{fugitive#statusline()}%<%r%w%y[%{&ff}]%=%p%%\ %L,%l,%v\
 set directory^=~/tmp,/tmp,$TMP
 set backupdir^=~/tmp,/tmp,$TMP
 
-" Mouse:
-set mouse=a
-
-
 " General Options:
 " {{{
 "
@@ -81,7 +77,6 @@ set hid  " hide buffers, don't kill them
 
 " Italics are terrible on windows.
 
-
 if s:win
   let g:solarized_italic="off"
 endif
@@ -89,23 +84,25 @@ endif
 " My preferred color scheme is solarized. This can be set to anything in the
 " Colors directory.
 
-colorscheme solarized
-
 set background=dark
+" for mobaxterm
 
 if !s:win && has('gui_running')
   set background=light
 else
   let g:CSApprox_verbose_level=0 " Silence CSApprox (I know i don't have gvim support builtin)
-  if !s:win                                         " Windows requires this separate
-    if !exists("$TERM_PROGRAM")
+  if !s:win " Windows requires this separate
+    if !exists("$TERM_PROGRAM")  " iTerm 2 sets this environment variable.
       if exists("t_co") && &t_co > 255      " We have Pretty Colors
         let g:solarized_termcolors=256
+      else
+        let g:solarized_termtrans=1
       endif
     endif
   endif
 endif
 
+colorscheme solarized
 
 " }}}
 
@@ -184,6 +181,9 @@ let delimitMate_expand_space = 1
 let delimitMate_expand_cr = 1
 set backspace=eol,start,indent
 
+" A.vim:
+let g:alternateSearchPath = 'sfr:../source,sfr:../code,sfr:../src,sfr:../includes,sfr:../includes/private,sfr:../inc'
+
 " TeX_9:
 
 " Build PDFs of LaTeX projects
@@ -234,7 +234,6 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " Doxygen Comments:
 " {{{
-
 " Fix Doxygen auto brief highlighting so that it stops on more punctuation
 " than simply a '.'
 let g:doxygen_end_punctuation='[.?!]'
