@@ -1,5 +1,8 @@
 " Vimrc by James Harris.
 
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#syntastic#enabled = 0
+
 " Initialize Pathogen:
 " {{{
 
@@ -38,7 +41,7 @@ let s:win = has("win16") || has("win32") || has("win64")
 " Status_Line:
 
 set laststatus=2
-set statusline=%f%m\ %{fugitive#statusline()}%<%r%w%y[%{&ff}]%=%p%%\ %L,%l,%v\
+" set statusline=%f%m\ %{fugitive#statusline()}%<%r%w%y[%{&ff}]%=%p%%\ %L,%l,%v\
 
 " Directory Settings:
 " These settings ensure that .swp and backup files all live in a temporary
@@ -151,11 +154,11 @@ nmap <leader>j :setlocal list!<CR>
 " Tabularize:
 
 if exists(":Tabularize")
-	" Tabularize on '='. Good for aligning assignment of variables.
+  " Tabularize on '='. Good for aligning assignment of variables.
   nmap <Leader>= :Tabularize /=<CR>
   vmap <Leader>= :Tabularize /=<CR>
-	" tabularize on ':'. This does not center the : in the tabularization.
-	" Good for JSON formatting.
+  " tabularize on ':'. This does not center the : in the tabularization.
+  " Good for JSON formatting.
   nmap <Leader>: :Tabularize /:\zs<CR>
   vmap <Leader>: :Tabularize /:\zs<CR>
 endif
