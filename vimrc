@@ -185,7 +185,7 @@ let delimitMate_expand_cr = 1
 set backspace=eol,start,indent
 
 " A.vim:
-let g:alternateSearchPath = 'sfr:../source,sfr:../code,sfr:../src,sfr:../includes,sfr:../includes/private,sfr:../inc'
+let g:alternateSearchPath = 'sfr:../source,sfr:../../code,sfr:../code,sfr:../src,sfr:../include,sfr:../include/private,sfr:../includes,sfr:../includes/private,sfr:../inc'
 
 " TeX_9:
 
