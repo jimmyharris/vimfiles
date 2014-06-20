@@ -112,9 +112,6 @@
 [submodule "bundle/qargs"]
 	path = bundle/qargs
 	url = https://github.com/henrik/vim-qargs.git
-[submodule "bundle/git-grep"]
-	path = bundle/git-grep
-	url = https://github.com/henrik/git-grep-vim.git
 [submodule "bundle/puppet-syntax"]
 	path = bundle/puppet-syntax
 	url = https://github.com/puppetlabs/puppet-syntax-vim.git
@@ -126,4 +123,4 @@
 	url = https://github.com/tpope/vim-jdaddy.git
 [submodule "bundle/airline"]
 	path = bundle/airline
-	url = https://github.com/jimmyharris/vim-airline.git
+	url = https://github.com/bling/vim-airline.git
