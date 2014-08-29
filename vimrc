@@ -209,7 +209,7 @@ endif
 let g:ctrlp_extensions = ['quickfix', 'buffertag', 'rtscript']
 " Ignore target directories, binary data, and version control.
 let g:ctrlp_custom_ignore = {
-      \ 'dir':  '\.git$\|\.hg$\|\.svn$\|out\\waf$\|out/waf$',
+      \ 'dir':  '\.git$\|\.hg$\|\.svn$\|out\\waf$\|out/waf$\|boost$',
       \ 'file': '\.exe$\|\.obj$\|\.dll\|\.bin\|\.hex\|\.map\|\.tmp\|\.axf\|\.o$',
       \ }
 " Unlimited File depth.
