@@ -1,5 +1,12 @@
 " Vimrc by James Harris.
 
+" Detect Windows:
+" {{{
+
+let s:win = has("win16") || has("win32") || has("win64")
+
+" }}}
+
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#syntastic#enabled = 0
 
@@ -19,6 +26,10 @@ let g:pathogen_disabled = [
       \ 'dbext'
       \ ]
 
+if s:win && !has('gui_running')
+  call add(g:pathogen_disabled, 'airline')
+endif
+
 call pathogen#runtime_append_all_bundles() " Load pathogen bundles.
 
 call pathogen#helptags() " Set up documentation for all the bundles
@@ -28,20 +39,16 @@ filetype plugin indent on
 
 " }}}
 
-" Detect Windows:
-" {{{
-
-let s:win = has("win16") || has("win32") || has("win64")
-
-" }}}
-
 " Settings:
 " {{{
 
 " Status_Line:
 
 set laststatus=2
-" set statusline=%f%m\ %{fugitive#statusline()}%<%r%w%y[%{&ff}]%=%p%%\ %L,%l,%v\
+
+if s:win && !has('gui_running')
+  set statusline=%f%m\ %{fugitive#statusline()}%<%r%w%y[%{&ff}]%=%p%%\ %L,%l,%v\
+endif
 
 " Directory Settings:
 " These settings ensure that .swp and backup files all live in a temporary
@@ -76,7 +83,6 @@ set hid  " hide buffers, don't kill them
 
 " Color Settings:
 " {{{
-
 
 " Italics are terrible on windows.
 
@@ -217,7 +223,7 @@ let g:ctrlp_max_height = 20
 
 " Fugitive Settings And Fixes:
 
-" Delete fugitive buffers when we close them. otherwise this polutes the
+" Delete fugitive buffers when we close them. Otherwise this pollutes the
 " buffers list.
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
@@ -244,8 +250,6 @@ let g:doxygen_end_punctuation='[.?!]'
 
 " Auto Commands:
 " {{{
-" Set file types
-autocmd Bufread *.as set filetype=actionscript
 
 " Treat .dox files as "Doxygen" files.
 autocmd Bufread *.dox set filetype=doxygen
@@ -257,7 +261,7 @@ au Bufread _vimrc set foldmethod=marker
 
 
 " Remove Trailing Whitespace:
-" Caution! this can cause whitespace conflicts on files created by other
+" Caution! This can cause whitespace conflicts on files created by other
 " people.
 autocmd BufWritePre * :%s/\s\+$//e
 

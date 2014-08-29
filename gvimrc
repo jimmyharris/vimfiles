@@ -3,7 +3,7 @@
 "set gfn=ProFontWindows:h12.00
 let s:win = has("win16") || has("win32") || has("win64")
 if s:win
-  set gfn=Lucida_Console:h9
+  set gfn=Sauce_Code_Powerline:h9:cANSI
   set go-=m
   set go-=T
   set go-=r
