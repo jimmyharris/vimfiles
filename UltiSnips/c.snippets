@@ -70,7 +70,6 @@ endsnippet
 
 snippet fun "Function definition" !b
 /** ${4:TODO: Brief Description}.
-  @ingroup ${5:`!p snip.rv = ( snip.basename or "name")`}
 
   ${5:TODO: Long Description}
   `!p
@@ -80,7 +79,8 @@ if t[2] != "/*arguments*/":
     for arg in args:
         snip += arg
 else:
-    snip.rv = ""
+    snip.rv = ""`
+  `!p
 if (t[3] not in ["void", ""]):
     snip += "  @return TODO"`
   */
