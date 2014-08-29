@@ -111,7 +111,7 @@ else
   endif
 endif
 
-colorscheme solarized
+colorscheme base16-default
 
 " }}}
 
