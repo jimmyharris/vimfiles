@@ -37,6 +37,8 @@ call pathogen#helptags() " Set up documentation for all the bundles
 syntax on " Turn on FT Plug-ins and syntax highlighting.
 filetype plugin indent on
 
+let g:airline_powerline_fonts=1
+
 " }}}
 
 " Settings:
@@ -101,7 +103,8 @@ if !s:win && has('gui_running')
 else
   let g:CSApprox_verbose_level=0 " Silence CSApprox (I know i don't have gvim support builtin)
   if !s:win " Windows requires this separate
-    if !exists("$TERM_PROGRAM") " iTerm 2 sets this environment variable.
+    " If we are on mac using a mac terminal program this variable will be set.
+    if !exists("$TERM_PROGRAM") || ($TERM_PROGRAM != "iTerm.app" )
       if exists("t_co") && &t_co > 255 " We have Pretty Colors
         let g:solarized_termcolors=256
       else
@@ -200,7 +203,10 @@ let g:tex_flavor = "pdflatex"
 
 " On Mac environments use "open *.pdf" to openthe results.
 if has('mac')
-  let g:tex_viewer = {'app': 'open', 'target': 'pdf'}
+  let g:tex_nine_config = {
+        \'compiler': 'pdflatex',
+        \'viewer': {'app': 'open', 'target': 'pdf'}
+        \ }
 endif
 
 " Ctrlp:
@@ -209,7 +215,7 @@ endif
 let g:ctrlp_extensions = ['quickfix', 'buffertag', 'rtscript']
 " Ignore target directories, binary data, and version control.
 let g:ctrlp_custom_ignore = {
-      \ 'dir':  '\.git$\|\.hg$\|\.svn$\|out\\waf$\|out/waf$',
+      \ 'dir':  '\.git$\|\.hg$\|\.svn$\|out\\waf$\|out/waf$\|boost$',
       \ 'file': '\.exe$\|\.obj$\|\.dll\|\.bin\|\.hex\|\.map\|\.tmp\|\.axf\|\.o$',
       \ }
 " Unlimited File depth.

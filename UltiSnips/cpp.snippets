@@ -56,15 +56,8 @@ endsnippet
 snippet mfun "Member Function definition" !b
 /** ${5:TODO: Brief Description.}
 
-  ${7:TODO: Long Description}
+  ${6:TODO: Long Description}
   `!p
-if t[3] != "/*arguments*/":
-    args = get_args(t[3])
-    args = format_args(args)
-    for arg in args:
-        snip += "  " + arg
-else:
-    snip.rv = ""
 if (t[4] not in ["void", ""]):
     snip += "  @return TODO"`
   */
@@ -78,18 +71,11 @@ endsnippet
 snippet fun "Function definition" !b
 /** ${4:TODO: Brief Description.}
 
-  ${7:TODO: Long Description}
+  ${5:TODO: Long Description}
+  ${6:@ingroup ${7:`!p snip.rv = ( snip.basename or "name")`}}
   `!p
-if t[2] != "/*arguments*/":
-    args = get_args(t[2])
-    args = format_args(args)
-    for arg in args:
-        snip += arg
-else:
-    snip.rv = ""
 if (t[3] not in ["void", ""]):
     snip += "  @return TODO"`
-  @ingroup ${6:`!p snip.rv = ( snip.basename or "name")`}
   */
 ${3:void} $1(${2:/*arguments*/})
 {
@@ -103,10 +89,14 @@ snippet main "main() (main)" !b
 
   ${2:TODO: Long Description}
 
-  @ingroup ${3:`!p snip.rv = ( snip.basename or "name")`}
+  ${3:@ingroup ${4:`!p snip.rv = ( snip.basename or "name")`}}
   */
 
-int main(int argc, char **argv)
+int main
+	(
+	 int argc, //!< [in] argument count
+	 char **argv //!< [in] argument list
+	)
 {
 	${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
 	return 0;
@@ -159,9 +149,7 @@ snippet tst "gTest TEST" !b
 /** ${3:TODO: Brief description.}
 
   ${4:TODO: Longer Description.}
-
-  @ingroup ${5:`!p snip.rv = ( snip.basename or "name")`}
- */
+  */
 TEST ( ${1:TestGroupName}, ${2:TestName} )
 {
 	${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
@@ -172,30 +160,26 @@ snippet fxtr "gtest fixture template" !b
 /** ${3:TODO: Brief Description.}
 
   ${4:TODO: Long Description.}
-
-  @ingroup ${5:`!p snip.rv = ( snip.basename or "name")`}
   */
 class ${1:`!p snip.rv = snip.basename or "name"`} : ${2:public ::testing::Test}
 {
-public:
-	${1/(\w+).*/$1/} (${5:arguments});
 protected:
 
 	/* Fixture Variables */
-	$6
+	$5
 
 	/** Set Up this test Fixture.
 
-	  ${7:TODO: Describe this funciton.}
+	  ${6:TODO: Describe this funciton.}
 	  */
 	void SetUp()
 	{
-		${8:/* code */}
+		${7:/* code */}
 	}
 
 	/** Tear Down this test Fixture.
 
-	  ${9:TODO: Describe this funciton.}
+	  ${8:TODO: Describe this funciton.}
 	  */
 	void TearDown()
 	{
@@ -207,9 +191,7 @@ snippet tstf "gtest TEST_F" !b
 /** ${3:TODO: Brief description.}
 
   ${4:TODO: Longer description.}
-
-  @ingroup ${5:`!p snip.rv = ( snip.basename or "name")`}
- */
+  */
 TEST_F ( ${1:FixtureName}, ${2:TestName} )
 {
 	${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
