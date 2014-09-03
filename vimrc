@@ -71,9 +71,6 @@ set sw=2
 set sts=2
 set et
 
-" comments should be spell-checked.
-set spell
-
 " Show line numbers in all files.
 
 set number
