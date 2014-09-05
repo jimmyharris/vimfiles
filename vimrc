@@ -66,10 +66,10 @@ set tabpagemax=30
 set nohlsearch " Don't highlight the words I am searching for
 
 "Always indent 2 spaces unless an indent file specifies otherwise.
-set ts=2
-set sw=2
-set sts=2
-set et
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
 
 " Show line numbers in all files.
 
@@ -77,8 +77,8 @@ set number
 " }}}
 
 " Window_Preferences:
-set noea " no auto equal
-set hid  " hide buffers, don't kill them
+set noequalalways " no auto equal
+set hidden  " hide buffers, don't kill them
 
 " Color Settings:
 " {{{
@@ -232,6 +232,12 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 
 " TagsList:
 
+" Sort TagsList by name not by file order
+let g:Tlist_Sort_Type = "name"
+
+" open the TagsList on the right hand side of the window.
+let g:Tlist_Use_Right_Window = 1
+
 " Type ",t" in normal mode to pull open the tabs list.
 nmap <Leader>t :TlistToggle<CR>
 
@@ -258,9 +264,9 @@ let g:doxygen_end_punctuation='[.?!]'
 autocmd Bufread *.dox set filetype=doxygen
 
 " Set fold methods for vimrc for easier navigation.
-au Bufread vimrc set foldmethod=marker
-au Bufread .vimrc set foldmethod=marker
-au Bufread _vimrc set foldmethod=marker
+autocmd Bufread vimrc set foldmethod=marker
+autocmd Bufread .vimrc set foldmethod=marker
+autocmd Bufread _vimrc set foldmethod=marker
 
 
 " Remove Trailing Whitespace:
