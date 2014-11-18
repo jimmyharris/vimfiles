@@ -43,13 +43,12 @@ personal use environments.
 
 Get [Chocolatey](https://chocolatey.org/) then install the following packages:
 
-  * `cinst git`
-  * `cinst python`
-  * `cinst vim`
-  * `cinst ruby`
-    After installing ruby make sure you add `RubyInstallPath\bin` to your path.
-  * `cinst ruby.devkit`
-  * `cinst ctags`
+  * `choco install git`
+  * `choco install python`
+  * `choco install vim`
+  * `choco install ruby`
+  * `choco install ruby.devkit`
+  * `choco install ctags`
 
 Cscope does not yet have a package on [Chocolatey](http://chocolatey.org/) so it
 will need to be installed manually.
@@ -78,16 +77,16 @@ and copy `ctags.exe` to `C:\Windows`.
 2. Update and initialize the submodules.
 
 3. For Windows 7 use mlink to create hardlinks between the `vimrc/gvimrc` files
-in this repository and the `_vimrc\_gvimrc` files in the home directory.
+   in this repository and the `_vimrc/_gvimrc` files in the home directory.
 ```
-> cd %HOME%
-> mlink /H vimfiles/vimrc _vimrc
-> mlink /H vimfiles/gvimrc _gvimrc
+> cd %USERPROFILE%
+> mklink /H _vimrc vimfiles\vimrc
+> mklink /H _gvimrc vimfiles\gvimrc
 ```
-If `mlink` will not work (Windows XP and lower), simply copy the included vimrc
-and gvim rc files.  But be careful!  Changes made to the `_vimrc` and `_gvimrc`
-files will not be propagated back to your repository, you will need to change
-them manually.
+If `mklink` will not work (Windows XP and lower), simply copy the included
+vimrc and gvim rc files.  But be careful!  Changes made to the `_vimrc` and
+`_gvimrc` files will not be propagated back to your repository, you will need
+to change them manually.
 
 ### Updating Plugins
 

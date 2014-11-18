@@ -23,7 +23,8 @@ let g:pathogen_disabled = [
       \ 'OmniCppComplete',
       \ 'rails',
       \ 'rvm',
-      \ 'dbext'
+      \ 'dbext',
+      \ 'cscope'
       \ ]
 
 if s:win && !has('gui_running')
@@ -63,7 +64,8 @@ set backupdir^=~/tmp,/tmp,$TMP
 " {{{
 "
 set tabpagemax=30
-set nohlsearch " Don't highlight the words I am searching for
+set nohlsearch   " Don't highlight the words I am searching for
+set novisualbell " Don't display a visual bell.
 
 "Always indent 2 spaces unless an indent file specifies otherwise.
 set tabstop=2
