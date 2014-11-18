@@ -3,7 +3,10 @@
 This configuration is designed to be useful for working with C/C++ as well as
 dynamic languages like Ruby, Javascript, and Python.
 
-Plugins are managed using [pathogen](tpope/vim-pathogen).
+Plugins are managed using [pathogen](https://github.com/tpope/vim-pathogen).
+
+Most of the settings use [sensible.vim](https://github.com/tpope/vim-sensible)
+as a baseline.
 
 ## Instalation instructions
 
@@ -19,12 +22,14 @@ My configuration assumes the following conditions:
 1. Python 2.7 or greater is installed
 2. Ruby is installed (for ruby based development)
 3. [Ctags](http://ctags.sourceforge.net/) is installed.
-4. [cscope](http://cscope.sourceforge.net/)
-([win32 binaries](https://code.google.com/p/cscope-win32/) is installed.
-5. Vim is compiled with support for the following features:
+4. Vim is compiled with support for the following features:
    * Python interpreter
    * Ruby interpreter
    * Cscope support (if you intend to use Cscope features)
+5. [Powerline fonts](https://github.com/Lokaltog/powerline-fonts) should be
+   installed. This config uses the powerline version of SourceCodePro.
+6. [cscope](http://cscope.sourceforge.net/)
+([win32 binaries](https://code.google.com/p/cscope-win32/) is installed. (optional)
 
 
 ### Mac/Linux
@@ -46,9 +51,9 @@ Get [Chocolatey](https://chocolatey.org/) then install the following packages:
   * `choco install git`
   * `choco install python`
   * `choco install vim`
-  * `choco install ruby`
-  * `choco install ruby.devkit`
   * `choco install ctags`
+  * `choco install ruby` (optional)
+  * `choco install ruby.devkit` (optional)
 
 Cscope does not yet have a package on [Chocolatey](http://chocolatey.org/) so it
 will need to be installed manually.
@@ -142,14 +147,16 @@ Bindings are grouped by plugin in `.vimrc`.
 
 #### General Editing:
 
-  * [Tabular](https://github.com/godlygeek/tabular)
-  * [delimitMate](https://github.com/Raimondi/delimitMate)
-  * [Surround](https://github.com/tpope/vim-surround)
-  * [Unimpaired](https://github.com/tpope/vim-unimpaired)
+  * [AirLine](https://github.com/bling/vim-airline)
   * [Abolish](https://github.com/tpope/vim-abolish)
+  * [delimitMate](https://github.com/Raimondi/delimitMate)
   * [Endwise](https://github.com/tpope/vim-endwise)
   * [Ragtag](https://github.com/tpope/vim-ragtag)
   * [Repeat](https://github.com/tpope/vim-repeat)
+  * [Sensible.vim](https://github.com/tpope/vim-sensible)
+  * [Surround](https://github.com/tpope/vim-surround)
+  * [Tabular](https://github.com/godlygeek/tabular)
+  * [Unimpaired](https://github.com/tpope/vim-unimpaired)
 
 #### Navigation:
 
@@ -157,12 +164,13 @@ Bindings are grouped by plugin in `.vimrc`.
   * [ctrlp.vim](https://github.com/kien/ctrlp.vim)
   * [taglist.vim ](https://github.com/vim-scripts/taglist.vim)
   * [greplace.vim](https://github.com/vim-scripts/greplace.vim)
-  * [henrik/vim-qargs](https://github.com/henrik/vim-qargs)
+  * [qargs](https://github.com/henrik/vim-qargs)
   * [SelectBuf](https://github.com/vim-scripts/SelectBuf)
 
 #### Colors:
 
   * [Color Sampler Pack](https://github.com/vim-scripts/Color-Sampler-Pack)
+  * [base16](https://github.com/chriskempson/base16-vim)
   * [Solarized Colorscheme](https://github.com/jimmyharris/vim-colors-solarized)
 
 #### Testing and Integration:
@@ -172,9 +180,8 @@ Bindings are grouped by plugin in `.vimrc`.
 #### Git Integration:
 
   * [Fugitive](https://github.com/tpope/vim-fugitive)
-  * [henrik/git-grep-vim](https://github.com/henrik/git-grep-vim)
 
-#### Ruby:
+#### Ruby: (disabled by default)
 
   * [Rails.vim](https://github.com/tpope/vim-rails)
   * [Bundler.vim](https://github.com/tpope/vim-bundler)
@@ -185,6 +192,7 @@ Bindings are grouped by plugin in `.vimrc`.
 #### Javascript/JSON:
 
   * [JSON Syntax Support](https://github.com/jakar/vim-json)
+  * [Jdaddy](https://github.com/tpope/vim-jdaddy)
   * [JavaScript Indent](https://github.com/vim-scripts/JavaScript-Indent)
 
 #### LaTeX
@@ -194,26 +202,25 @@ Bindings are grouped by plugin in `.vimrc`.
 #### C/C++
 
   * [a.vim](https://github.com/vim-scripts/a.vim)
-  * [cscope.vim](https://github.com/brookhong/cscope.vim)
-  * [OmniCppComplete](https://github.com/vim-scripts/OmniCppComplete)
+  * [cscope.vim](https://github.com/brookhong/cscope.vim) (disabled)
+  * [OmniCppComplete](https://github.com/vim-scripts/OmniCppComplete) (disabled)
 
 #### Other Languages
 
-  * [Arm Assembly Language](https://github.com/vim-scripts/armasm)
+  * [ARM Assembly Language](https://github.com/vim-scripts/armasm)
   * [Applescript](https://github.com/vim-scripts/applescript.vim)
   * [Markdown](https://github.com/tpope/vim-markdown)
   * [Puppet DSL](https://github.com/puppetlabs/puppet-syntax-vim)
 
 #### Snippets
 
-  * [snipMate](https://github.com/garbas/vim-snipmate)
   * [UltiSnips](https://github.com/SirVer/ultisnips)
+  * [snippets](https://github.com/honza/vim-snippets)
 
 
 #### Shell Integration
 
   * [Vimux](https://github.com/benmills/vimux)
-  * [Conque Shell](https://github.com/vim-scripts/Conque-Shell)
 
 #### Utilities
 

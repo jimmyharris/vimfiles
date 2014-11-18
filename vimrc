@@ -21,10 +21,12 @@ filetype off " required for some Debian distributions
 
 let g:pathogen_disabled = [
       \ 'OmniCppComplete',
+      \ 'cscope',
       \ 'rails',
       \ 'rvm',
-      \ 'dbext',
-      \ 'cscope'
+      \ 'bundler',
+      \ 'cucumber',
+      \ 'dbext'
       \ ]
 
 if s:win && !has('gui_running')
@@ -38,6 +40,8 @@ call pathogen#helptags() " Set up documentation for all the bundles
 syntax on " Turn on FT Plug-ins and syntax highlighting.
 filetype plugin indent on
 
+runtime! plugin/sensible.vim
+
 let g:airline_powerline_fonts=1
 
 " }}}
@@ -46,8 +50,6 @@ let g:airline_powerline_fonts=1
 " {{{
 
 " Status_Line:
-
-set laststatus=2
 
 if s:win && !has('gui_running')
   set statusline=%f%m\ %{fugitive#statusline()}%<%r%w%y[%{&ff}]%=%p%%\ %L,%l,%v\
@@ -64,7 +66,6 @@ set backupdir^=~/tmp,/tmp,$TMP
 " {{{
 "
 set tabpagemax=30
-set nohlsearch   " Don't highlight the words I am searching for
 set novisualbell " Don't display a visual bell.
 
 "Always indent 2 spaces unless an indent file specifies otherwise.
