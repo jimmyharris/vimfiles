@@ -212,7 +212,7 @@ endif
 " Ctrlp:
 
 " typeahead search the quickfix window, buffer tags.
-let g:ctrlp_extensions = ['tag', 'quickfix', 'buffertag', 'rtscript']
+let g:ctrlp_extensions = ['quickfix', 'buffertag', 'rtscript']
 " Ignore target directories, binary data, and version control.
 let g:ctrlp_custom_ignore = {
       \ 'dir':  '\.git$\|\.hg$\|\.svn$\|out$\|boost$',
