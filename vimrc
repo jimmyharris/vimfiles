@@ -103,6 +103,7 @@ if !s:win && has('gui_running')
 else
   let g:CSApprox_verbose_level=0 " Silence CSApprox (I know i don't have gvim support builtin)
   if !s:win " Windows requires this separate
+    let base16colorspace=256
     " If we are on mac using a mac terminal program this variable will be set.
     if !exists("$TERM_PROGRAM") || ($TERM_PROGRAM != "iTerm.app" )
       if exists("t_co") && &t_co > 255 " We have Pretty Colors
