@@ -133,3 +133,6 @@
 [submodule "bundle/sensible"]
 	path = bundle/sensible
 	url = https://github.com/tpope/vim-sensible.git
+[submodule "bundle/cpp11-syntax"]
+	path = bundle/cpp11-syntax
+	url = git://github.com/vim-scripts/Cpp11-Syntax-Support.git
