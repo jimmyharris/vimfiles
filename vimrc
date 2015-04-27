@@ -115,6 +115,8 @@ else
   endif
 endif
 
+" let g:airline_theme="goodbase16"
+
 colorscheme base16-default
 
 " }}}
