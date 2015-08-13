@@ -136,3 +136,15 @@
 [submodule "bundle/cpp11-syntax"]
 	path = bundle/cpp11-syntax
 	url = git://github.com/vim-scripts/Cpp11-Syntax-Support.git
+[submodule "bundle/xolox-misc"]
+	path = bundle/xolox-misc
+	url = git://github.com/xolox/vim-misc.git
+[submodule "bundle/lua-ftplugin"]
+	path = bundle/lua-ftplugin
+	url = git://github.com/xolox/vim-lua-ftplugin.git
+[submodule "plantuml-syntax"]
+	path = plantuml-syntax
+	url = git://github.com/aklt/plantuml-syntax.git
+[submodule "bundle/plantuml"]
+	path = bundle/plantuml
+	url = git://github.com/aklt/plantuml-syntax.git
