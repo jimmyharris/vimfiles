@@ -1,0 +1,89 @@
+#########################
+#  Better Lua Snippets  #
+#########################
+
+snippet !fun(ction)?! "New function" r
+function ${1:new_function}(${2:args})
+	${VISUAL}$0
+end
+endsnippet
+
+snippet if "If ... then ... end"
+if ${1:expr} then
+	${VISUAL}$0
+end
+endsnippet
+
+snippet forp "pair for loop" b
+for ${1:key},${2:val} in pairs(${3:table_name}) do
+	${VISUAL}$0
+end
+endsnippet
+
+snippet fori "ipair for foop" b
+for ${1:idx},${2:val} in ipairs(${3:table_name}) do
+	${VISUAL}$0
+end
+endsnippet
+
+snippet for "numeric for loop" b
+for ${1:i}=${2:first},${3:last}${4/^..*/(?0:,:)/}${4:step} do
+	${VISUAL}$0
+end
+endsnippet
+
+snippet req "require('some.module')"
+require('${0:some.module}')
+endsnippet
+
+##############################
+#  Busted specific snippets  #
+##############################
+
+snippet !desc(ribe)?! "the describe block" br
+describe('${1:The description,}', function()
+
+	${2:${VISUAL:--it blocks should go here}}
+end)
+$0
+endsnippet
+
+snippet it "the it block" b
+it('${1:should do something.}', function()
+	${2:${VISUAL:pending("Implement me!")}}
+end)
+$0
+endsnippet
+
+snippet setup "setup block" b
+setup(function()
+	${1:${VISUAL:--setup this discribe block}}
+end)
+$0
+endsnippet
+
+snippet before "before_each" b
+before_each(function()
+	${1:${VISUAL:--run before each test}}
+end)
+$0
+endsnippet
+
+snippet after "after_each" b
+after_each(function()
+	${1:${VISUAL:--run after each test}}
+end)
+$0
+endsnippet
+
+snippet teardown "teardown block" b
+teardown(function()
+	${1:${VISUAL:--teardown this discribe block}}
+end)
+$0
+endsnippet
+
+snippet !pend(ing)?! "pending" br
+pending('${1:Implement me!}')$0
+endsnippet
+
