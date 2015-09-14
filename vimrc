@@ -40,14 +40,16 @@ call pathogen#helptags() " Set up documentation for all the bundles
 syntax on " Turn on FT Plug-ins and syntax highlighting.
 filetype plugin indent on
 
-runtime! plugin/sensible.vim
-
-let g:airline_powerline_fonts=1
-
 " }}}
 
 " Settings:
 " {{{
+
+runtime! plugin/sensible.vim
+" Override Sensible:
+set ttimeoutlen=0
+
+let g:airline_powerline_fonts=1
 
 " Status_Line:
 
