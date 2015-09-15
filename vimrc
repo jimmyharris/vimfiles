@@ -10,32 +10,82 @@ let s:win = has("win16") || has("win32") || has("win64")
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#syntastic#enabled = 0
 
-" Initialize Pathogen:
+" Initialize Plugins:
 " {{{
 
-set nocompatible " Disable vi compatibility
+" User Runtime Path.
+let s:user_rtp = split(&rtp, ',')[0] . '/plugins'
+
+if !has('nvim')
+  set nocompatible " Disable vi compatibility
+endif
 
 filetype off " required for some Debian distributions
 
-"disable plugins
+call plug#begin(s:user_rtp)
 
-let g:pathogen_disabled = [
-      \ 'OmniCppComplete',
-      \ 'cscope',
-      \ 'rails',
-      \ 'rvm',
-      \ 'bundler',
-      \ 'cucumber',
-      \ 'dbext'
-      \ ]
+" Cosmetic Plugins:
+Plug 'chriskempson/base16-vim', { 'do': 'colorscheme base16-default' }
+Plug 'bling/vim-airline'
 
-if s:win && !has('gui_running')
-  call add(g:pathogen_disabled, 'airline')
+" Editor Improvements
+Plug 'tpope/vim-sensible'
+Plug 'Raimondi/delimitMate'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-unimpaired'
+Plug 'henrik/vim-qargs', { 'on': 'Qdo' }
+
+Plug 'vim-scripts/a.vim', { 'on': 'A' }
+
+Plug 'godlygeek/tabular', { 'on': 'Tabular' }
+
+Plug 'scrooloose/nerdcommenter'
+
+" Searching and navigating.
+
+Plug 'kien/ctrlp.vim', { 'on': 'CtrlP' }
+
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } |
+  \Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  'NERDTreeToggle' }
+
+Plug 'vim-scripts/taglist.vim', { 'on': 'TListToggle' }
+
+Plug 'vim-scripts/genutils' | Plug 'vim-scripts/SelectBuf'
+
+" Building
+
+Plug 'tpope/vim-dispatch', { 'on': 'Make' }
+Plug 'benekastah/neomake', { 'on': 'Neomake' }
+
+" Autocomplete and snippets
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim'
+else " This requires if_lua which we son't have in neovim
+  Plug 'Shougo/neocomplete.nvim'
 endif
 
-call pathogen#runtime_append_all_bundles() " Load pathogen bundles.
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
-call pathogen#helptags() " Set up documentation for all the bundles
+" Ft Plugins:
+
+" Useful for HTML
+Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-jdaddy', { 'for': 'javascript' }
+Plug 'tpope/vim-markdown', { 'for': 'markdown' }
+Plug 'jakar/vim-json', { 'for': 'json' }
+
+Plug 'vim-scripts/Cpp11-Syntax-Support', { 'for': 'cpp' }
+
+Plug 'xolox/vim-misc' | Plug 'xolox/vim-lua-ftplugin', { 'for': 'lua' }
+
+" Plug 'vim-scripts/TeX-9', { 'for': [ 'LaTeX', 'tex' ] }
+
+call plug#end()
 
 syntax on " Turn on FT Plug-ins and syntax highlighting.
 filetype plugin indent on
@@ -105,7 +155,7 @@ if !s:win && has('gui_running')
 else
   let g:CSApprox_verbose_level=0 " Silence CSApprox (I know i don't have gvim support builtin)
   if !s:win " Windows requires this separate
-    " let base16colorspace=256
+    let base16colorspace=256
     " If we are on mac using a mac terminal program this variable will be set.
     if !exists("$TERM_PROGRAM") || ($TERM_PROGRAM != "iTerm.app" )
       if exists("t_co") && &t_co > 255 " We have Pretty Colors
