@@ -66,7 +66,7 @@ Plug 'benekastah/neomake', { 'on': 'Neomake' }
 if has('nvim')
   Plug 'Shougo/deoplete.nvim'
 else " This requires if_lua which we son't have in neovim
-  Plug 'Shougo/neocomplete.nvim'
+  Plug 'Shougo/neocomplete'
 endif
 
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
