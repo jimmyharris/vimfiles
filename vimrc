@@ -53,7 +53,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } |
   \Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  'NERDTreeToggle' }
 
 " This creates an actual list of tags so it is more useful than tagbar.
-Plug 'vim-scripts/taglist.vim', { 'on': 'TListToggle' }
+Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
 
 Plug 'vim-scripts/genutils' | Plug 'vim-scripts/SelectBuf'
 
