@@ -1,5 +1,9 @@
 plugins/
+local/
+^local/README.md
 .netrw*
 .VimballRecord
 eclim*
 eclim/
+en.utf-8.spl
+en.utf-8.sug

@@ -7,14 +7,12 @@ let s:win = has("win16") || has("win32") || has("win64")
 
 " }}}
 
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#syntastic#enabled = 0
-
 " Initialize Plugins:
 " {{{
 
 " User Runtime Path.
-let s:user_rtp = split(&rtp, ',')[0] . '/plugins'
+let g:user_rtp = split(&rtp, ',')[0]
+let s:user_plugin_path = g:user_rtp . '/plugins'
 
 if !has('nvim')
   set nocompatible " Disable vi compatibility
@@ -22,36 +20,39 @@ endif
 
 filetype off " required for some Debian distributions
 
-call plug#begin(s:user_rtp)
+call plug#begin(s:user_plugin_path)
 
 " Cosmetic Plugins:
 Plug 'chriskempson/base16-vim', { 'do': 'colorscheme base16-default' }
 Plug 'bling/vim-airline'
 
-" Editor Improvements
+" Editor Improvements:
 Plug 'tpope/vim-sensible'
-Plug 'Raimondi/delimitMate'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
+Plug 'Raimondi/delimitMate'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-endwise', { 'for': 'lua' }
 Plug 'henrik/vim-qargs', { 'on': 'Qdo' }
 
 Plug 'vim-scripts/a.vim', { 'on': 'A' }
 
-Plug 'godlygeek/tabular', { 'on': 'Tabular' }
+Plug 'godlygeek/tabular', { 'on': 'Tab' }
 
+" Useful for everything so probably good to keep around for lua and company.
 Plug 'scrooloose/nerdcommenter'
 
 " Searching and navigating.
 
-Plug 'kien/ctrlp.vim', { 'on': 'CtrlP' }
+Plug 'kien/ctrlp.vim'
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } |
   \Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  'NERDTreeToggle' }
 
+" This creates an actual list of tags so it is more useful than tagbar.
 Plug 'vim-scripts/taglist.vim', { 'on': 'TListToggle' }
 
 Plug 'vim-scripts/genutils' | Plug 'vim-scripts/SelectBuf'
@@ -60,6 +61,12 @@ Plug 'vim-scripts/genutils' | Plug 'vim-scripts/SelectBuf'
 
 Plug 'tpope/vim-dispatch', { 'on': 'Make' }
 Plug 'benekastah/neomake', { 'on': 'Neomake' }
+
+if s:win
+  Plug '$HOME/vimfiles/local'
+else
+  Plug '$HOME/.vim/local'
+endif
 
 " Autocomplete and snippets
 
@@ -71,16 +78,21 @@ endif
 
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
-" Ft Plugins:
+" FileType Plugins:
 
-" Useful for HTML
+" Useful for HTML and XML
 Plug 'tpope/vim-ragtag'
+" Useful for Json
+Plug 'jakar/vim-json'
 Plug 'tpope/vim-jdaddy', { 'for': 'javascript' }
+
+" Markdown syntax.
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
-Plug 'jakar/vim-json', { 'for': 'json' }
 
-Plug 'vim-scripts/Cpp11-Syntax-Support', { 'for': 'cpp' }
+" C++11 syntax
+Plug 'vim-scripts/Cpp11-Syntax-Support', { 'for': [ 'cpp', 'c' ] }
 
+" Lua utilities
 Plug 'xolox/vim-misc' | Plug 'xolox/vim-lua-ftplugin', { 'for': 'lua' }
 
 " Plug 'vim-scripts/TeX-9', { 'for': [ 'LaTeX', 'tex' ] }
@@ -94,6 +106,9 @@ filetype plugin indent on
 
 " Settings:
 " {{{
+
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#syntastic#enabled = 0
 
 runtime! plugin/sensible.vim
 " Override Sensible:
@@ -138,12 +153,6 @@ set hidden  " hide buffers, don't kill them
 " Color Settings:
 " {{{
 
-" Italics are terrible on windows.
-
-if s:win
-  let g:solarized_italic="off"
-endif
-
 " My preferred color scheme is solarized. This can be set to anything in the
 " Colors directory.
 
@@ -155,19 +164,12 @@ if !s:win && has('gui_running')
 else
   let g:CSApprox_verbose_level=0 " Silence CSApprox (I know i don't have gvim support builtin)
   if !s:win " Windows requires this separate
-    let base16colorspace=256
-    " If we are on mac using a mac terminal program this variable will be set.
-    if !exists("$TERM_PROGRAM") || ($TERM_PROGRAM != "iTerm.app" )
-      if exists("t_co") && &t_co > 255 " We have Pretty Colors
-        let g:solarized_termcolors=256
-      else
-        let g:solarized_termtrans=1
-      endif
+    " If I am running on mac then use the fancy 256 colorspace trick.
+    if exists("$TERM_PROGRAM")
+      let base16colorspace=256
     endif
   endif
 endif
-
-" let g:airline_theme="goodbase16"
 
 colorscheme base16-default
 
@@ -216,7 +218,7 @@ nmap <leader>j :setlocal list!<CR>
 " {{{
 
 " Tabularize:
-
+" {{{
 if exists(":Tabularize")
   " Tabularize on '='. Good for aligning assignment of variables.
   nmap <Leader>= :Tabularize /=<CR>
@@ -227,45 +229,68 @@ if exists(":Tabularize")
   vmap <Leader>: :Tabularize /:\zs<CR>
 endif
 
+" }}}
 
 " NERDTree:
-
+" {{{
 let NERDTreeHijackNetrw = 0
 
 " Type ,d to toggle NERDTree.
 nmap <Leader>d :NERDTreeToggle<CR>
 
+" }}}
 
 " NERDCommenter:
+" {{{
+
 " Make comments prettier and easier to toggle See :help NERDCommenter for
 " bindings.
 let NERDSpaceDelims = 1
 
+"}}}
 
 " DelimitMate:
-" See help delimitMate for explanations.
+" {{{
+" See :help delimitMate for explanations.
 let delimitMate_expand_space = 1
 let delimitMate_expand_cr = 1
 set backspace=eol,start,indent
 
-" A.vim:
-let g:alternateSearchPath = 'sfr:../source,sfr:../../code,sfr:../code,sfr:../src,sfr:../include,sfr:../include/private,sfr:../includes,sfr:../includes/private,sfr:../inc'
+" }}}
+
+" A_vim:
+" {{{
+"
+let g:alternateSearchPath = join([
+  \'sfr:../source',
+  \'sfr:../../code',
+  \'sfr:../code',
+  \'sfr:../src',
+  \'sfr:../include',
+  \'sfr:../include/private',
+  \'sfr:../includes',
+  \'sfr:../includes/private',
+  \'sfr:../inc'
+  \ ], ',')
+
+" }}}
 
 " TeX_9:
-
+" {{{
 " Build PDFs of LaTeX projects
 let g:tex_flavor = "pdflatex"
 
-" On Mac environments use "open *.pdf" to openthe results.
+" On Mac environments use "open *.pdf" to open the results.
 if has('mac')
   let g:tex_nine_config = {
         \'compiler': 'pdflatex',
         \'viewer': {'app': 'open', 'target': 'pdf'}
         \ }
 endif
+"}}}
 
 " Ctrlp:
-
+" {{{
 " typeahead search the quickfix window, buffer tags.
 let g:ctrlp_extensions = ['quickfix', 'buffertag', 'rtscript']
 " Ignore target directories, binary data, and version control.
@@ -281,15 +306,17 @@ let g:ctrlp_max_depth = 40
 
 " Double the height of the window at the bottom of the screen.
 let g:ctrlp_max_height = 20
+"}}}
 
 " Fugitive Settings And Fixes:
-
+"{{{
 " Delete fugitive buffers when we close them. Otherwise this pollutes the
 " buffers list.
 autocmd BufReadPost fugitive://* set bufhidden=delete
+"}}}
 
-" TagsList:
-
+" TagList:
+" {{{
 " Sort TagsList by name not by file order
 let g:Tlist_Sort_Type = "name"
 
@@ -298,15 +325,20 @@ let g:Tlist_Use_Right_Window = 1
 
 " Type ",t" in normal mode to pull open the tabs list.
 nmap <Leader>t :TlistToggle<CR>
+"}}}
 
 " UltiSnips:
+" {{{
 
 " Use Tab and shift+tab to navigate through tabstops
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsSnippetDirectories=["UltiSnips"]
+
 " }}}
+
+" }}} end plugins.
 
 " Doxygen Comments:
 " {{{
