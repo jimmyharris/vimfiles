@@ -159,7 +159,7 @@ else
   if !s:win " Windows can't handle real base16.
     " Apparently only iTerm and some linux native terminals can handle fancy
     " arrows.
-    if ~exists("$TERM_PROGRAM")
+    if !exists("$TERM_PROGRAM")
       let NERDTreeDirArrows=0
     endif
     let base16colorspace=256
