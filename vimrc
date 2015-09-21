@@ -60,7 +60,6 @@ Plug 'vim-scripts/genutils' | Plug 'vim-scripts/SelectBuf'
 " Building
 
 Plug 'tpope/vim-dispatch', { 'on': 'Make' }
-Plug 'benekastah/neomake', { 'on': 'Neomake' }
 
 if s:win
   Plug '$HOME/vimfiles/local'
@@ -69,12 +68,6 @@ else
 endif
 
 " Autocomplete and snippets
-
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim'
-else " This requires if_lua which we son't have in neovim
-  Plug 'Shougo/neocomplete'
-endif
 
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
@@ -161,13 +154,15 @@ set background=dark
 
 if !s:win && has('gui_running')
   set background=light
+  let NERDTreeDirArrows=1
 else
-  let g:CSApprox_verbose_level=0 " Silence CSApprox (I know i don't have gvim support builtin)
-  if !s:win " Windows requires this separate
-    " If I am running on mac then use the fancy 256 colorspace trick.
-    if exists("$TERM_PROGRAM")
-      let base16colorspace=256
+  if !s:win " Windows can't handle real base16.
+    " Apparently only iTerm and some linux native terminals can handle fancy
+    " arrows.
+    if ~exists("$TERM_PROGRAM")
+      let NERDTreeDirArrows=0
     endif
+    let base16colorspace=256
   endif
 endif
 
@@ -261,8 +256,7 @@ set backspace=eol,start,indent
 " A_vim:
 " {{{
 "
-let g:alternateSearchPath = join([
-  \'sfr:../source',
+let g:alternateSearchPath = join([ 'sfr:../source',
   \'sfr:../../code',
   \'sfr:../code',
   \'sfr:../src',
