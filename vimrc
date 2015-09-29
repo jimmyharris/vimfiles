@@ -33,6 +33,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-unimpaired'
+Plug 'tmhedberg/matchit'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise', { 'for': 'lua' }
@@ -91,9 +92,6 @@ Plug 'xolox/vim-misc' | Plug 'xolox/vim-lua-ftplugin', { 'for': 'lua' }
 " Plug 'vim-scripts/TeX-9', { 'for': [ 'LaTeX', 'tex' ] }
 
 call plug#end()
-
-syntax on " Turn on FT Plug-ins and syntax highlighting.
-filetype plugin indent on
 
 " }}}
 
