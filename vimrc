@@ -48,7 +48,7 @@ Plug 'scrooloose/nerdcommenter'
 
 " Searching and navigating.
 
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } |
   \Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  'NERDTreeToggle' }
@@ -105,13 +105,11 @@ runtime! plugin/sensible.vim
 " Override Sensible:
 set ttimeoutlen=0
 
-let g:airline_powerline_fonts=1
-
 " Status_Line:
 
-if s:win && !has('gui_running')
-  set statusline=%f%m\ %{fugitive#statusline()}%<%r%w%y[%{&ff}]%=%p%%\ %L,%l,%v\
-endif
+" if s:win && !has('gui_running')
+  " set statusline=%f%m\ %{fugitive#statusline()}%<%r%w%y[%{&ff}]%=%p%%\ %L,%l,%v\
+" endif
 
 " Directory Settings:
 " These settings ensure that .swp and backup files all live in a temporary
