@@ -63,9 +63,9 @@ Plug 'vim-scripts/genutils' | Plug 'vim-scripts/SelectBuf'
 Plug 'tpope/vim-dispatch', { 'on': 'Make' }
 
 if s:win
-  Plug '$HOME/vimfiles/local'
+  Plug '~\vimfiles\local'
 else
-  Plug '$HOME/.vim/local'
+  Plug '~/.vim/local'
 endif
 
 " Autocomplete and snippets
