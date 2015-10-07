@@ -36,7 +36,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tmhedberg/matchit'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-endwise', { 'for': 'lua' }
+Plug 'tpope/vim-endwise'
 Plug 'henrik/vim-qargs', { 'on': 'Qdo' }
 
 Plug 'vim-scripts/a.vim', { 'on': 'A' }
@@ -62,12 +62,6 @@ Plug 'vim-scripts/genutils' | Plug 'vim-scripts/SelectBuf'
 
 Plug 'tpope/vim-dispatch', { 'on': 'Make' }
 
-if s:win
-  Plug '~\vimfiles\local'
-else
-  Plug '~/.vim/local'
-endif
-
 " Autocomplete and snippets
 
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
@@ -80,6 +74,9 @@ Plug 'tpope/vim-ragtag'
 Plug 'jakar/vim-json'
 Plug 'tpope/vim-jdaddy', { 'for': 'javascript' }
 
+" Plant UML syntax
+Plug 'aklt/plantuml-syntax'
+
 " Markdown syntax.
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 
@@ -90,6 +87,14 @@ Plug 'vim-scripts/Cpp11-Syntax-Support', { 'for': [ 'cpp', 'c' ] }
 Plug 'xolox/vim-misc' | Plug 'xolox/vim-lua-ftplugin', { 'for': 'lua' }
 
 " Plug 'vim-scripts/TeX-9', { 'for': [ 'LaTeX', 'tex' ] }
+
+" Local overrides
+
+if s:win
+  Plug '~\vimfiles\local'
+else
+  Plug '~/.vim/local'
+endif
 
 call plug#end()
 
