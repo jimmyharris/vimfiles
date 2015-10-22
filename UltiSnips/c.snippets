@@ -51,6 +51,10 @@ ${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
 #endif /* end of include guard: $1 */
 endsnippet
 
+snippet Inc "#include system header (Inc)" !b
+#include <${1:stdio.h}>
+endsnippet
+
 snippet inc "#include local header (inc)" !b
 #include "${1:`!p snip.rv = snip.basename + '.h'`}"
 endsnippet

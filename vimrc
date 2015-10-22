@@ -112,9 +112,10 @@ set ttimeoutlen=0
 
 " Status_Line:
 
-" if s:win && !has('gui_running')
-  " set statusline=%f%m\ %{fugitive#statusline()}%<%r%w%y[%{&ff}]%=%p%%\ %L,%l,%v\
-" endif
+" fall back on fugitive status line unless the gui is running.
+if !has('gui_running')
+  set statusline=%f%m\ %{fugitive#statusline()}%<%r%w%y[%{&ff}]%=%p%%\ %L,%l,%v\
+endif
 
 " Directory Settings:
 " These settings ensure that .swp and backup files all live in a temporary
@@ -257,16 +258,19 @@ set backspace=eol,start,indent
 " A_vim:
 " {{{
 "
-let g:alternateSearchPath = join([ 'sfr:../source',
-  \'sfr:../../code',
-  \'sfr:../code',
-  \'sfr:../src',
-  \'sfr:../include',
-  \'sfr:../include/private',
-  \'sfr:../includes',
-  \'sfr:../includes/private',
-  \'sfr:../inc'
-  \ ], ',')
+let g:alternateSearchPath = join([
+      \'sfr:../source',
+      \'sfr:../include',
+      \'sfr:../code',
+      \'sfr:../includes',
+      \'sfr:../../code',
+      \'sfr:../include/private',
+      \'sfr:../include/public',
+      \'sfr:../includes/private',
+      \'sfr:../includes/public',
+      \'sfr:../src',
+      \'sfr:../inc'
+      \ ], ',')
 
 " }}}
 
