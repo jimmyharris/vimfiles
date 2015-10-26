@@ -1,4 +1,4 @@
-" Vimrc by James Harris.
+" init.vim/Vimrc by James Harris.
 
 " Detect Windows:
 " {{{
@@ -72,7 +72,7 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'tpope/vim-ragtag'
 " Useful for Json
 Plug 'jakar/vim-json'
-Plug 'tpope/vim-jdaddy', { 'for': 'javascript' }
+Plug 'tpope/vim-jdaddy', { 'for': ['javascript', 'json'] }
 
 " Plant UML syntax
 Plug 'aklt/plantuml-syntax'
