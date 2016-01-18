@@ -60,7 +60,7 @@ Plug 'vim-scripts/genutils' | Plug 'vim-scripts/SelectBuf'
 
 " Building
 
-Plug 'tpope/vim-dispatch', { 'on': 'Make' }
+Plug 'tpope/vim-dispatch'
 
 " Autocomplete and snippets
 
@@ -74,6 +74,9 @@ Plug 'tpope/vim-ragtag'
 Plug 'jakar/vim-json'
 Plug 'tpope/vim-jdaddy', { 'for': ['javascript', 'json'] }
 
+" Python Support
+Plug 'klen/python-mode'
+
 " Plant UML syntax
 Plug 'aklt/plantuml-syntax'
 
@@ -86,6 +89,7 @@ Plug 'vim-scripts/Cpp11-Syntax-Support', { 'for': [ 'cpp', 'c' ] }
 " Lua utilities
 Plug 'xolox/vim-misc' | Plug 'xolox/vim-lua-ftplugin', { 'for': 'lua' }
 
+" Latex mode
 " Plug 'vim-scripts/TeX-9', { 'for': [ 'LaTeX', 'tex' ] }
 
 " Local overrides
@@ -156,14 +160,10 @@ set background=dark
 
 if !s:win && has('gui_running')
   set background=light
-  let NERDTreeDirArrows=1
 else
   if !s:win " Windows can't handle real base16.
     " Apparently only iTerm and some linux native terminals can handle fancy
     " arrows.
-    if !exists("$TERM_PROGRAM")
-      let NERDTreeDirArrows=0
-    endif
     let base16colorspace=256
   endif
 endif
@@ -198,11 +198,12 @@ map <leader>a :A<CR><CR>
 " Invisible_Characters:
 " On linux or in unicode environments we can use pretty symbols for invisible
 " characters.
+set encoding=utf-8
 if !s:win
-" Use the same symbols as TextMate for tabstops and EOLs
+  " Use the same symbols as TextMate for tabstops and EOLs
   set listchars=tab:▸\ ,eol:¬,trail:☠
+  " set listchars=tab:»\ ,eol:¶,trail:§
 else
-  set encoding=utf-8
   set listchars=tab:»\ ,eol:¶,trail:§
 endif
 
@@ -306,6 +307,11 @@ let g:ctrlp_max_depth = 40
 " Double the height of the window at the bottom of the screen.
 let g:ctrlp_max_height = 20
 "}}}
+
+" Pymode Settings:
+" {{{
+let g:pymode_rope = 0
+" }}}
 
 " Fugitive Settings And Fixes:
 "{{{
