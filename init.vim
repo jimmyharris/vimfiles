@@ -37,6 +37,7 @@ Plug 'tmhedberg/matchit'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'henrik/vim-qargs', { 'on': 'Qdo' }
 
 Plug 'vim-scripts/a.vim', { 'on': 'A' }
@@ -198,7 +199,11 @@ map <leader>a :A<CR><CR>
 " Invisible_Characters:
 " On linux or in unicode environments we can use pretty symbols for invisible
 " characters.
-set encoding=utf-8
+if !exists("g:didSetEncoding")
+  set encoding=utf-8
+  let g:didSetEncoding=1
+endif
+
 if !s:win
   " Use the same symbols as TextMate for tabstops and EOLs
   set listchars=tab:▸\ ,eol:¬,trail:☠
@@ -214,6 +219,14 @@ nmap <leader>j :setlocal list!<CR>
 
 " Plugins:
 " {{{
+
+" EditorConfig:
+" {{{
+
+" Play nice with fugitive.vim
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+" }}}
 
 " Tabularize:
 " {{{
