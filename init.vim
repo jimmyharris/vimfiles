@@ -90,6 +90,9 @@ Plug 'vim-scripts/Cpp11-Syntax-Support', { 'for': [ 'cpp', 'c' ] }
 " Lua utilities
 Plug 'xolox/vim-misc' | Plug 'xolox/vim-lua-ftplugin', { 'for': 'lua' }
 
+" Powershell
+Plug 'PProvost/vim-ps1'
+
 " Latex mode
 " Plug 'vim-scripts/TeX-9', { 'for': [ 'LaTeX', 'tex' ] }
 
@@ -324,6 +327,7 @@ let g:ctrlp_max_height = 20
 " Pymode Settings:
 " {{{
 let g:pymode_rope = 0
+let g:pymode_lint_checkers = ['pylint', 'pep8', 'pyflakes', 'mccabe']
 " }}}
 
 " Fugitive Settings And Fixes:
