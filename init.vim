@@ -23,8 +23,13 @@ filetype off " required for some Debian distributions
 call plug#begin(s:user_plugin_path)
 
 " Cosmetic Plugins:
-Plug 'chriskempson/base16-vim', { 'do': 'colorscheme base16-default' }
-Plug 'bling/vim-airline'
+Plug 'jimmyharris/vim-colors-solarized', {
+      \'branch': 'tagslist_mod',
+      \'do': 'set background=dark; colorscheme solarized'
+      \ }
+" Plug 'chriskempson/base16-vim', { 'do': 'colorscheme base16-default' }
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Editor Improvements:
 Plug 'tpope/vim-sensible'
@@ -164,15 +169,9 @@ set background=dark
 
 if !s:win && has('gui_running')
   set background=light
-else
-  if !s:win " Windows can't handle real base16.
-    " Apparently only iTerm and some linux native terminals can handle fancy
-    " arrows.
-    let base16colorspace=256
-  endif
 endif
 
-colorscheme base16-default
+colorscheme solarized
 
 " }}}
 
