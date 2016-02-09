@@ -80,6 +80,9 @@ Plug 'tpope/vim-ragtag'
 Plug 'jakar/vim-json'
 Plug 'tpope/vim-jdaddy', { 'for': ['javascript', 'json'] }
 
+" Bitbake Support
+Plug 'kergoth/vim-bitbake'
+
 " Python Support
 Plug 'klen/python-mode'
 
