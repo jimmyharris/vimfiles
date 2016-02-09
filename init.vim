@@ -384,6 +384,7 @@ autocmd Bufread *.dox set filetype=doxygen
 autocmd Bufread vimrc set foldmethod=marker
 autocmd Bufread .vimrc set foldmethod=marker
 autocmd Bufread _vimrc set foldmethod=marker
+autocmd Bufread init.vim set foldmethod=marker
 
 
 " Remove Trailing Whitespace:
