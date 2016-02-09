@@ -55,9 +55,12 @@ Plug 'scrooloose/nerdcommenter'
 " Searching and navigating.
 
 Plug 'ctrlpvim/ctrlp.vim'
-
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } |
-  \Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  'NERDTreeToggle' }
+if s:win
+  Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+else
+  Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } |
+    \Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  'NERDTreeToggle' }
+endif
 
 " This creates an actual list of tags so it is more useful than tagbar.
 Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
