@@ -22,27 +22,25 @@ filetype off " required for some Debian distributions
 
 call plug#begin(s:user_plugin_path)
 
+" Sensible Defaults:
+Plug 'tpope/vim-sensible'
+
 " Cosmetic Plugins:
-Plug 'jimmyharris/vim-colors-solarized', {
-      \'branch': 'tagslist_mod',
-      \'do': 'set background=dark; colorscheme solarized'
-      \ }
-" Plug 'chriskempson/base16-vim', { 'do': 'colorscheme base16-default' }
+Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Editor Improvements:
-Plug 'tpope/vim-sensible'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-unimpaired'
-Plug 'tmhedberg/matchit'
-Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
-Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tmhedberg/matchit'
+Plug 'Raimondi/delimitMate'
 Plug 'henrik/vim-qargs', { 'on': 'Qdo' }
 
 Plug 'vim-scripts/a.vim', { 'on': 'A' }
@@ -89,6 +87,9 @@ Plug 'kergoth/vim-bitbake'
 " Python Support
 Plug 'klen/python-mode'
 
+" Puppet Support
+Plug 'rodjek/vim-puppet'
+
 " Plant UML syntax
 Plug 'aklt/plantuml-syntax'
 
@@ -105,7 +106,9 @@ Plug 'xolox/vim-misc' | Plug 'xolox/vim-lua-ftplugin', { 'for': 'lua' }
 Plug 'PProvost/vim-ps1'
 
 " Latex mode
-" Plug 'vim-scripts/TeX-9', { 'for': [ 'LaTeX', 'tex' ] }
+if has('mac')
+  Plug 'vim-scripts/TeX-9', { 'for': [ 'LaTeX', 'tex' ] }
+endif
 
 " Local overrides
 
@@ -126,7 +129,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#syntastic#enabled = 0
 
 runtime! plugin/sensible.vim
-" Override Sensible:
+" " Override Sensible:
 set ttimeoutlen=0
 
 " Status_Line:
@@ -175,9 +178,14 @@ set background=dark
 
 if !s:win && has('gui_running')
   set background=light
+else
+  if !s:win
+    " Windows really can't handle base16 unless we are running in mintty
+    let base16colorspace=256
+  endif
 endif
 
-colorscheme solarized
+colorscheme base16-default
 
 " }}}
 
@@ -385,21 +393,6 @@ autocmd Bufread vimrc set foldmethod=marker
 autocmd Bufread .vimrc set foldmethod=marker
 autocmd Bufread _vimrc set foldmethod=marker
 autocmd Bufread init.vim set foldmethod=marker
-
-
-" Remove Trailing Whitespace:
-" Caution! This can cause whitespace conflicts on files created by other
-" people.
-autocmd BufWritePre * :%s/\s\+$//e
-
-" }}}
-
-" Tag Paths:
-" {{{
-
-" Local tagpaths.
-
-set tags=tags
 
 " }}}
 
