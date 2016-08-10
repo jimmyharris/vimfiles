@@ -93,6 +93,9 @@ Plug 'rodjek/vim-puppet'
 " Plant UML syntax
 Plug 'aklt/plantuml-syntax'
 
+" QML Syntax
+Plug 'peterhoeg/vim-qml'
+
 " Markdown syntax.
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 
@@ -178,14 +181,15 @@ set background=dark
 
 if !s:win && has('gui_running')
   set background=light
+  colorscheme base16-default-light
 else
   if !s:win
     " Windows really can't handle base16 unless we are running in mintty
     let base16colorspace=256
   endif
+  colorscheme base16-default-dark
 endif
 
-colorscheme base16-default
 
 " }}}
 
@@ -340,7 +344,7 @@ let g:ctrlp_max_height = 20
 " Pymode Settings:
 " {{{
 let g:pymode_rope = 0
-let g:pymode_lint_checkers = ['pylint', 'pep8', 'pyflakes', 'mccabe']
+let g:pymode_lint_checkers = ['pylint', 'pyflakes', 'mccabe']
 " }}}
 
 " Fugitive Settings And Fixes:
