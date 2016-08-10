@@ -60,6 +60,11 @@ else
     \Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  'NERDTreeToggle' }
 endif
 
+if !s:win
+  Plug 'tmux-plugins/vim-tmux-focus-events'
+  Plug 'tmux-plugins/vim-tmux'
+endif
+
 " This creates an actual list of tags so it is more useful than tagbar.
 Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
 
