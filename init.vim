@@ -32,13 +32,14 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Editor Improvements:
 Plug 'editorconfig/editorconfig-vim'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-unimpaired'
 Plug 'tmhedberg/matchit'
 Plug 'Raimondi/delimitMate'
 Plug 'henrik/vim-qargs', { 'on': 'Qdo' }
@@ -60,6 +61,7 @@ else
     \Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  'NERDTreeToggle' }
 endif
 
+" Tmux specific scripts
 if !s:win
   Plug 'tmux-plugins/vim-tmux-focus-events'
   Plug 'tmux-plugins/vim-tmux'
