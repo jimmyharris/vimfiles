@@ -88,8 +88,12 @@ Plug 'tpope/vim-ragtag'
 Plug 'jakar/vim-json'
 Plug 'tpope/vim-jdaddy', { 'for': ['javascript', 'json'] }
 
+" Groovy Indenting support
+Plug 'jimmyharris/groovyindent'
+Plug 'rdolgushin/groovy.vim'
+
 " Bitbake Support
-Plug 'kergoth/vim-bitbake'
+" Plug 'kergoth/vim-bitbake'
 
 " Python Support
 Plug 'klen/python-mode'
