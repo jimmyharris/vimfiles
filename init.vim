@@ -26,7 +26,7 @@ call plug#begin(s:user_plugin_path)
 Plug 'tpope/vim-sensible'
 
 " Cosmetic Plugins:
-Plug 'chriskempson/base16-vim'
+Plug 'rakr/vim-one'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -184,6 +184,25 @@ set hidden  " hide buffers, don't kill them
 " Color Settings:
 " {{{
 
+" Enable True Colors:
+" {{{
+" Try using True Colors if available.
+
+" For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+if !s:win && (has("nvim"))
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+
+" For Neovim > 0.1.5 and Vim > patch 7.4.1799 
+" < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+" Based on Vim patch 7.4.1770 (`guicolors` option) 
+" < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+" < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+if !s:win && (has("termguicolors"))
+  set termguicolors
+endif
+" }}}
+
 " My preferred color scheme is solarized. This can be set to anything in the
 " Colors directory.
 
@@ -192,14 +211,10 @@ set background=dark
 
 if !s:win && has('gui_running')
   set background=light
-  colorscheme base16-default-light
-else
-  if !s:win
-    " Windows really can't handle base16 unless we are running in mintty
-    let base16colorspace=256
-  endif
-  colorscheme base16-default-dark
 endif
+
+" Set the color scheme to one
+colorscheme one
 
 
 " }}}
