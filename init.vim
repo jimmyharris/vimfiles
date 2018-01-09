@@ -44,6 +44,20 @@ Plug 'tmhedberg/matchit'
 Plug 'Raimondi/delimitMate'
 Plug 'henrik/vim-qargs', { 'on': 'Qdo' }
 
+" You CompleteMe:
+if !s:win
+  function! BuildYCM(info)
+    " info is a dictionary with 3 fields
+    " - name:   name of the plugin
+    " - status: 'installed', 'updated', or 'unchanged'
+    " - force:  set on PlugInstall! or PlugUpdate!
+    if a:info.status == 'installed' || a:info.force
+      !./install.py
+    endif
+  endfunction
+  Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+endif
+
 Plug 'vim-scripts/a.vim', { 'on': 'A' }
 
 Plug 'godlygeek/tabular', { 'on': 'Tab' }
@@ -386,6 +400,21 @@ let g:Tlist_Use_Right_Window = 1
 " Type ",t" in normal mode to pull open the tabs list.
 nmap <Leader>t :TlistToggle<CR>
 "}}}
+
+
+" YouCompleteMe:
+" {{{
+if !s:win
+  let g:ycm_collect_identifiers_from_tags_files = 0 
+  let g:ycm_confirm_extra_conf = 0 
+  let g:ycm_autoclose_preview_window_after_completion = 1 
+  let g:ycm_autoclose_preview_window_after_insertion = 1 
+  let g:ycm_filepath_completion_use_working_dir = 1 
+  let g:ycm_enable_diagnostic_highlighting = 1 
+  let g:ycm_complete_in_strings = 1 
+  let g:ycm_complete_in_comments = 1 
+endif
+" }}}
 
 " UltiSnips:
 " {{{
