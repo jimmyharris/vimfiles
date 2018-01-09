@@ -54,12 +54,7 @@ Plug 'scrooloose/nerdcommenter'
 " Searching and navigating.
 
 Plug 'ctrlpvim/ctrlp.vim'
-if s:win
-  Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-else
-  Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } |
-    \Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  'NERDTreeToggle' }
-endif
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 " Tmux specific scripts
 if !s:win
@@ -93,7 +88,7 @@ Plug 'jimmyharris/groovyindent'
 Plug 'rdolgushin/groovy.vim'
 
 " Bitbake Support
-" Plug 'kergoth/vim-bitbake'
+Plug 'kergoth/vim-bitbake'
 
 " Python Support
 Plug 'klen/python-mode'
