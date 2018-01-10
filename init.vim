@@ -223,7 +223,8 @@ if !s:win && has('gui_running')
 endif
 
 " Set the color scheme to one
-colorscheme one
+" Errors in init.vim will cause Neovim to fail at startup on Windows.
+silent! colorscheme one
 
 
 " }}}
