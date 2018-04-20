@@ -1,0 +1,12 @@
+# Editor Config File
+# Top-most EditorConfig file
+root = true
+
+# Rules that apply to all files I own
+[*]
+trim_trailing_whitespace = true
+
+# Don't trim trailing whitespace from these files becasue they aren't really
+# mine.
+[{autoload/plug.vim, **/plugins/*, **/*.snippets, spell/**/* }]
+trim_trailing_whitespace = false
