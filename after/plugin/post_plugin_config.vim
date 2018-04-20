@@ -26,7 +26,7 @@ if exists("g:loaded_youcompleteme")
       if pumvisible()
         return "\<C-y>"
       endif
-      return "" 
+      return ""
     endfunction
   endif
 endif
@@ -42,6 +42,14 @@ if exists(":Tabularize")
   " Good for JSON formatting.
   nmap <Leader>: :Tabularize /:\zs<CR>
   vmap <Leader>: :Tabularize /:\zs<CR>
+endif
+" }}}
+
+" FZF:
+" {{{
+" Open files in horizontal split
+if exists('g:loaded_fzf')
+  nnoremap <silent> <C-p> :call fzf#run({'up': '40%', 'sink': 'e'})<CR>
 endif
 " }}}
 

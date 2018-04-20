@@ -67,7 +67,15 @@ Plug 'scrooloose/nerdcommenter'
 
 " Searching and navigating.
 
-Plug 'ctrlpvim/ctrlp.vim'
+if s:win
+  Plug 'ctrlpvim/ctrlp.vim'
+else
+  " FZF from: https://github.com/junegunn/fzf
+  " See https://github.com/junegunn/fzf#using-git for information on how to
+  " install FZF locally.
+  Plug '~/.fzf'
+endif
+
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 " Tmux specific scripts
