@@ -105,7 +105,7 @@ Plug 'rdolgushin/groovy.vim'
 Plug 'kergoth/vim-bitbake'
 
 " Python Support
-Plug 'klen/python-mode'
+Plug 'python-mode/python-mode'
 
 " Puppet Support
 Plug 'rodjek/vim-puppet'
@@ -365,7 +365,7 @@ let g:ctrlp_max_height = 20
 " Pymode Settings:
 " {{{
 let g:pymode_rope = 0
-let g:pymode_lint_checkers = ['pylint', 'pyflakes', 'mccabe']
+let g:pymode_lint_checkers = ['pylint']
 " }}}
 
 " Fugitive Settings And Fixes:
