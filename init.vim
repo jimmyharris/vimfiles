@@ -64,6 +64,9 @@ Plug 'godlygeek/tabular'
 " Comment Manipulation:
 Plug 'scrooloose/nerdcommenter'
 
+" Syntax Checking Linting:
+Plug 'scrooloose/syntastic'
+
 " Searching And Navigating:
 if s:win
   Plug 'ctrlpvim/ctrlp.vim'
@@ -97,19 +100,21 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " FileType Plugins:
 
+" Fast starup including many plugins:
+Plug 'sheerun/vim-polyglot'
+
 " C:
 Plug 'vim-scripts/a.vim'
 
 
 " Useful For HTML And XML:
 Plug 'tpope/vim-ragtag'
+
 " JSON:
-Plug 'jakar/vim-json'
 Plug 'tpope/vim-jdaddy', { 'for': ['javascript', 'json'] }
 
 " Groovy:
 Plug 'jimmyharris/groovyindent'
-Plug 'rdolgushin/groovy.vim'
 
 " Bitbake Support:
 if !s:win
@@ -117,7 +122,11 @@ if !s:win
 endif
 
 " Python Support:
-Plug 'python-mode/python-mode'
+if s:win
+  Plug 'davidhalter/jedi-vim'
+endif
+Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
+Plug 'tmhedberg/SimpylFold'
 
 " Puppet Support:
 Plug 'rodjek/vim-puppet'
@@ -128,17 +137,9 @@ Plug 'aklt/plantuml-syntax'
 " QML Syntax:
 Plug 'peterhoeg/vim-qml'
 
-" Markdown Syntax:
-Plug 'tpope/vim-markdown', { 'for': 'markdown' }
-
-" Cxx11 Syntax:
-Plug 'vim-scripts/Cpp11-Syntax-Support', { 'for': [ 'cpp', 'c' ] }
-
 " Lua Utilities:
-Plug 'xolox/vim-misc' | Plug 'xolox/vim-lua-ftplugin', { 'for': 'lua' }
-
-" Powershell:
-Plug 'PProvost/vim-ps1'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-lua-ftplugin'
 
 " Latex mode
 if has('mac')
@@ -157,7 +158,9 @@ call plug#end()
 
 " Airline Settings:
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#syntastic#enabled = 0
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline_skip_empty_seciton = 1
+let g:airline#extensions#virtualenv#enabled = 1
 
 runtime! plugin/sensible.vim
 " " Override Sensible:
@@ -237,6 +240,9 @@ silent! colorscheme one
 
 let g:asmsyntax="armasm"
 
+" Python Syntax:
+let python_highlight_all = 1
+
 " }}}
 
 " Custom Mappings: {{{
@@ -279,6 +285,25 @@ nmap <leader>j :setlocal list!<CR>
 
 " Plugins: {{{
 
+" Polyglot: {{{
+
+" Assume we have a set of disabled langues (append to this list with reasoning
+" as needed)
+let g:polyglot_disabled = []
+
+" Default python syntax is better than polyglot
+let g:polyglot_disabled += ['python']
+
+" Prefer TeX_9 to polyglot
+" Prefer fugitive to polyglot
+" Don't use JSON5
+let g:polyglot_disabled += ['git', 'latex', 'json5']
+
+" JSON Configuration:
+let g:vim_json_syntax_conceal = 0
+
+" }}}
+
 " EditorConfig: {{{
 
 " Play nice with fugitive.vim
@@ -288,6 +313,14 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " NERDTree: {{{
 let NERDTreeHijackNetrw = 0
+
+"" NERDTree configuration
+let g:NERDTreeChDirMode=2
+let g:NERDTreeIgnore=['\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
+let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
+set wildignore+=*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
+
+nnoremap <silent> <F2> :NERDTreeFind<CR>
 
 " Type ,d to toggle NERDTree.
 nmap <Leader>d :NERDTreeToggle<CR>
@@ -362,9 +395,19 @@ if s:win
 endif
 "}}}
 
-" Pymode Settings: {{{
-let g:pymode_rope = 0
-let g:pymode_lint_checkers = ['pylint']
+" JediVim: {{{
+" Only support this on windows where I don't have YCM installed.
+if s:win
+  let g:jedi#popup_on_dot = 0
+  let g:jedi#goto_assignments_command = "<leader>a"
+  let g:jedi#goto_definitions_command = "<leader>g"
+  let g:jedi#documentation_command = "K"
+  let g:jedi#usages_command = "<leader>n"
+  let g:jedi#rename_command = "<leader>r"
+  let g:jedi#show_call_signatures = "0"
+  let g:jedi#completions_command = "<C-Space>"
+  let g:jedi#smart_auto_mappings = 0
+endif
 " }}}
 
 " Fugitive Settings And Fixes: {{{
@@ -392,6 +435,23 @@ let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 
+" }}}
+
+" Syntastic: {{{
+
+" Settings:
+let g:syntastic_always_populate_loc_list=1
+if !s:win
+  let g:syntastic_error_symbol='✗'
+  let g:syntastic_warning_symbol='⚠'
+  let g:syntastic_style_error_symbol = '✗'
+  let g:syntastic_style_warning_symbol = '⚠'
+endif
+let g:syntastic_auto_loc_list=1
+let g:syntastic_aggregate_errors = 1
+
+" Linters:
+let g:syntastic_python_checkers=['python', 'pylint']
 " }}}
 
 " }}} end plugins.
