@@ -97,9 +97,6 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " FileType Plugins:
 
-" Fast starup including many plugins:
-Plug 'sheerun/vim-polyglot'
-
 " C:
 Plug 'vim-scripts/a.vim'
 
