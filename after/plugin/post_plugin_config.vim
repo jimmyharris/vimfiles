@@ -1,7 +1,7 @@
 " These configurations must occur after plugins load in order to insure that
 " we can detect if a plugin was loaded or not.
-" YouCompleteMe:
-" {{{
+
+" YouCompleteMe: {{{
 
 " Only do this if we have loaded YouCompleteMe
 if exists("g:loaded_youcompleteme")
@@ -32,8 +32,7 @@ if exists("g:loaded_youcompleteme")
 endif
 " }}}
 
-" Tabularize:
-" {{{
+" Tabularize: {{{
 if exists(":Tabularize")
   " Tabularize on '='. Good for aligning assignment of variables.
   nmap <Leader>= :Tabularize /=<CR>
@@ -45,8 +44,7 @@ if exists(":Tabularize")
 endif
 " }}}
 
-" FZF:
-" {{{
+" FZF: {{{
 " Open files in horizontal split
 if exists('g:loaded_fzf')
   nnoremap <silent> <C-p> :call fzf#run({'up': '40%', 'sink': 'e'})<CR>

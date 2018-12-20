@@ -1,17 +1,17 @@
 " init.vim/Vimrc by James Harris.
 
-" Detect Windows:
-" {{{
+" Detect Windows OS: {{{
 
 let s:win = has("win16") || has("win32") || has("win64")
 
 " }}}
 
-" Initialize Plugins:
-" {{{
+" Initialize Plugins: {{{
 
-" User Runtime Path.
+" PrePlugin Setup: {{{
+" Get the user runtime path which is usually fist in the rtp setting.
 let g:user_rtp = split(&rtp, ',')[0]
+" Plugin paths live here.
 let s:user_plugin_path = g:user_rtp . '/plugins'
 
 if !has('nvim')
@@ -19,7 +19,9 @@ if !has('nvim')
 endif
 
 filetype off " required for some Debian distributions
+" }}}
 
+" Plugin Setup: {{{
 call plug#begin(s:user_plugin_path)
 
 " Sensible Defaults:
@@ -53,30 +55,26 @@ Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-unimpaired'
 Plug 'tmhedberg/matchit'
 Plug 'Raimondi/delimitMate'
-Plug 'henrik/vim-qargs', { 'on': 'Qdo' }
-
-Plug 'vim-scripts/a.vim', { 'on': 'A' }
+Plug 'henrik/vim-qargs'
 
 Plug 'godlygeek/tabular'
 
-" Useful for everything so probably good to keep around for lua and company.
+" Comment Manipulation:
 Plug 'scrooloose/nerdcommenter'
 
-" Searching and navigating.
-
+" Searching And Navigating:
 if s:win
   Plug 'ctrlpvim/ctrlp.vim'
 else
   " FZF from: https://github.com/junegunn/fzf
   " See https://github.com/junegunn/fzf#using-git for information on how to
   " install FZF locally.
-  Plug '~/.fzf'
+  Plug expand('~/.fzf')
 endif
 
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
 
 " Tmux specific scripts
 if !s:win
@@ -89,7 +87,7 @@ Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
 
 Plug 'vim-scripts/genutils' | Plug 'vim-scripts/SelectBuf'
 
-" Building
+" Building:
 
 Plug 'tpope/vim-dispatch'
 
@@ -99,41 +97,50 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " FileType Plugins:
 
-" Useful for HTML and XML
+" Fast starup including many plugins:
+Plug 'sheerun/vim-polyglot'
+
+" C:
+Plug 'vim-scripts/a.vim'
+
+
+" Useful For HTML And XML:
 Plug 'tpope/vim-ragtag'
-" Useful for Json
+" JSON:
 Plug 'jakar/vim-json'
 Plug 'tpope/vim-jdaddy', { 'for': ['javascript', 'json'] }
 
-" Groovy Indenting support
+" Groovy:
 Plug 'jimmyharris/groovyindent'
 Plug 'rdolgushin/groovy.vim'
 
-" Bitbake Support
-Plug 'kergoth/vim-bitbake'
+" Bitbake Support:
+if !s:win
+  Plug 'kergoth/vim-bitbake'
+endif
 
-" Python Support
+" Python Support:
 Plug 'python-mode/python-mode'
 
-" Puppet Support
+" Puppet Support:
 Plug 'rodjek/vim-puppet'
 
-" Plant UML syntax
+" Plant UML Syntax:
 Plug 'aklt/plantuml-syntax'
 
-" QML Syntax
+" QML Syntax:
 Plug 'peterhoeg/vim-qml'
 
-" Markdown syntax.
+" Markdown Syntax:
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 
-" C++11 syntax
+" Cxx11 Syntax:
 Plug 'vim-scripts/Cpp11-Syntax-Support', { 'for': [ 'cpp', 'c' ] }
 
-" Lua utilities
+" Lua Utilities:
 Plug 'xolox/vim-misc' | Plug 'xolox/vim-lua-ftplugin', { 'for': 'lua' }
 
-" Powershell
+" Powershell:
 Plug 'PProvost/vim-ps1'
 
 " Latex mode
@@ -143,19 +150,15 @@ endif
 
 " Local overrides
 
-if s:win
-  Plug '~\vimfiles\local'
-else
-  Plug '~/.vim/local'
-endif
+Plug g:user_rtp . 'local'
 
 call plug#end()
-
+" }}}
 " }}}
 
-" Settings:
-" {{{
+" Settings: {{{
 
+" Airline Settings:
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#syntastic#enabled = 0
 
@@ -177,8 +180,7 @@ endif
 set directory^=~/tmp,/tmp,$TMP
 set backupdir^=~/tmp,/tmp,$TMP
 
-" General Options:
-" {{{
+" General Options: {{{
 "
 set tabpagemax=30
 set novisualbell " Don't display a visual bell.
@@ -192,17 +194,16 @@ set expandtab
 " Show line numbers in all files.
 
 set number
-" }}}
 
 " Window_Preferences:
 set noequalalways " no auto equal
 set hidden  " hide buffers, don't kill them
 
-" Color Settings:
-" {{{
+" }}}
 
-" Enable True Colors:
-" {{{
+" Color Settings: {{{
+
+" Enable True Colors: {{{
 " Try using True Colors if available.
 
 " For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
@@ -233,7 +234,6 @@ endif
 " Errors in init.vim will cause Neovim to fail at startup on Windows.
 silent! colorscheme one
 
-
 " }}}
 
 " Assembly Language Type: Assume we are using ARM
@@ -242,24 +242,23 @@ let g:asmsyntax="armasm"
 
 " }}}
 
-" Custom Mappings:
-" {{{
+" Custom Mappings: {{{
 
-" Leader:
-" {{{
+" Leader: {{{
 let mapleader=',' " Fix <Leader> which for some reason is never properly set.
 let maplocalleader=';'
 " }}}
 
-
-" Auto_Format:
+" Auto_Format: {{{
 " Type 'QQ' to format/indent a paragraph.
 map Q gq
+" }}}
 
-" Alternate File View:
+" Alternate File View: {{{
 map <leader>a :A<CR><CR>
+" }}}
 
-" Invisible_Characters:
+" Invisible_Characters: {{{
 " On linux or in unicode environments we can use pretty symbols for invisible
 " characters.
 if !exists("g:didSetEncoding")
@@ -277,22 +276,20 @@ endif
 
 " Shortcut to rapidly toggle `set list` (,j) is the command in normal mode.
 nmap <leader>j :setlocal list!<CR>
+" }}}
 
 " }}}
 
-" Plugins:
-" {{{
+" Plugins: {{{
 
-" EditorConfig:
-" {{{
+" EditorConfig: {{{
 
 " Play nice with fugitive.vim
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " }}}
 
-" NERDTree:
-" {{{
+" NERDTree: {{{
 let NERDTreeHijackNetrw = 0
 
 " Type ,d to toggle NERDTree.
@@ -300,8 +297,7 @@ nmap <Leader>d :NERDTreeToggle<CR>
 
 " }}}
 
-" NERDCommenter:
-" {{{
+" NERDCommenter: {{{
 
 " Make comments prettier and easier to toggle See :help NERDCommenter for
 " bindings.
@@ -309,8 +305,7 @@ let NERDSpaceDelims = 1
 
 "}}}
 
-" DelimitMate:
-" {{{
+" DelimitMate: {{{
 " See :help delimitMate for explanations.
 let delimitMate_expand_space = 1
 let delimitMate_expand_cr = 1
@@ -318,8 +313,7 @@ set backspace=eol,start,indent
 
 " }}}
 
-" A_vim:
-" {{{
+" A_vim: {{{
 "
 let g:alternateSearchPath = join([
       \'sfr:../source',
@@ -337,8 +331,7 @@ let g:alternateSearchPath = join([
 
 " }}}
 
-" TeX_9:
-" {{{
+" TeX_9: {{{
 " Build PDFs of LaTeX projects
 let g:tex_flavor = "pdflatex"
 
@@ -351,40 +344,39 @@ if has('mac')
 endif
 "}}}
 
-" Ctrlp:
-" {{{
-" typeahead search the quickfix window, buffer tags.
-let g:ctrlp_extensions = ['quickfix', 'buffertag', 'rtscript']
-" Ignore target directories, binary data, and version control.
-let g:ctrlp_custom_ignore = {
-      \ 'dir':  '\.git$\|\.hg$\|\.svn$\|out$\|boost$',
-      \ 'file': '\.exe$\|\.obj$\|\.dll\|\.bin\|\.hex\|\.map\|\.tmp\|\.axf\|\.so$\|\.o$',
-      \ }
-" Unlimited File depth.
-let g:ctrlp_max_files = 0
+" Ctrlp: {{{
+" Only support this on windows where I don't have FZF installed.
+if s:win
+  " typeahead search the quickfix window, buffer tags.
+  let g:ctrlp_extensions = ['quickfix', 'buffertag', 'rtscript']
+  " Ignore target directories, binary data, and version control.
+  let g:ctrlp_custom_ignore = {
+        \ 'dir':  '\.git$\|\.hg$\|\.svn$\|out$\|boost$',
+        \ 'file': '\.exe$\|\.obj$\|\.dll\|\.bin\|\.hex\|\.map\|\.tmp\|\.axf\|\.so$\|\.o$',
+        \ }
+  " Unlimited File depth.
+  let g:ctrlp_max_files = 0
 
-" Maximum 40 filesystem recursions.
-let g:ctrlp_max_depth = 40
+  " Maximum 40 filesystem recursions.
+  let g:ctrlp_max_depth = 40
 
-" Double the height of the window at the bottom of the screen.
-let g:ctrlp_max_height = 20
+  " Double the height of the window at the bottom of the screen.
+  let g:ctrlp_max_height = 20
+endif
 "}}}
 
-" Pymode Settings:
-" {{{
+" Pymode Settings: {{{
 let g:pymode_rope = 0
 let g:pymode_lint_checkers = ['pylint']
 " }}}
 
-" Fugitive Settings And Fixes:
-"{{{
+" Fugitive Settings And Fixes: {{{
 " Delete fugitive buffers when we close them. Otherwise this pollutes the
 " buffers list.
 autocmd BufReadPost fugitive://* set bufhidden=delete
 "}}}
 
-" TagList:
-" {{{
+" TagList: {{{
 " Sort TagsList by name not by file order
 let g:Tlist_Sort_Type = "name"
 
@@ -395,9 +387,7 @@ let g:Tlist_Use_Right_Window = 1
 nmap <Leader>t :TlistToggle<CR>
 "}}}
 
-
-" UltiSnips:
-" {{{
+" UltiSnips: {{{
 
 " Use Tab and shift+tab to navigate through tabstops
 let g:UltiSnipsExpandTrigger="<C-j>"
@@ -409,15 +399,13 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 
 " }}} end plugins.
 
-" Doxygen Comments:
-" {{{
+" Doxygen Comments: {{{
 " Fix Doxygen auto brief highlighting so that it stops on more punctuation
 " than simply a '.'
 let g:doxygen_end_punctuation='[.?!]'
 " }}}
 
-" Auto Commands:
-" {{{
+" Auto Commands: {{{
 
 " Treat .dox files as "Doxygen" files.
 autocmd Bufread *.dox set filetype=doxygen
@@ -427,5 +415,6 @@ autocmd Bufread vimrc set foldmethod=marker
 autocmd Bufread .vimrc set foldmethod=marker
 autocmd Bufread _vimrc set foldmethod=marker
 autocmd Bufread init.vim set foldmethod=marker
+autocmd Bufread ginit.vim set foldmethod=marker
 
 " }}}
