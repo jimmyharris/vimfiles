@@ -114,6 +114,9 @@ Plug 'tpope/vim-ragtag'
 " JSON:
 Plug 'tpope/vim-jdaddy', { 'for': ['javascript', 'json'] }
 
+" JavaScript:
+Plug 'jelera/vim-javascript-syntax'
+
 " Groovy:
 Plug 'jimmyharris/groovyindent'
 
