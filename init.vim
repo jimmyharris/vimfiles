@@ -48,6 +48,7 @@ endif
 
 " Editor Improvements:
 Plug 'editorconfig/editorconfig-vim'
+Plug 'vim-scripts/grep.vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
