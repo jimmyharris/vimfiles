@@ -2,6 +2,7 @@ plugins/
 local/
 shada/
 ^local/README.md
+^local/overrides/README.md
 .netrw*
 .VimballRecord
 eclim*

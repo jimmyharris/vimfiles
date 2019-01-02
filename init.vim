@@ -2,7 +2,11 @@
 
 " Detect Windows OS: {{{
 
-let s:win = has("win16") || has("win32") || has("win64")
+if exists('g:is_windows')
+  unlockvar g:is_windows
+endif
+let g:is_windows = has("win16") || has("win32") || has("win64")
+lockvar g:is_windows
 
 " }}}
 
@@ -10,7 +14,11 @@ let s:win = has("win16") || has("win32") || has("win64")
 
 " PrePlugin Setup: {{{
 " Get the user runtime path which is usually fist in the rtp setting.
+if exists('g:user_rtp')
+  unlockvar g:user_rtp
+endif
 let g:user_rtp = split(&rtp, ',')[0]
+lockvar g:user_rtp
 " Plugin paths live here.
 let s:user_plugin_path = g:user_rtp . '/plugins'
 
@@ -24,135 +32,15 @@ filetype off " required for some Debian distributions
 " Plugin Setup: {{{
 call plug#begin(s:user_plugin_path)
 
-" Sensible Defaults:
-Plug 'tpope/vim-sensible'
+exec "source " . g:user_rtp . "/bundles.vim"
 
-" Cosmetic Plugins:
-Plug 'rakr/vim-one'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-" You Complete Me:
-if !s:win
-  function! BuildYCM(info)
-    " info is a dictionary with 3 fields
-    " - name:   name of the plugin
-    " - status: 'installed', 'updated', or 'unchanged'
-    " - force:  set on PlugInstall! or PlugUpdate!
-    if a:info.status == 'installed' || a:info.force
-      !./install.py --clang-completer
-    endif
-  endfunction
-  Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+" Load Local Plugin:
+if filereadable(g:user_rtp . "/local/bundles.vim")
+  exec "source " . g:user_rtp . "/local/bundles.vim"
 endif
 
-" Editor Improvements:
-Plug 'editorconfig/editorconfig-vim'
-Plug 'vim-scripts/grep.vim'
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-obsession'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'tmhedberg/matchit'
-Plug 'Raimondi/delimitMate'
-Plug 'henrik/vim-qargs'
-
-Plug 'godlygeek/tabular'
-
-" Comment Manipulation:
-Plug 'scrooloose/nerdcommenter'
-
-" Syntax Checking Linting:
-Plug 'scrooloose/syntastic'
-
-" Searching And Navigating:
-if s:win
-  Plug 'ctrlpvim/ctrlp.vim'
-else
-  " FZF from: https://github.com/junegunn/fzf
-  " See https://github.com/junegunn/fzf#using-git for information on how to
-  " install FZF locally.
-  Plug expand('~/.fzf')
-endif
-
-Plug 'scrooloose/nerdtree'
-
-" Tmux specific scripts
-if !s:win
-  Plug 'tmux-plugins/vim-tmux-focus-events'
-  Plug 'tmux-plugins/vim-tmux'
-endif
-
-" This creates an actual list of tags so it is more useful than tagbar.
-Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
-
-Plug 'vim-scripts/genutils' | Plug 'vim-scripts/SelectBuf'
-
-" Building:
-
-Plug 'tpope/vim-dispatch'
-
-" Autocomplete and snippets
-
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
-" FileType Plugins:
-
-" Fast starup including many plugins:
-Plug 'sheerun/vim-polyglot'
-
-" C:
-Plug 'vim-scripts/a.vim'
-
-
-" Useful For HTML And XML:
-Plug 'tpope/vim-ragtag'
-
-" JSON:
-Plug 'tpope/vim-jdaddy', { 'for': ['javascript', 'json'] }
-
-" JavaScript:
-Plug 'jelera/vim-javascript-syntax'
-
-" Groovy:
-Plug 'jimmyharris/groovyindent'
-
-" Bitbake Support:
-if !s:win
-  Plug 'kergoth/vim-bitbake'
-endif
-
-" Python Support:
-if s:win
-  Plug 'davidhalter/jedi-vim'
-endif
-Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
-Plug 'tmhedberg/SimpylFold'
-
-" Puppet Support:
-Plug 'rodjek/vim-puppet'
-
-" Plant UML Syntax:
-Plug 'aklt/plantuml-syntax'
-
-" QML Syntax:
-Plug 'peterhoeg/vim-qml'
-
-" Lua Utilities:
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-lua-ftplugin'
-
-" Latex mode
-if has('mac')
-  Plug 'vim-scripts/TeX-9', { 'for': [ 'LaTeX', 'tex' ] }
-endif
-
-" Local overrides
-
-Plug g:user_rtp . 'local'
+" Local Overrides:
+Plug g:user_rtp . '/local/overrides'
 
 call plug#end()
 " }}}
@@ -211,7 +99,7 @@ set hidden  " hide buffers, don't kill them
 " Try using True Colors if available.
 
 " For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-if !s:win && (has("nvim"))
+if !g:is_windows && (has("nvim"))
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
@@ -220,7 +108,7 @@ endif
 " Based on Vim patch 7.4.1770 (`guicolors` option)
 " < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
 " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-if !s:win && (has("termguicolors"))
+if !g:is_windows && (has("termguicolors"))
   set termguicolors
 endif
 " }}}
@@ -230,7 +118,7 @@ endif
 set background=dark
 " for mobaxterm
 
-if !s:win && has('gui_running')
+if !g:is_windows && has('gui_running')
   set background=light
 endif
 
@@ -273,7 +161,7 @@ if !exists("g:didSetEncoding")
   let g:didSetEncoding=1
 endif
 
-if !s:win
+if !g:is_windows
   " Use the same symbols as TextMate for tabstops and EOLs
   set listchars=tab:▸\ ,eol:¬,trail:☠
   " set listchars=tab:»\ ,eol:¶,trail:§
@@ -380,7 +268,7 @@ endif
 
 " Ctrlp: {{{
 " Only support this on windows where I don't have FZF installed.
-if s:win
+if g:is_windows
   " typeahead search the quickfix window, buffer tags.
   let g:ctrlp_extensions = ['quickfix', 'buffertag', 'rtscript']
   " Ignore target directories, binary data, and version control.
@@ -401,7 +289,7 @@ endif
 
 " JediVim: {{{
 " Only support this on windows where I don't have YCM installed.
-if s:win
+if g:is_windows
   let g:jedi#popup_on_dot = 0
   let g:jedi#goto_assignments_command = "<leader>a"
   let g:jedi#goto_definitions_command = "<leader>g"
@@ -445,7 +333,7 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 
 " Settings:
 let g:syntastic_always_populate_loc_list=1
-if !s:win
+if !g:is_windows
   let g:syntastic_error_symbol='✗'
   let g:syntastic_warning_symbol='⚠'
   let g:syntastic_style_error_symbol = '✗'
@@ -478,4 +366,11 @@ autocmd Bufread _vimrc set foldmethod=marker
 autocmd Bufread init.vim set foldmethod=marker
 autocmd Bufread ginit.vim set foldmethod=marker
 
+" }}}
+
+" LocalOverrides: {{{
+" See local/README.md for more details.
+if filereadable(g:user_rtp . '/local/init.vim')
+  exec "source " . g:user_rtp . '/local/init.vim'
+endif
 " }}}
