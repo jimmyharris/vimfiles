@@ -355,16 +355,20 @@ let g:doxygen_end_punctuation='[.?!]'
 " }}}
 
 " Auto Commands: {{{
-
+" Put these in a group so that we don't repeatedly add them on subequent
+" reloads
+augroup init_vim_autocommands
 " Treat .dox files as "Doxygen" files.
-autocmd Bufread *.dox set filetype=doxygen
+  autocmd!
+  autocmd Bufread *.dox set filetype=doxygen
 
-" Set fold methods for vimrc for easier navigation.
-autocmd Bufread vimrc set foldmethod=marker
-autocmd Bufread .vimrc set foldmethod=marker
-autocmd Bufread _vimrc set foldmethod=marker
-autocmd Bufread init.vim set foldmethod=marker
-autocmd Bufread ginit.vim set foldmethod=marker
+  " Set fold methods for vimrc for easier navigation.
+  autocmd Bufread vimrc set foldmethod=marker
+  autocmd Bufread .vimrc set foldmethod=marker
+  autocmd Bufread _vimrc set foldmethod=marker
+  autocmd Bufread init.vim set foldmethod=marker
+  autocmd Bufread ginit.vim set foldmethod=marker
+augroup end
 
 " }}}
 
