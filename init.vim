@@ -354,6 +354,32 @@ let g:syntastic_aggregate_errors = 1
 " Default to pylint.
 let g:syntastic_python_checkers = ['python', 'pylint']
 
+" Use shellcheck for shell scripts
+let g:syntastic_sh_checkers = ['shellcheck']
+
+" Disable some common errors that might be too noisy for a specific file set.
+" Always assume bash for sh checkers unless we are explicitly using zsh. Add
+" to this list to disable specific warnings.
+let s:shellcheck_disabled_warnings = [
+   \'SC2086',
+   \'SC1017',
+   \'SC2164',
+   \'SC2103',
+   \'SC1090'
+   \]
+
+" Build the shellcheck args list.
+let s:shellcheck_args_list = []
+
+" Convert shellcheck warnings into arguments.
+for warning in s:shellcheck_disabled_warnings
+  let s:shellcheck_args_list += [join(['-e', warning])]
+endfor
+
+" set the shellcheck args for the sh file type (assume we are bash even for
+" .sh scripts.)
+let g:syntastic_sh_shellcheck_args = join(s:shellcheck_args_list + ['-s', 'bash'])
+
 " }}}
 
 " }}} end plugins.
