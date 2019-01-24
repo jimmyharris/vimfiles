@@ -248,7 +248,16 @@ let g:alternateSearchPath = join([
       \'sfr:../includes/private',
       \'sfr:../includes/public',
       \'sfr:../src',
-      \'sfr:../inc'
+      \'sfr:../inc',
+      \'sfr:../Source',
+      \'sfr:../Include',
+      \'sfr:../Code',
+      \'sfr:../Includes',
+      \'sfr:../../Code',
+      \'sfr:../Include/Private',
+      \'sfr:../Include/Public',
+      \'sfr:../Includes/Private',
+      \'sfr:../Includes/Public'
       \ ], ',')
 
 " }}}
