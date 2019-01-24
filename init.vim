@@ -302,12 +302,6 @@ if g:is_windows
 endif
 " }}}
 
-" Fugitive Settings And Fixes: {{{
-" Delete fugitive buffers when we close them. Otherwise this pollutes the
-" buffers list.
-autocmd BufReadPost fugitive://* set bufhidden=delete
-"}}}
-
 " TagList: {{{
 " Sort TagsList by name not by file order
 let g:Tlist_Sort_Type = "name"
@@ -368,6 +362,10 @@ augroup init_vim_autocommands
   autocmd Bufread _vimrc set foldmethod=marker
   autocmd Bufread init.vim set foldmethod=marker
   autocmd Bufread ginit.vim set foldmethod=marker
+
+  " Delete fugitive buffers when we close them. Otherwise this pollutes the
+  " buffers list.
+  autocmd BufReadPost fugitive://* set bufhidden=delete
 augroup end
 
 " }}}
