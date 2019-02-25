@@ -79,11 +79,11 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " FileType Plugins:
 
 " Fast starup including many plugins:
-Plug 'sheerun/vim-polyglot'
+" Note: use my fork because it fixes Dockerfile support
+Plug 'jimmyharris/vim-polyglot', {'branch': 'fix-dockerfile-syntax-name'}
 
 " C:
 Plug 'vim-scripts/a.vim'
-
 
 " Useful For HTML And XML:
 Plug 'tpope/vim-ragtag'
