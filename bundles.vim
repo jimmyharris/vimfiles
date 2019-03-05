@@ -80,7 +80,7 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " Fast starup including many plugins:
 " Note: use my fork because it fixes Dockerfile support
-Plug 'jimmyharris/vim-polyglot', {'branch': 'fix-dockerfile-syntax-name'}
+Plug 'sheerun/vim-polyglot'
 
 " C:
 Plug 'vim-scripts/a.vim'
