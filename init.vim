@@ -382,6 +382,13 @@ let g:syntastic_sh_shellcheck_args = join(s:shellcheck_args_list + ['-s', 'bash'
 
 " }}}
 
+" Ack:
+" {{{
+if !g:is_windows && executable('ag')
+  let g:ackprg = 'ag --nogroup --nocolor --column'
+endif
+" }}}
+"
 " }}} end plugins.
 
 " Doxygen Comments: {{{

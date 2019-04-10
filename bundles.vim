@@ -55,6 +55,11 @@ else
   Plug 'ctrlpvim/ctrlp.vim'
 endif
 
+" On linux use ack.vim for searching.
+if !g:is_windows
+  Plug 'mileszs/ack.vim'
+endif
+
 Plug 'scrooloose/nerdtree'
 
 " Tmux specific scripts
