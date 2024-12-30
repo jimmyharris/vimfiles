@@ -54,13 +54,13 @@ vim.opt.rtp:prepend(lazypath)
       end,
     },
     {
-      "vim-airline/vim-airline",
-      lazy = false,
+      "nvim-lualine/lualine.nvim",
+      event = "VeryLazy",
       dependencies = {
-        "vim-airline/vim-airline-themes"
+        "nvim-tree/nvim-web-devicons",
       },
       config = function()
-        vim.cmd("source " .. vim.fs.joinpath(config_dir, "viml/config/airline.vim"))
+        require("config.lualine")
       end,
     },
     {
