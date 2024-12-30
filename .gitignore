@@ -1,4 +1,5 @@
 plugins/
+lazy/
 local/
 shada/
 ^local/README.md

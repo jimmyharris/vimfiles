@@ -10,6 +10,25 @@ lockvar g:is_windows
 
 " }}}
 
+" Polyglot: {{{
+
+" Assume we have a set of disabled langues (append to this list with reasoning
+" as needed)
+let g:polyglot_disabled = []
+
+" Default python syntax is better than polyglot
+let g:polyglot_disabled += ['python']
+
+" Prefer TeX_9 to polyglot
+" Prefer fugitive to polyglot
+" Don't use JSON5
+let g:polyglot_disabled += ['git', 'latex', 'json5']
+
+" JSON Configuration:
+let g:vim_json_syntax_conceal = 0
+
+" }}}
+
 " Initialize Plugins: {{{
 
 " PrePlugin Setup: {{{
@@ -18,9 +37,10 @@ if exists('g:user_rtp')
   unlockvar g:user_rtp
 endif
 let g:user_rtp = split(&rtp, ',')[0]
-lockvar g:user_rtp
+lockvar g:user_rt
 " Plugin paths live here.
 let s:user_plugin_path = g:user_rtp . '/plugins'
+" Set vim python interpreter
 
 if !has('nvim')
   set nocompatible " Disable vi compatibility
@@ -32,6 +52,13 @@ filetype off " required for some Debian distributions
 " Plugin Setup: {{{
 call plug#begin(s:user_plugin_path)
 
+" LocalOverrides: {{{
+" See local/README.md for more details.
+if filereadable(g:user_rtp . '/local/init.vim')
+  exec "source " . g:user_rtp . '/local/init.vim'
+endif
+" }}}
+
 exec "source " . g:user_rtp . "/bundles.vim"
 
 " Load Local Plugin:
@@ -41,6 +68,8 @@ endif
 
 " Local Overrides:
 Plug g:user_rtp . '/local/overrides'
+
+
 
 call plug#end()
 " }}}
@@ -178,24 +207,6 @@ nmap <leader>j :setlocal list!<CR>
 
 " Plugins: {{{
 
-" Polyglot: {{{
-
-" Assume we have a set of disabled langues (append to this list with reasoning
-" as needed)
-let g:polyglot_disabled = []
-
-" Default python syntax is better than polyglot
-let g:polyglot_disabled += ['python']
-
-" Prefer TeX_9 to polyglot
-" Prefer fugitive to polyglot
-" Don't use JSON5
-let g:polyglot_disabled += ['git', 'latex', 'json5']
-
-" JSON Configuration:
-let g:vim_json_syntax_conceal = 0
-
-" }}}
 
 " EditorConfig: {{{
 
@@ -419,9 +430,3 @@ augroup end
 
 " }}}
 
-" LocalOverrides: {{{
-" See local/README.md for more details.
-if filereadable(g:user_rtp . '/local/init.vim')
-  exec "source " . g:user_rtp . '/local/init.vim'
-endif
-" }}}

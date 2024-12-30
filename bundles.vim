@@ -10,18 +10,18 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " You Complete Me:
-if !g:is_windows
-  function! BuildYCM(info)
-    " info is a dictionary with 3 fields
-    " - name:   name of the plugin
-    " - status: 'installed', 'updated', or 'unchanged'
-    " - force:  set on PlugInstall! or PlugUpdate!
-    if a:info.status == 'installed' || a:info.force
-      !./install.py --clang-completer
-    endif
-  endfunction
-  Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
-endif
+" if !g:is_windows
+"   function! BuildYCM(info)
+"     " info is a dictionary with 3 fields
+"     " - name:   name of the plugin
+"     " - status: 'installed', 'updated', or 'unchanged'
+"     " - force:  set on PlugInstall! or PlugUpdate!
+"     if a:info.status == 'installed' || a:info.force
+"       !./install.py --clang-completer
+"     endif
+"   endfunction
+"   Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+" endif
 
 " Editor Improvements:
 Plug 'editorconfig/editorconfig-vim'
@@ -79,7 +79,8 @@ Plug 'tpope/vim-dispatch'
 
 " Autocomplete and snippets
 
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
 
 " FileType Plugins:
 
@@ -111,7 +112,6 @@ endif
 if g:is_windows
   Plug 'davidhalter/jedi-vim'
 endif
-Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 Plug 'tmhedberg/SimpylFold'
 
 " Puppet Support:

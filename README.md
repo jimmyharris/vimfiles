@@ -1,5 +1,8 @@
 # My $HOME/.vim in Git.
 
+NOTE!: This is now explicitly a neovim repository as I am moving to init.lua
+and lazy.nvim More details will arrive in a future commit.
+
 This configuration is designed to be useful for working with C/C++ as well as
 dynamic languages like Ruby, Javascript, and Python.
 
