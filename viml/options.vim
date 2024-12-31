@@ -4,13 +4,6 @@
 
 runtime! plugin/sensible.vim
 
-" Status_Line:
-
-" fall back on fugitive status line unless the gui is running.
-if !has('gui_running')
-  set statusline=%f%m\ %{fugitive#statusline()}%<%r%w%y[%{&ff}]%=%p%%\ %L,%l,%v\
-endif
-
 " Clipboard settings, always use clipboard for all delete, yank change, put
 " operations, see https://stackoverflow.com/q/30691466/6064933
 if !empty(provider#clipboard#Executable())

@@ -17,92 +17,224 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- check if firenvim is active
-  local firenvim_not_active = function()
-    return not vim.g.started_by_firenvim
-  end
+local firenvim_not_active = function()
+  return not vim.g.started_by_firenvim
+end
 
-  local plugin_specs = {
-    -- color scheme
-    {
-      "tpope/vim-sensible",
-      lazy = false,
-      priority = 1000,
-      name = "sensible",
-      config = function()
+local plugin_specs = {
+  -- color scheme
+  {
+    "tpope/vim-sensible",
+    lazy = false,
+    priority = 1000,
+    name = "sensible",
+    config = function()
 
-        vim.cmd("source " .. vim.fs.joinpath(plugin_dir, "sensible/plugin/sensible.vim"))
+      vim.cmd("source " .. vim.fs.joinpath(plugin_dir, "sensible/plugin/sensible.vim"))
+    end
+  },
+  -- auto-completion engine
+  {
+    "iguanacucumber/magazine.nvim",
+    name = "nvim-cmp",
+    -- event = 'InsertEnter',
+    event = "VeryLazy",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "onsails/lspkind-nvim",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-omni",
+    },
+    config = function()
+      require("config.nvim-cmp")
+    end,
+  },
+  {
+    "neovim/nvim-lspconfig",
+    event = { "BufRead", "BufNewFile" },
+    config = function()
+      require("config.lsp")
+    end,
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    enabled = function()
+      if vim.g.is_mac or vim.g.is_linux then
+        return true
       end
-    },
-    {
-      "rakr/vim-one",
-      lazy = false,
-      priority = 999,
-      name = "one",
-      config = function()
-        vim.cmd([[colorscheme one]])
-      end,
-    },
-    {
-      "nvim-tree/nvim-tree.lua",
-      version = "*",
-      event = "VeryLazy",
-      dependencies = {
-        "nvim-tree/nvim-web-devicons",
-      },
-      config = function()
-        require("config.nvim-tree")
-      end,
-    },
-    {
-      "nvim-lualine/lualine.nvim",
-      event = "VeryLazy",
-      dependencies = {
-        "nvim-tree/nvim-web-devicons",
-      },
-      config = function()
-        require("config.lualine")
-      end,
-    },
-    {
-      "editorconfig/editorconfig-vim",
-      lazy = false,
-    },
-    {"tpope/vim-abolish"},
-    {"tpope/vim-endwise"},
-    {"tpope/vim-fugitive"},
-    {"tpope/vim-obsession"},
-    {"tpope/vim-repeat"},
-      {"tpope/vim-surround"},
-      {"tpope/vim-unimpaired"},
-      {"tmhedberg/matchit"},
-      {"vim-scripts/SelectBuf", dependencies = {"vim-scripts/genutils"},},
-      {"tpope/vim-commentary", event = "VeryLazy"},
-      {
-        "rcarriga/nvim-notify",
-        event = "VeryLazy",
-        config = function()
-          require("config.nvim-notify")
-        end,
-      },
-      {
-        "nvimdev/dashboard-nvim",
-        cond = firevim_not_active,
-        config = function()
-          require("config.dashboard-nvim")
-        end
+      return false
+    end,
+    event = "VeryLazy",
+    build = ":TSUpdate",
+    config = function()
+      require("config.treesitter")
+    end,
+  },
+  -- Show match number and index for searching
+  {
+    "kevinhwang91/nvim-hlslens",
+    branch = "main",
+    keys = { "*", "#", "n", "N" },
+    config = function()
+      require("config.hlslens")
+    end,
+  },
+  {
+    "Yggdroot/LeaderF",
+    cmd = "Leaderf",
+    build = function()
+      local leaderf_path = plugin_dir .. "/LeaderF"
+      vim.opt.runtimepath:append(leaderf_path)
+      vim.cmd("runtime! plugin/leaderf.vim")
 
-      }
-    }
+      if not vim.g.is_win then
+        vim.cmd("LeaderfInstallCExtension")
+      end
+    end,
+  },
+  "nvim-lua/plenary.nvim",
+  {
+    "nvim-telescope/telescope.nvim",
+    cmd = "Telescope",
+    dependencies = {
+      "nvim-telescope/telescope-symbols.nvim",
+    },
+  },
+  {
+    "ibhagwan/fzf-lua",
+    -- optional for icon support
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      -- calling `setup` is optional for customization
+      require("fzf-lua").setup {}
+    end,
+  },
+  {
+    "MeanderingProgrammer/markdown.nvim",
+    main = "render-markdown",
+    opts = {},
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+  },
+  -- A list of colorscheme plugin you may want to try. Find what suits you.
+  { "navarasu/onedark.nvim", lazy = true },
+  { "sainnhe/edge", lazy = true },
+  { "sainnhe/sonokai", lazy = true },
+  { "sainnhe/gruvbox-material", lazy = true },
+  { "sainnhe/everforest", lazy = true },
+  { "EdenEast/nightfox.nvim", lazy = true },
+  { "catppuccin/nvim", name = "catppuccin", lazy = true },
+  { "olimorris/onedarkpro.nvim", lazy = true },
+  { "marko-cerovac/material.nvim", lazy = true },
+  {
+    "rockyzhang24/arctic.nvim",
+    dependencies = { "rktjmp/lush.nvim" },
+    name = "arctic",
+    branch = "v2",
+  },
+  { "rebelot/kanagawa.nvim", lazy = true },
+  { "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
+  {
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    event = "VeryLazy",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("config.nvim-tree")
+    end,
+  },
+  -- Python-related text object
+  { "jeetsukumaran/vim-pythonsense", ft = { "python" } },
+  {
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("config.lualine")
+    end,
+  },
+  -- Additional powerful text object for vim, this plugin should be studied
+  -- carefully to use its full power
+  { "wellle/targets.vim", event = "VeryLazy" },
 
-    require("lazy").setup {
-      spec = plugin_specs,
-      ui = {
-        border = "rounded",
-        title = "Plugin Manager",
-        title_pos = "center",
-      },
-      rocks = {
-        enabled = false,
-        hererocks = false,
-      },
-    }
+  -- Plugin to manipulate character pairs quickly
+  { "machakann/vim-sandwich", event = "VeryLazy" },
+
+  -- Add indent object for vim (useful for languages like Python)
+  { "michaeljsmith/vim-indent-object", event = "VeryLazy" },
+  -- Handy unix command inside Vim (Rename, Move etc.)
+  { "tpope/vim-eunuch", cmd = { "Rename", "Delete" } },
+  { "tpope/vim-abolish", event = "VeryLazy" },
+  { "tpope/vim-obsession", event = "VeryLazy" },
+  { "tpope/vim-repeat", event = "VeryLazy" },
+  { "tpope/vim-surround", event = "VeryLazy" },
+  { "tpope/vim-scriptease", cmd = { "Scriptnames", "Messages", "Verbose" } },
+  { "andymass/vim-matchup", event = "BufRead" },
+  { "vim-scripts/SelectBuf", dependencies = {"vim-scripts/genutils"}, },
+  { "tpope/vim-commentary", event = "VeryLazy" },
+  {
+    "rcarriga/nvim-notify",
+    event = "VeryLazy",
+    config = function()
+      require("config.nvim-notify")
+    end,
+  },
+  {
+    "nvimdev/dashboard-nvim",
+    cond = firevim_not_active,
+    config = function()
+      require("config.dashboard-nvim")
+    end
+  },
+  -- Git command inside vim
+  {
+    "tpope/vim-fugitive",
+    config = function()
+      require("config.fugitive")
+    end,
+  },
+  -- Better git log display
+  { "rbong/vim-flog", cmd = { "Flog" } },
+  { "akinsho/git-conflict.nvim", version = "*", config = true },
+  {
+    "ruifm/gitlinker.nvim",
+    event = "User InGitRepo",
+    config = function()
+      require("config.git-linker")
+    end,
+  },
+
+  -- Show git change (change, delete, add) signs in vim sign column
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("config.gitsigns")
+    end,
+  },
+
+  {
+    "sindrets/diffview.nvim",
+  },
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {},
+  }
+}
+
+require("lazy").setup {
+  spec = plugin_specs,
+  ui = {
+    border = "rounded",
+    title = "Plugin Manager",
+    title_pos = "center",
+  },
+  rocks = {
+    enabled = false,
+    hererocks = false,
+  },
+}

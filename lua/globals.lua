@@ -21,16 +21,48 @@ vim.g.loaded_node_provider = 0 -- Disable node provider
 vim.g.did_install_default_menus = 1 -- do not load menu
 
 -- TODO: Need to determine common python support strategy
--- if utils.executable("python3") then
-  -- if vim.g.is_windows then
-    -- vim.g.python3_host_prog = fn.substitute(fn.exepath("python3"), ".exe$", "", "g")
-  -- else
-    -- vim.g.python3_host_prog = fn.exepath("python3")
-  -- end
--- else
-  -- api.nvim_err_writeln("Python3 executable not found! You must install Python3 and set its PATH correctly!")
-  -- return
--- end
+local python_venv_dir = fn.stdpath("data") .. "/nvim-venv"
+local python_path = nil
+
+if vim.g.is_windows then
+  python_path = python_venv_dir .. "/Scripts/python.exe"
+else
+  python_path = python_venv_dir .. "/bin/python"
+end
+
+
+if not vim.uv.fs_stat(python_venv_dir) then
+  if utils.executable("uv") then
+    fn.system {
+      "uv",
+      "venv",
+      "--python",
+      "3.13",
+      python_venv_dir
+    }
+    fn.system {
+      "uv",
+      "pip",
+      "install",
+      "--python",
+      python_path,
+      "pynvim",
+    }
+    if vim.g.is_windows then
+      vim.g.python3_host_prog = fn.substitute(python_path, ".exe$", "", "g")
+    else
+      vim.g.python3_host_prog = python_path
+    end
+  else
+    api.nvim_err_writeln("uv executable not found! You must install uv and set its PATH correctly!")
+  end
+else
+  if vim.g.is_windows then
+    vim.g.python3_host_prog = fn.substitute(python_path, ".exe$", "", "g")
+  else
+    vim.g.python3_host_prog = python_path
+  end
+end
 
 -- Custom mapping <leader> (see `:h mapleader` for more info)
 vim.g.mapleader = ","
