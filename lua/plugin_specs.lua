@@ -71,6 +71,19 @@ local plugin_specs = {
       require("config.treesitter")
     end,
   },
+  {
+    -- NOTE: The upstream implementation is here:
+    -- "RRethy/nvim-treesitter-endwise",
+    -- This fork includes:
+    --   https://github.com/RRethy/nvim-treesitter-endwise/pull/42
+    -- which fixes
+    --   https://github.com/RRethy/nvim-treesitter-endwise/issue/41
+    "metiulekm/nvim-treesitter-endwise",
+    event = "VeryLazy",
+    config = function()
+      require("config.treesitter-endwise")
+    end,
+  },
   -- Show match number and index for searching
   {
     "kevinhwang91/nvim-hlslens",
@@ -100,6 +113,13 @@ local plugin_specs = {
     dependencies = {
       "nvim-telescope/telescope-symbols.nvim",
     },
+  },
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = true
+    -- use opts = {} for passing setup options
+    -- this is equivalent to setup({}) function
   },
   {
     "ibhagwan/fzf-lua",
