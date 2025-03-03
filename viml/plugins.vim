@@ -1,24 +1,5 @@
 scriptencoding utf-8
 
-" Polyglot: {{{
-
-" Assume we have a set of disabled langues (append to this list with reasoning
-" as needed)
-let g:polyglot_disabled = []
-
-" Default python syntax is better than polyglot
-let g:polyglot_disabled += ['python']
-
-" Prefer TeX_9 to polyglot
-" Prefer fugitive to polyglot
-" Don't use JSON5
-let g:polyglot_disabled += ['git', 'latex', 'json5']
-
-" JSON Configuration:
-let g:vim_json_syntax_conceal = 0
-
-" }}}
-
 " Plugin specification and lua stuff
 lua require('plugin_specs')
 
@@ -41,22 +22,6 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " }}}
 
-
-" NERDCommenter: {{{
-
-" Make comments prettier and easier to toggle See :help NERDCommenter for
-" bindings.
-let NERDSpaceDelims = 1
-
-"}}}
-
-" DelimitMate: {{{
-" See :help delimitMate for explanations.
-let delimitMate_expand_space = 1
-let delimitMate_expand_cr = 1
-set backspace=eol,start,indent
-
-" }}}
 
 " A_vim: {{{
 "
@@ -85,66 +50,6 @@ let g:alternateSearchPath = join([
 
 " }}}
 
-" TeX_9: {{{
-" Build PDFs of LaTeX projects
-let g:tex_flavor = "pdflatex"
-
-" On Mac environments use "open *.pdf" to open the results.
-if has('mac')
-  let g:tex_nine_config = {
-        \'compiler': 'pdflatex',
-        \'viewer': {'app': 'open', 'target': 'pdf'}
-        \ }
-endif
-"}}}
-
-" Ctrlp: {{{
-" Only support this on windows where I don't have FZF installed.
-if g:is_windows
-  " typeahead search the quickfix window, buffer tags.
-  let g:ctrlp_extensions = ['quickfix', 'buffertag', 'rtscript']
-  " Ignore target directories, binary data, and version control.
-  let g:ctrlp_custom_ignore = {
-        \ 'dir':  '\.git$\|\.hg$\|\.svn$\|out$\|boost$',
-        \ 'file': '\.exe$\|\.obj$\|\.dll\|\.bin\|\.hex\|\.map\|\.tmp\|\.axf\|\.so$\|\.o$',
-        \ }
-  " Unlimited File depth.
-  let g:ctrlp_max_files = 0
-
-  " Maximum 40 filesystem recursions.
-  let g:ctrlp_max_depth = 40
-
-  " Double the height of the window at the bottom of the screen.
-  let g:ctrlp_max_height = 20
-endif
-"}}}
-
-" JediVim: {{{
-" Only support this on windows where I don't have YCM installed.
-if g:is_windows
-  let g:jedi#popup_on_dot = 0
-  let g:jedi#goto_assignments_command = "<leader>a"
-  let g:jedi#goto_definitions_command = "<leader>g"
-  let g:jedi#documentation_command = "K"
-  let g:jedi#usages_command = "<leader>n"
-  let g:jedi#rename_command = "<leader>r"
-  let g:jedi#show_call_signatures = "0"
-  let g:jedi#completions_command = "<C-Space>"
-  let g:jedi#smart_auto_mappings = 0
-endif
-" }}}
-
-" TagList: {{{
-" Sort TagsList by name not by file order
-let g:Tlist_Sort_Type = "name"
-
-" open the TagsList on the right hand side of the window.
-let g:Tlist_Use_Right_Window = 1
-
-" Type ",t" in normal mode to pull open the tabs list.
-nmap <Leader>t :TlistToggle<CR>
-"}}}
-
 " UltiSnips: {{{
 
 " Use Tab and shift+tab to navigate through tabstops
@@ -155,60 +60,111 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 
 " }}}
 
-" Syntastic: {{{
+" LeaderF : {{{
+" Do not use cache file
+let g:Lf_UseCache = 0
+" Refresh each time we call leaderf
+let g:Lf_UseMemoryCache = 0
 
-" Settings:
-" Always populate the location list
-let g:syntastic_always_populate_loc_list=1
-" Use fancy unicode on windows.
-if !g:is_windows
-  let g:syntastic_error_symbol='✗'
-  let g:syntastic_warning_symbol='⚠'
-  let g:syntastic_style_error_symbol = '✗'
-  let g:syntastic_style_warning_symbol = '⚠'
+" Ignore certain files and directories when searching files
+let g:Lf_WildIgnore = {
+  \ 'dir': ['.git', '__pycache__', '.DS_Store', '*_cache'],
+  \ 'file': ['*.exe', '*.dll', '*.so', '*.o', '*.pyc', '*.jpg', '*.png',
+  \ '*.gif', '*.svg', '*.ico', '*.db', '*.tgz', '*.tar.gz', '*.gz',
+  \ '*.zip', '*.bin', '*.pptx', '*.xlsx', '*.docx', '*.pdf', '*.tmp',
+  \ '*.wmv', '*.mkv', '*.mp4', '*.rmvb', '*.ttf', '*.ttc', '*.otf',
+  \ '*.mp3', '*.aac']
+  \}
+
+" Do not show fancy icons for Linux server.
+if g:is_linux
+  let g:Lf_ShowDevIcons = 0
 endif
 
-" Aggregate errors into a single list.
-let g:syntastic_aggregate_errors = 1
+" Only fuzzy-search files names
+let g:Lf_DefaultMode = 'FullPath'
 
-" Linters:
+" Do not use version control tool to list files under a directory since
+" submodules are not searched by default.
+let g:Lf_UseVersionControlTool = 0
 
-" Default to pylint.
-let g:syntastic_python_checkers = ['python', 'pylint']
+" Use rg as the default search tool
+let g:Lf_DefaultExternalTool = "rg"
 
-" Use shellcheck for shell scripts
-let g:syntastic_sh_checkers = ['shellcheck']
+" show dot files
+let g:Lf_ShowHidden = 1
 
-" Disable some common errors that might be too noisy for a specific file set.
-" Always assume bash for sh checkers unless we are explicitly using zsh. Add
-" to this list to disable specific warnings.
-let s:shellcheck_disabled_warnings = [
-   \'SC2086',
-   \'SC1017',
-   \'SC2164',
-   \'SC2103',
-   \'SC1090'
-   \]
+" Disable default mapping
+let g:Lf_ShortcutF = ''
+let g:Lf_ShortcutB = ''
 
-" Build the shellcheck args list.
-let s:shellcheck_args_list = []
+" set up working directory for git repository
+let g:Lf_WorkingDirectoryMode = 'a'
 
-" Convert shellcheck warnings into arguments.
-for warning in s:shellcheck_disabled_warnings
-  let s:shellcheck_args_list += [join(['-e', warning])]
-endfor
+" Search files in popup window
+nnoremap <silent> <leader>ff :<C-U>Leaderf file --popup<CR>
 
-" set the shellcheck args for the sh file type (assume we are bash even for
-" .sh scripts.)
-let g:syntastic_sh_shellcheck_args = join(s:shellcheck_args_list + ['-s', 'bash'])
+" Grep project files in popup window
+nnoremap <silent> <leader>fg :<C-U>Leaderf rg --no-messages --popup  --nameOnly<CR>
+
+" Search vim help files
+nnoremap <silent> <leader>fh :<C-U>Leaderf help --popup<CR>
+
+" Search tags in current buffer
+nnoremap <silent> <leader>ft :<C-U>Leaderf bufTag --popup<CR>
+
+" Switch buffers
+nnoremap <silent> <leader>fb :<C-U>Leaderf buffer --popup<CR>
+
+" Search recent files
+nnoremap <silent> <leader>fr :<C-U>Leaderf mru --popup --absolute-path<CR>
+
+let g:Lf_PopupColorscheme = 'gruvbox_material'
+
+" Change keybinding in LeaderF prompt mode, use ctrl-n and ctrl-p to navigate
+" items.
+let g:Lf_CommandMap = {'<C-J>': ['<C-N>'], '<C-K>': ['<C-P>']}
+
+" do not preview results, it will add the file to buffer list
+let g:Lf_PreviewResult = {
+      \ 'File': 0,
+      \ 'Buffer': 0,
+      \ 'Mru': 0,
+      \ 'Tag': 0,
+      \ 'BufTag': 1,
+      \ 'Function': 1,
+      \ 'Line': 0,
+      \ 'Colorscheme': 0,
+      \ 'Rg': 0,
+      \ 'Gtags': 0
+      \}
 
 " }}}
 
-" Ack:
-" {{{
-if !g:is_windows && executable('ag')
-  let g:ackprg = 'ag --nogroup --nocolor --column'
-endif
+" vim-sandwich: {{{
+
+" Map s to nop since s in used by vim-sandwich. Use cl instead of s.
+nmap s <Nop>
+omap s <Nop>
+
 " }}}
-"
+
+" vim-matchup: {{{
+
+" Improve performance
+let g:matchup_matchparen_deferred = 1
+let g:matchup_matchparen_timeout = 100
+let g:matchup_matchparen_insert_timeout = 30
+
+" Enhanced matching with matchup plugin
+let g:matchup_override_vimtex = 1
+
+" Whether to enable matching inside comment or string
+let g:matchup_delim_noskips = 0
+
+" Show offscreen match pair in popup window
+let g:matchup_matchparen_offscreen = {'method': 'popup'}
+
+" }}}
+
 " }}} end plugins.
