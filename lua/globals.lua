@@ -4,6 +4,17 @@ local api = vim.api
 local utils = require("utils")
 
 ------------------------------------------------------------------------
+--                          global options                            --
+------------------------------------------------------------------------
+
+--- Set default tab width unless otherwise specified in ft plugin.
+local TAB_WIDTH = 2
+vim.o.tabstop = TAB_WIDTH
+vim.o.shiftwidth = TAB_WIDTH
+vim.o.softtabstop = TAB_WIDTH
+vim.o.expandtab = true
+
+------------------------------------------------------------------------
 --                          custom variables                          --
 ------------------------------------------------------------------------
 vim.g.is_windows = (utils.has("win32") or utils.has("win64")) and true or false
