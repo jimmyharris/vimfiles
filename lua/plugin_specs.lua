@@ -161,16 +161,6 @@ local plugin_specs = {
   },
   -- Python-related text object
   { "jeetsukumaran/vim-pythonsense", ft = { "python" } },
-  {
-    "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-      require("config.lualine")
-    end,
-  },
   -- Additional powerful text object for vim, this plugin should be studied
   -- carefully to use its full power
   { "wellle/targets.vim", event = "VeryLazy" },
@@ -190,6 +180,24 @@ local plugin_specs = {
   { "andymass/vim-matchup", event = "BufRead" },
   { "vim-scripts/SelectBuf", dependencies = {"vim-scripts/genutils"}, },
   { "tpope/vim-commentary", event = "VeryLazy" },
+  {
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("config.lualine")
+    end,
+  },
+  {
+    "akinsho/bufferline.nvim",
+    event = { "BufEnter" },
+    cond = firevim_not_active,
+    config = function()
+      require("config.bufferline")
+    end
+  },
   {
     "rcarriga/nvim-notify",
     event = "VeryLazy",
