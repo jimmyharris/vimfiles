@@ -130,12 +130,6 @@ local plugin_specs = {
       require("fzf-lua").setup {}
     end,
   },
-  {
-    "MeanderingProgrammer/markdown.nvim",
-    main = "render-markdown",
-    opts = {},
-    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
-  },
   -- A list of colorscheme plugin you may want to try. Find what suits you.
   { "navarasu/onedark.nvim", lazy = true },
   { "sainnhe/edge", lazy = true },
