@@ -212,6 +212,10 @@ local plugin_specs = {
       require("config.dashboard-nvim")
     end
   },
+  -- Auto format tools
+  {
+    "sbdchd/neoformat", cmd = { "Neoformat" }
+  },
   -- Git command inside vim
   {
     "tpope/vim-fugitive",
