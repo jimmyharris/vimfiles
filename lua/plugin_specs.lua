@@ -199,6 +199,12 @@ local plugin_specs = {
     end
   },
   {
+    "ojroques/nvim-osc52",
+    config = function()
+      require("config.nvim-osc52")
+    end,
+  },
+  {
     "rcarriga/nvim-notify",
     event = "VeryLazy",
     config = function()
