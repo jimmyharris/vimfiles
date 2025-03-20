@@ -272,3 +272,25 @@ api.nvim_create_autocmd("BufReadPre", {
     end
   end,
 })
+
+local init_file_folding api.nvim_create_augroup("init_file_folding")
+
+local init_files = {
+  "vimrc",
+  ".vimrc",
+  "_vimrc",
+  "init.vim",
+  "ginit.vim",
+  "options.vim",
+  "plugins.vim",
+}
+
+for _, fname in ipairs(init_files) do
+  api.nvim_create_autocmd({"BufRead", {
+    group = init_file_folding,
+    pattern = fname,
+    command = "set foldmethod=marker",
+    desc = "Fold by marker on config files",
+  })
+end
+

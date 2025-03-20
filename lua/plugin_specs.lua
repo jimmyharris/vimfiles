@@ -94,25 +94,16 @@ local plugin_specs = {
     end,
   },
   {
-    "Yggdroot/LeaderF",
-    cmd = "Leaderf",
-    build = function()
-      local leaderf_path = plugin_dir .. "/LeaderF"
-      vim.opt.runtimepath:append(leaderf_path)
-      vim.cmd("runtime! plugin/leaderf.vim")
-
-      if not vim.g.is_win then
-        vim.cmd("LeaderfInstallCExtension")
-      end
-    end,
-  },
-  "nvim-lua/plenary.nvim",
-  {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
     dependencies = {
+      "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-symbols.nvim",
+      "nvim-telescope/telescope-live-grep-args.nvim",
     },
+    config = function ()
+      require("config.telescope")
+    end
   },
   {
     'windwp/nvim-autopairs',
