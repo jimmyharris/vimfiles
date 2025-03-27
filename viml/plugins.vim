@@ -60,28 +60,6 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 
 " }}}
 
-" telescope.nvim: {{{
-
-" Search files in popup window
-nnoremap <silent> <leader>ff <cmd>Telescope find_file<CR>
-
-" Grep project files in popup window
-nnoremap <silent> <leader>fg <cmd>Telescope live_grep_args<CR>
-
-" Search vim help files
-nnoremap <silent> <leader>fh <cmd>Telescope help_tags <CR>
-
-" Search tags in current buffer
-nnoremap <silent> <leader>ft <cmd>Telescope current_buffer_tags<CR>
-
-" Switch buffers
-nnoremap <silent> <leader>fb <cmd>Telescope buffers<CR>
-
-" Search recent files
-nnoremap <silent> <leader>fr <cmd>Telescope oldfiles<CR>
-
-" }}}
-
 " vim-sandwich: {{{
 
 " Map s to nop since s in used by vim-sandwich. Use cl instead of s.
