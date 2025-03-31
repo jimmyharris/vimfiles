@@ -177,6 +177,10 @@ if utils.executable("clangd") then
   }
 end
 
+if utils.executable("ansible-language-server") then
+  lspconfig.ansiblels.setup {}
+end
+
 -- set up vim-language-server
 if utils.executable("vim-language-server") then
   lspconfig.vimls.setup {

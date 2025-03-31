@@ -329,15 +329,14 @@ local plugin_specs = {
       require("config.lightbulb")
     end,
   },
-  {
-    "Bekaboo/dropbar.nvim",
-  },
+  { "Bekaboo/dropbar.nvim" },
   {
     "catgoose/nvim-colorizer.lua",
     event = "BufReadPre",
     opts = { -- set to setup table
     },
   },
+  { "pearofducks/ansible-vim" },
 }
 
 ---@diagnostic disable-next-line: missing-fields
