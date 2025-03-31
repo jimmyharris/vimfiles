@@ -244,7 +244,6 @@ local plugin_specs = {
   -- Git command inside vim
   {
     "tpope/vim-fugitive",
-    event = "User InGitRepo",
     config = function()
       require("config.fugitive")
     end,
