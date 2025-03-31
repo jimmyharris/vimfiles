@@ -8,9 +8,14 @@ local M = {}
 -- the same as the colorscheme name itself.
 M.colorscheme_conf = {
   onedark = function()
-    vim.cmd([[colorscheme onedark]])
+    -- Lua
+    require("onedark").setup {
+      style = "darker",
+    }
+    require("onedark").load()
   end,
   edge = function()
+    vim.g.edge_style = "default"
     vim.g.edge_enable_italic = 1
     vim.g.edge_better_performance = 1
 
@@ -33,6 +38,7 @@ M.colorscheme_conf = {
     vim.cmd([[colorscheme gruvbox-material]])
   end,
   everforest = function()
+    vim.g.everforest_background = "hard"
     vim.g.everforest_enable_italic = 1
     vim.g.everforest_better_performance = 1
 
@@ -40,13 +46,6 @@ M.colorscheme_conf = {
   end,
   nightfox = function()
     vim.cmd([[colorscheme nordfox]])
-  end,
-  catppuccin = function()
-    -- available option: latte, frappe, macchiato, mocha
-    vim.g.catppuccin_flavour = "frappe"
-    require("catppuccin").setup()
-
-    vim.cmd([[colorscheme catppuccin]])
   end,
   onedarkpro = function()
     -- set colorscheme after options
@@ -68,22 +67,11 @@ M.colorscheme_conf = {
 M.rand_colorscheme = function()
   local colorscheme = utils.rand_element(vim.tbl_keys(M.colorscheme_conf))
 
-  if not vim.tbl_contains(vim.tbl_keys(M.colorscheme_conf), colorscheme) then
-    local msg = "Invalid colorscheme: " .. colorscheme
-    vim.notify(msg, vim.log.levels.ERROR, { title = "nvim-config" })
-
-    return
-  end
-
   -- Load the colorscheme and its settings
   M.colorscheme_conf[colorscheme]()
-
-  if vim.g.logging_level == "debug" then
-    local msg = "Colorscheme: " .. colorscheme
-
-    vim.notify(msg, vim.log.levels.DEBUG, { title = "nvim-config" })
-  end
 end
 
--- Load a random colorscheme
+-- Load one-dark pro
 M.colorscheme_conf["onedarkpro"]()
+
+return M

@@ -2,7 +2,6 @@ local utils = require("utils")
 
 local plugin_dir = vim.fn.stdpath("data") .. "/lazy"
 local lazypath = plugin_dir .. "/lazy.nvim"
-local config_dir = vim.fn.stdpath("config")
 
 if not vim.uv.fs_stat(lazypath) then
   vim.fn.system {
@@ -45,11 +44,13 @@ local plugin_specs = {
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-omni",
+      "quangnguyen30192/cmp-nvim-ultisnips",
     },
     config = function()
       require("config.nvim-cmp")
     end,
   },
+
   {
     "neovim/nvim-lspconfig",
     event = { "BufRead", "BufNewFile" },
@@ -84,6 +85,7 @@ local plugin_specs = {
       require("config.treesitter-endwise")
     end,
   },
+  { "machakann/vim-swap", event = "VeryLazy" },
   -- Show match number and index for searching
   {
     "kevinhwang91/nvim-hlslens",
@@ -180,12 +182,31 @@ local plugin_specs = {
       require("config.lualine")
     end,
   },
+
   {
     "akinsho/bufferline.nvim",
     event = { "BufEnter" },
     cond = firevim_not_active,
     config = function()
       require("config.bufferline")
+    end
+  },
+
+  -- fancy start screen
+  {
+    "nvimdev/dashboard-nvim",
+    cond = firevim_not_active,
+    config = function()
+      require("config.dashboard-nvim")
+    end,
+  },
+
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event = "VeryLazy",
+    main = "ibl",
+    config = function()
+      require("config.indent-blankline")
     end
   },
   {
@@ -200,13 +221,6 @@ local plugin_specs = {
     config = function()
       require("config.nvim-notify")
     end,
-  },
-  {
-    "nvimdev/dashboard-nvim",
-    cond = firevim_not_active,
-    config = function()
-      require("config.dashboard-nvim")
-    end
   },
   -- Auto format tools
   {
@@ -241,13 +255,51 @@ local plugin_specs = {
   {
     "sindrets/diffview.nvim",
   },
+  -- Add indent object for vim (useful for languages like Python)
+  { "michaeljsmith/vim-indent-object", event = "VeryLazy" },
+  -- Since tmux is only available on Linux and Mac, we only enable these plugins
+  -- for Linux and Mac
+  -- .tmux.conf syntax highlighting and setting check
+  {
+    "tmux-plugins/vim-tmux",
+    enabled = function()
+      if utils.executable("tmux") then
+        return true
+      end
+      return false
+    end,
+    ft = { "tmux" },
+  },
+  -- The missing auto-completion for cmdline!
+  {
+    "gelguy/wilder.nvim",
+    build = ":UpdateRemotePlugins",
+  },
   {
     "folke/lazydev.nvim",
     ft = "lua",
     opts = {},
-  }
+  },
+  {
+    -- show hint for code actions, the user can also implement code actions themselves,
+    -- see discussion here: https://github.com/neovim/neovim/issues/14869
+    "kosayoda/nvim-lightbulb",
+    config = function()
+      require("config.lightbulb")
+    end,
+  },
+  {
+    "Bekaboo/dropbar.nvim",
+  },
+  {
+    "catgoose/nvim-colorizer.lua",
+    event = "BufReadPre",
+    opts = { -- set to setup table
+    },
+  },
 }
 
+---@diagnostic disable-next-line: missing-fields
 require("lazy").setup {
   spec = plugin_specs,
   ui = {

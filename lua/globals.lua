@@ -21,7 +21,7 @@ vim.g.is_windows = (utils.has("win32") or utils.has("win64")) and true or false
 vim.g.is_linux = (utils.has("unix") and (not utils.has("macunix"))) and true or false
 vim.g.is_mac = utils.has("macunix") and true or false
 
-vim.g.logging_level = "info"
+vim.g.logging_level = vim.log.levels.INFO
 
 ------------------------------------------------------------------------
 --                         builtin variables                          --
@@ -116,4 +116,5 @@ vim.g.loaded_sql_completion = 1
 -- Point to the initial runtime path for lua
 vim.g.user_rtp = vim.opt.rtp:get()[1]
 
-
+-- control how to show health check window
+vim.g.health = { style = nil }

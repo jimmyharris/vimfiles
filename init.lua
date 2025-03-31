@@ -3,7 +3,7 @@ vim.loader.enable()
 
 local utils = require("utils")
 
-local expected_version = "0.10.4"
+local expected_version = "0.11.0"
 utils.is_compatible_version(expected_version)
 
 local config_dir = vim.fn.stdpath("config")
@@ -20,6 +20,9 @@ else
   require("mappings")
 
   vim.cmd("source " .. vim.fs.joinpath(config_dir, "viml/plugins.vim"))
+
+  -- diagnostic related config
+  require("diagnostic-conf")
 
   require("colorschemes")
 end
