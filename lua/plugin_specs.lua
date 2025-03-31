@@ -34,7 +34,7 @@ local plugin_specs = {
   },
   -- auto-completion engine
   {
-    "iguanacucumber/magazine.nvim",
+    "hrsh7th/nvim-cmp",
     name = "nvim-cmp",
     -- event = 'InsertEnter',
     event = "VeryLazy",
@@ -59,13 +59,14 @@ local plugin_specs = {
     end,
   },
   {
-    "nvim-treesitter/nvim-treesitter",
-    enabled = function()
-      if vim.g.is_mac or vim.g.is_linux then
-        return true
-      end
-      return false
+    "dnlhc/glance.nvim",
+    config = function()
+      require("config.glance")
     end,
+    envnt = "VeryLazy",
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
     event = "VeryLazy",
     build = ":TSUpdate",
     config = function()
@@ -86,6 +87,15 @@ local plugin_specs = {
     end,
   },
   { "machakann/vim-swap", event = "VeryLazy" },
+  -- Super fast buffer jump
+  {
+    "smoka7/hop.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("config.nvim_hop")
+    end,
+  },
+
   -- Show match number and index for searching
   {
     "kevinhwang91/nvim-hlslens",
@@ -215,6 +225,10 @@ local plugin_specs = {
       require("config.nvim-osc52")
     end,
   },
+  -- Highlight URLs inside vim
+  { "itchyny/vim-highlighturl", event = "VeryLazy" },
+
+  -- notification plugin
   {
     "rcarriga/nvim-notify",
     event = "VeryLazy",
@@ -222,17 +236,20 @@ local plugin_specs = {
       require("config.nvim-notify")
     end,
   },
+  { "nvim-zh/better-escape.vim", event = { "InsertEnter" } },
+
   -- Auto format tools
-  {
-    "sbdchd/neoformat", cmd = { "Neoformat" }
-  },
+  { "sbdchd/neoformat", cmd = { "Neoformat" } },
+
   -- Git command inside vim
   {
     "tpope/vim-fugitive",
+    event = "User InGitRepo",
     config = function()
       require("config.fugitive")
     end,
   },
+
   -- Better git log display
   { "rbong/vim-flog", cmd = { "Flog" } },
   { "akinsho/git-conflict.nvim", version = "*", config = true },
@@ -255,6 +272,22 @@ local plugin_specs = {
   {
     "sindrets/diffview.nvim",
   },
+
+  -- Another markdown plugin
+  { "preservim/vim-markdown", ft = { "markdown" } },
+
+  -- Faster footnote generation
+  { "vim-pandoc/vim-markdownfootnotes", ft = { "markdown" } },
+
+  -- Vim tabular plugin for manipulate tabular, required by markdown plugins
+  { "godlygeek/tabular", cmd = { "Tabularize" } },
+
+  { "chrisbra/unicode.vim", event = "VeryLazy" },
+
+  -- Additional powerful text object for vim, this plugin should be studied
+  -- carefully to use its full power
+  { "wellle/targets.vim", event = "VeryLazy" },
+
   -- Add indent object for vim (useful for languages like Python)
   { "michaeljsmith/vim-indent-object", event = "VeryLazy" },
   -- Since tmux is only available on Linux and Mac, we only enable these plugins
@@ -270,6 +303,9 @@ local plugin_specs = {
     end,
     ft = { "tmux" },
   },
+
+  -- Modern matchit implementation
+  { "andymass/vim-matchup", event = "BufRead" },
   -- The missing auto-completion for cmdline!
   {
     "gelguy/wilder.nvim",
@@ -278,7 +314,13 @@ local plugin_specs = {
   {
     "folke/lazydev.nvim",
     ft = "lua",
-    opts = {},
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
   },
   {
     -- show hint for code actions, the user can also implement code actions themselves,
