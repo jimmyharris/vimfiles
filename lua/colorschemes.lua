@@ -61,6 +61,9 @@ M.colorscheme_conf = {
   kanagawa = function()
     vim.cmd("colorscheme kanagawa-wave")
   end,
+  catppuccin = function()
+    vim.cmd("colorscheme catppuccin-mocha")
+  end
 }
 
 --- Use a random colorscheme from the pre-defined list of colorschemes.
@@ -72,6 +75,6 @@ M.rand_colorscheme = function()
 end
 
 -- Load one-dark pro
-M.colorscheme_conf["onedarkpro"]()
+M.colorscheme_conf["catppuccin"]()
 
 return M
