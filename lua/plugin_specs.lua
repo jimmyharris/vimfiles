@@ -44,7 +44,6 @@ local plugin_specs = {
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-omni",
-      "quangnguyen30192/cmp-nvim-ultisnips",
     },
     config = function()
       require("config.nvim-cmp")
@@ -166,9 +165,6 @@ local plugin_specs = {
   -- Additional powerful text object for vim, this plugin should be studied
   -- carefully to use its full power
   { "wellle/targets.vim", event = "VeryLazy" },
-
-  -- Plugin to manipulate character pairs quickly
-  { "machakann/vim-sandwich", event = "VeryLazy" },
 
   -- Add indent object for vim (useful for languages like Python)
   { "michaeljsmith/vim-indent-object", event = "VeryLazy" },
