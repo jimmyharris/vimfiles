@@ -62,7 +62,7 @@ local plugin_specs = {
     config = function()
       require("config.glance")
     end,
-    envnt = "VeryLazy",
+    event = "VeryLazy",
   },
   {
     "nvim-treesitter/nvim-treesitter",
