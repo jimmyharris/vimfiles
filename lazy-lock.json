@@ -65,6 +65,7 @@
   "vim-markdown": { "branch": "master", "commit": "8f6cb3a6ca4e3b6bcda0730145a0b700f3481b51" },
   "vim-markdownfootnotes": { "branch": "master", "commit": "2b288149f48cfaf7465d25bb094ed62898f5e5b0" },
   "vim-matchup": { "branch": "master", "commit": "ea2ff43e09e68b63fc6d9268fc5d82d82d433cb3" },
+  "vim-mundo": { "branch": "master", "commit": "2ceda8c65f7b3f9066820729fc02003a09df91f9" },
   "vim-obsession": { "branch": "master", "commit": "ed9dfc7c2cc917ace8b24f4f9f80a91e05614b63" },
   "vim-pythonsense": { "branch": "master", "commit": "9200a57629c904ed2ab8c9b2e8c5649d311794ba" },
   "vim-repeat": { "branch": "master", "commit": "65846025c15494983dafe5e3b46c8f88ab2e9635" },

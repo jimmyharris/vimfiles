@@ -116,13 +116,6 @@ local plugin_specs = {
     end
   },
   {
-    'windwp/nvim-autopairs',
-    event = "InsertEnter",
-    config = true
-    -- use opts = {} for passing setup options
-    -- this is equivalent to setup({}) function
-  },
-  {
     "ibhagwan/fzf-lua",
     -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -168,16 +161,10 @@ local plugin_specs = {
 
   -- Add indent object for vim (useful for languages like Python)
   { "michaeljsmith/vim-indent-object", event = "VeryLazy" },
-  -- Handy unix command inside Vim (Rename, Move etc.)
-  { "tpope/vim-eunuch", cmd = { "Rename", "Delete" } },
   { "tpope/vim-abolish", event = "VeryLazy" },
-  { "tpope/vim-obsession", event = "VeryLazy" },
-  { "tpope/vim-repeat", event = "VeryLazy" },
   { "tpope/vim-surround", event = "VeryLazy" },
-  { "tpope/vim-scriptease", cmd = { "Scriptnames", "Messages", "Verbose" } },
   { "andymass/vim-matchup", event = "BufRead" },
   { "vim-scripts/SelectBuf", dependencies = {"vim-scripts/genutils"}, },
-  { "tpope/vim-commentary", event = "VeryLazy" },
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
@@ -232,6 +219,25 @@ local plugin_specs = {
       require("config.nvim-notify")
     end,
   },
+  -- Automatic insertion and deletion of a pair of characters
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = true,
+  },
+
+  -- Comment plugin
+  { "tpope/vim-commentary", event = "VeryLazy" },
+
+  -- Show undo history visually
+  { "simnalamburt/vim-mundo", cmd = { "MundoToggle", "MundoShow" } },
+
+  -- Handy unix command inside Vim (Rename, Move etc.)
+  { "tpope/vim-eunuch", cmd = { "Rename", "Delete" } },
+
+  -- Repeat vim motions
+  { "tpope/vim-repeat", event = "VeryLazy" },
+
   { "nvim-zh/better-escape.vim", event = { "InsertEnter" } },
 
   -- Auto format tools
@@ -301,6 +307,11 @@ local plugin_specs = {
 
   -- Modern matchit implementation
   { "andymass/vim-matchup", event = "BufRead" },
+  { "tpope/vim-scriptease", cmd = { "Scriptnames", "Messages", "Verbose" } },
+
+  -- Session management plugin
+  { "tpope/vim-obsession", cmd = "Obsession" },
+
   -- The missing auto-completion for cmdline!
   {
     "gelguy/wilder.nvim",
@@ -332,6 +343,8 @@ local plugin_specs = {
     opts = { -- set to setup table
     },
   },
+
+  -- ansible ft and highlighting.
   { "pearofducks/ansible-vim" },
 }
 
