@@ -179,7 +179,7 @@ local plugin_specs = {
   {
     "akinsho/bufferline.nvim",
     event = { "BufEnter" },
-    cond = firevim_not_active,
+    cond = firenvim_not_active,
     config = function()
       require("config.bufferline")
     end
@@ -188,7 +188,7 @@ local plugin_specs = {
   -- fancy start screen
   {
     "nvimdev/dashboard-nvim",
-    cond = firevim_not_active,
+    cond = firenvim_not_active,
     config = function()
       require("config.dashboard-nvim")
     end,
@@ -206,6 +206,21 @@ local plugin_specs = {
     "ojroques/nvim-osc52",
     config = function()
       require("config.nvim-osc52")
+    end,
+  },
+  {
+    "kevinhwang91/nvim-ufo",
+    dependencies = "kevinhwang91/promise-async",
+    event = "VeryLazy",
+    opts = {},
+    init = function()
+      vim.o.foldcolumn = "1" -- '0' is not bad
+      vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+      vim.o.foldlevelstart = 99
+      vim.o.foldenable = true
+    end,
+    config = function()
+      require("config.nvim_ufo")
     end,
   },
   -- Highlight URLs inside vim
