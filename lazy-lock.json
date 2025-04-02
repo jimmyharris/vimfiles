@@ -2,6 +2,7 @@
   "SelectBuf": { "branch": "master", "commit": "bf13659a95f3d31e3dd14e035efe11f43d37ce6b" },
   "ansible-vim": { "branch": "master", "commit": "3329367d2e5f90d203c8d340c53fa83c60a1ad41" },
   "arctic": { "branch": "v2", "commit": "9052ab87b1d6e9b746ab8dde6576e2876ffda4c7" },
+  "asyncrun.vim": { "branch": "master", "commit": "e17c49c67d1dd847cd1d7d6077a7168816f546cc" },
   "better-escape.vim": { "branch": "master", "commit": "6b16a45a839727977277f6ab11bded63e9ed86bb" },
   "bufferline.nvim": { "branch": "main", "commit": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3" },
   "catppuccin": { "branch": "main", "commit": "5b5e3aef9ad7af84f463d17b5479f06b87d5c429" },

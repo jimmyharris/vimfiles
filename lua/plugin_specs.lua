@@ -332,6 +332,9 @@ local plugin_specs = {
   { "andymass/vim-matchup", event = "BufRead" },
   { "tpope/vim-scriptease", cmd = { "Scriptnames", "Messages", "Verbose" } },
 
+  -- Asynchronous command execution
+  { "skywind3000/asyncrun.vim", lazy = true, cmd = { "AsyncRun" } },
+
   -- Session management plugin
   { "tpope/vim-obsession", cmd = "Obsession" },
 
