@@ -289,6 +289,14 @@ local plugin_specs = {
     "sindrets/diffview.nvim",
   },
 
+  {
+    "kevinhwang91/nvim-bqf",
+    ft = "qf",
+    config = function()
+      require("config.bqf")
+    end,
+  },
+
   -- Another markdown plugin
   { "preservim/vim-markdown", ft = { "markdown" } },
 
