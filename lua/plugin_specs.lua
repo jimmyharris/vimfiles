@@ -334,6 +334,7 @@ local plugin_specs = {
 
   -- Asynchronous command execution
   { "skywind3000/asyncrun.vim", lazy = true, cmd = { "AsyncRun" } },
+  { "cespare/vim-toml", ft = { "toml" }, branch = "main" },
 
   -- Session management plugin
   { "tpope/vim-obsession", cmd = "Obsession" },
