@@ -124,22 +124,6 @@ local plugin_specs = {
       require("fzf-lua").setup {}
     end,
   },
-  { "linux-cultist/venv-selector.nvim",
-    dependencies = {
-      "neovim/nvim-lspconfig",
-      "mfussenegger/nvim-dap", "mfussenegger/nvim-dap-python", --optional
-      "nvim-telescope/telescope.nvim",
-    },
-    lazy = false,
-    branch = "regexp", -- This is the regexp branch, use this for the new version
-    keys = {
-      { ",v", "<cmd>VenvSelect<cr>" },
-    },
-    config = function()
-      require("config.venv-selector")
-    end
-  },
-
   -- A list of colorscheme plugin you may want to try. Find what suits you.
   { "navarasu/onedark.nvim", lazy = true },
   { "sainnhe/edge", lazy = true },
@@ -352,6 +336,33 @@ local plugin_specs = {
   { "skywind3000/asyncrun.vim", lazy = true, cmd = { "AsyncRun" } },
   { "cespare/vim-toml", ft = { "toml" }, branch = "main" },
 
+  -- show keybindings
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("config.which-key")
+    end,
+  },
+
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    opts = {
+      -- more beautiful vim.ui.input
+      input = {
+        enabled = true,
+        win = {
+          relative = "cursor",
+          backdrop = true,
+        },
+      },
+      -- more beautiful vim.ui.select
+      picker = { enabled = true },
+    },
+  },
+
   -- Session management plugin
   { "tpope/vim-obsession", cmd = "Obsession" },
 
@@ -389,6 +400,24 @@ local plugin_specs = {
 
   -- ansible ft and highlighting.
   { "pearofducks/ansible-vim" },
+
+  -- python dev tools
+  { "linux-cultist/venv-selector.nvim",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      "mfussenegger/nvim-dap", "mfussenegger/nvim-dap-python", --optional
+      "nvim-telescope/telescope.nvim",
+    },
+    lazy = false,
+    branch = "regexp", -- This is the regexp branch, use this for the new version
+    keys = {
+      { ",v", "<cmd>VenvSelect<cr>" },
+    },
+    config = function()
+      require("config.venv-selector")
+    end
+  },
+
 }
 
 ---@diagnostic disable-next-line: missing-fields
