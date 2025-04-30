@@ -253,6 +253,7 @@ local plugin_specs = {
   -- Repeat vim motions
   { "tpope/vim-repeat", event = "VeryLazy" },
 
+  -- jk rappidly to escape
   { "nvim-zh/better-escape.vim", event = { "InsertEnter" } },
 
   -- Auto format tools
@@ -267,7 +268,13 @@ local plugin_specs = {
   },
 
   -- Better git log display
-  { "rbong/vim-flog", cmd = { "Flog" } },
+  {
+    "rbong/vim-flog",
+    cmd = { "Flog" },
+    dependencies = {
+      "tpope/vim-fugitive",
+    }
+  },
   { "akinsho/git-conflict.nvim", version = "*", config = true },
   {
     "ruifm/gitlinker.nvim",
