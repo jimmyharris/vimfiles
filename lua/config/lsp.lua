@@ -51,7 +51,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     -- Uncomment code below to enable inlay hint from language server, some LSP server supports inlay hint,
     -- but disable this feature by default, so you may need to enable inlay hint in the LSP server config.
-    -- vim.lsp.inlay_hint.enable(true, {buffer=bufnr})
+    vim.lsp.inlay_hint.enable(true, {buffer=bufnr})
 
     -- The below command will highlight the current variable and its usages in the buffer.
     if client.server_capabilities.documentHighlightProvider then
