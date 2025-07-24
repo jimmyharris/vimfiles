@@ -72,13 +72,7 @@ local plugin_specs = {
     end,
   },
   {
-    -- NOTE: The upstream implementation is here:
-    -- "RRethy/nvim-treesitter-endwise",
-    -- This fork includes:
-    --   https://github.com/RRethy/nvim-treesitter-endwise/pull/42
-    -- which fixes
-    --   https://github.com/RRethy/nvim-treesitter-endwise/issue/41
-    "metiulekm/nvim-treesitter-endwise",
+    "RRethy/nvim-treesitter-endwise",
     event = "VeryLazy",
     config = function()
       require("config.treesitter-endwise")
