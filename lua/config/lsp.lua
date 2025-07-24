@@ -127,6 +127,7 @@ local enabled_lsp_servers = {
   vimls = "vim-language-server",
   bashls = "bash-language-server",
   yamlls = "yaml-language-server",
+  ansiblels = "ansible-language-server",
 }
 
 for server_name, lsp_executable in pairs(enabled_lsp_servers) do
