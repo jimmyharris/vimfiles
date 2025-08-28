@@ -9,7 +9,6 @@ nvim_tree.setup {
   hijack_unnamed_buffer_when_opening = false,
   open_on_tab = false,
   sort_by = "name",
-  update_cwd = false,
   view = {
     width = 30,
     side = "left",
@@ -36,7 +35,7 @@ nvim_tree.setup {
     auto_open = true,
   },
   update_focused_file = {
-    enable = false,
+    enable = true,
     update_cwd = false,
     ignore_list = {},
   },
