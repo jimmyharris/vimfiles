@@ -57,6 +57,28 @@ local plugin_specs = {
     end,
   },
   {
+    "mason-org/mason.nvim",
+    opts = {}
+  },
+  {
+    "mason-org/mason-lspconfig.nvim",
+    opts = {
+      ensure_installed = {
+        "ansiblels",
+        "bashls",
+        "pyrefly",
+        "ruff",
+        "vimls",
+        "yamlls",
+        "yamllint",
+      },
+    },
+    dependencies = {
+        "mason-org/mason.nvim",
+        "neovim/nvim-lspconfig",
+    },
+  },
+  {
     "dnlhc/glance.nvim",
     config = function()
       require("config.glance")
@@ -141,7 +163,7 @@ local plugin_specs = {
     ---@type oil.SetupOpts
     opts = {},
     -- Optional dependencies
-    -- dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    -- dependencies = { { "nvim-mini/mini.icons", opts = {} } },
     dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
     -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
     config = function()

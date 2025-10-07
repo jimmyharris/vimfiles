@@ -118,27 +118,27 @@ vim.lsp.config("*", {
 })
 
 -- A mapping from lsp server name to the executable name
-local enabled_lsp_servers = {
-  pyright = "delance-langserver",
-  ruff = "ruff",
-  -- lua_ls = "lua-language-server",
-  -- ltex = "ltex-ls",
-  -- clangd = "clangd",
-  vimls = "vim-language-server",
-  bashls = "bash-language-server",
-  yamlls = "yaml-language-server",
-  ansiblels = "ansible-language-server",
-}
+-- local enabled_lsp_servers = {
+--   pyright = "delance-langserver",
+--   ruff = "ruff",
+--   -- lua_ls = "lua-language-server",
+--   -- ltex = "ltex-ls",
+--   -- clangd = "clangd",
+--   vimls = "vim-language-server",
+--   bashls = "bash-language-server",
+--   yamlls = "yaml-language-server",
+--   ansiblels = "ansible-language-server",
+-- }
 
-for server_name, lsp_executable in pairs(enabled_lsp_servers) do
-  if utils.executable(lsp_executable) then
-    vim.lsp.enable(server_name)
-  else
-    local msg = string.format(
-      "Executable '%s' for server '%s' not found! Server will not be enabled",
-      lsp_executable,
-      server_name
-    )
-    vim.notify(msg, vim.log.levels.WARN, { title = "Nvim-config" })
-  end
-end
+-- for server_name, lsp_executable in pairs(enabled_lsp_servers) do
+--   if utils.executable(lsp_executable) then
+--     vim.lsp.enable(server_name)
+--   else
+--     local msg = string.format(
+--       "Executable '%s' for server '%s' not found! Server will not be enabled",
+--       lsp_executable,
+--       server_name
+--     )
+--     vim.notify(msg, vim.log.levels.WARN, { title = "Nvim-config" })
+--   end
+-- end
