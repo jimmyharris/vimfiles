@@ -70,7 +70,6 @@ local plugin_specs = {
         "ruff",
         "vimls",
         "yamlls",
-        "yamllint",
       },
     },
     dependencies = {
