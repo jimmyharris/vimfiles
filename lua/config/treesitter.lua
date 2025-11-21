@@ -6,7 +6,8 @@ require("nvim-treesitter.configs").setup {
     "vim",
     "vimdoc",
     "json",
-    "toml"
+    "toml",
+    "hcl",
   },
   ignore_install = {}, -- List of parsers to ignore installing
   highlight = {

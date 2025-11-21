@@ -70,6 +70,7 @@ local plugin_specs = {
         "ruff",
         "vimls",
         "yamlls",
+        "terraformls"
       },
     },
     dependencies = {
